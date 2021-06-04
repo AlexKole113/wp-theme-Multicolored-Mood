@@ -1,0 +1,108 @@
+@import "humburger.css";
+
+.main-menu-group {
+    --link-margin: 1.45rem;
+    margin: 1.4rem;
+}
+
+.primary-menu a {
+    color: var(--text-light-gray);
+    text-decoration: none;
+    font-size: .9rem;
+    margin: 0 var(--link-margin);
+    letter-spacing: .1px;
+}
+
+.main-menu-group__menu_logo {
+    display: flex;
+    width: 100%;
+    margin-right: .25rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu-group__menu_logo img {
+    width: 100%;
+}
+
+.main-menu .menu-item:first-child a {
+    margin-left: 0;
+}
+
+.main-menu-group__menu_logo ~ .main-menu .menu-item:first-child a {
+    margin-left: var(--link-margin);
+}
+
+.main-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-content: center;
+    display: none;
+}
+
+.primary-menu {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+}
+
+.main-menu-group__menu {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+}
+
+.navbar-toggler {
+    background: transparent;
+    border: none;
+    display: block;
+    margin-left: auto;
+}
+
+.humburger-slot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media ( min-width: 1024px ) {
+    .main-menu-group {
+        margin: 1.4rem 0 0 0;
+        padding-left: var(--page-padding);
+    }
+
+    .main-menu-group__menu_logo {
+        width: 1.95rem;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .main-menu-group__menu {
+        display: flex;
+        height: 2rem;
+        align-items: center;
+        margin-bottom: 4.55rem;
+    }
+
+    .main-menu {
+        width: 100%;
+        position: relative;
+        display: flex;
+        place-content: unset;
+        flex: 1;
+    }
+
+    .primary-menu {
+        flex-flow: row;
+    }
+
+    .humburger-slot {
+        display: none;
+    }
+}

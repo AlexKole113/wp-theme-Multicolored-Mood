@@ -1,0 +1,15 @@
+@import './styles/layout.css';
+@import './styles/fonts.css';
+@import './styles/common.css';
+@import './styles/colors.css';
+
+
+/* elements */
+@import './header/styles/header.css';
+@import './home-text/styles/home-text.css';
+@import './home-widget/styles/home-widget.css';
+@import "./home-posts/styles/home-posts.css";
+@import "home-widget-slider/styles/home-widget-slider.css";
+
+
+@import "./mobile-footer/styles/mobile-footer.css";

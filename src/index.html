@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <section class="main-group">
+
+        <!--   ROW #1    -->
+        <div class="main-group__row grid-home-row-1">
+
+            <!--  COLUMN #1  -->
+            <div class="main-group__column pb-4">
+
+                <!-- MAIN MENU GROUP  -->
+                <section class="main-menu-group">
+                    <nav class="main-menu-group__menu">
+                        <a class="main-menu-group__menu_logo" href="#">
+                            <img src="header/assets/Logo.png" alt="logo-main">
+                        </a>
+                        <div class="humburger-slot">
+                            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                                <div class="humburger">
+                                    <div></div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="main-menu">
+                            <ul class="primary-menu">
+                                <li class="menu-item">
+                                    <a href="#product-collection">Home</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#blog-collection">About Us</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#contact-us">Galleries</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#contact-us">Submit</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#contact-us">Search</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <span id="nav-link-decorator-1"></span>
+                </section >
+
+                <!--  HOME TEXT  -->
+                <section class="home-text">
+                    <h1 class="home-text__title"> Food & <span class="colored-blue">Colors</span></h1>
+                    <span class="home-text__tiny-text"> 2018 Photography Awards </span>
+                </section>
+            </div>
+
+            <!--  COLUMN #2  -->
+            <div class="main-group__column">
+
+                <div class="home-widget-area-1">
+                    <!-- WIDGET-AREA: home-widget-area-1 = WIDGET: text-center  -->
+                    <home-widget-centered
+                            title="Follow Us"
+                            text="Shot by @daaaaaavis"
+                            socialLinks="|#1,facebook|#2,instagramm|#3,twitter"
+                    ></home-widget-centered>
+                </div>
+            </div>
+
+        </div>
+
+        <!--   ROW #2    -->
+        <div class="main-group__row grid-home-row-2">
+
+            <!--  COLUMN #1  -->
+            <div class="main-group__column">
+
+                <div class="home-widget-area-2">
+                    <!-- WIDGET-AREA: home-widget-area-2 = WIDGET: text-left  -->
+                    <home-widget-left
+                            cssClassName="home-widget-slider-mob"
+                            title="2017 Winners"
+                            text="Michal Grosicki"
+                            image="home-widget/assets/widget-2.png"
+                            sliderController='true'
+                    >
+                    </home-widget-left>
+                </div>
+            </div>
+
+            <!--  COLUMN #2  -->
+            <div class="main-group__column">
+                <div class="home-widget-area-3">
+                    <!-- WIDGET-AREA: home-widget-area-3 = WIDGET: text-left  -->
+                    <home-widget-left
+                            title="Featured"
+                            text="Ruslan Bardash"
+                            image="home-widget/assets/widget-3.png"
+                    >
+                    </home-widget-left>
+
+                </div>
+            </div>
+
+            <!--  COLUMN #3  -->
+            <div class="main-group__column">
+                <div class="home-widget-area-4">
+                    <!-- WIDGET-AREA: home-widget-area-4 = WIDGET: POSTS-HOME  -->
+                    <div class="home-widget-posts">
+                        <div class="home-widget-posts__title">
+                            <span>in The News</span>
+                        </div>
+
+                        <div class="home-widget-posts__group">
+                            <div class="home-widget-posts__item">
+                                <div class="home-widget-posts__item_img">
+                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                </div>
+                                <div class="home-widget-posts__item_text">
+                                    <a href="" class="home-widget-posts__item_text_title">Is “Food-Tech” the Future of Food?</a>
+                                    <span class="home-widget-posts__item_text_date">Mar 2, 2018</span>
+                                </div>
+
+                            </div>
+                            <div class="home-widget-posts__item">
+                                <div class="home-widget-posts__item_img">
+                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                </div>
+                                <div class="home-widget-posts__item_text">
+                                    <a href="" class="home-widget-posts__item_text_title">5 Savory Food Photography Tips</a>
+                                    <span class="home-widget-posts__item_text_date">Feb 28, 2018</span>
+                                </div>
+
+                            </div>
+                            <div class="home-widget-posts__item">
+                                <div class="home-widget-posts__item_img">
+                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                </div>
+                                <div class="home-widget-posts__item_text">
+                                    <a href="" class="home-widget-posts__item_text_title">3 Food Magazines With Food Photography That Inspires</a>
+                                    <span class="home-widget-posts__item_text_date">Feb 25, 2018</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="mobile-footer">
+        <!--   SOCIAL LINKS  -->
+        <div class="social-links">
+            <ul class="social-links__group">
+                <li class="social-links__item">
+                    <a href="#1" class="social-links__link">Facebook</a>
+                </li>
+                <li class="social-links__item">
+                    <a href="#2" class="social-links__link">Instagram</a>
+                </li>
+                <li class="social-links__item">
+                    <a href="#3" class="social-links__link">Twitter</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="copyright">
+            <a class="copyright-author" href="https://profiles.wordpress.org/alexanderkoledov/">
+                Developed by @alexanderkoledov
+            </a>
+            <a href="https://dribbble.com/jardson">
+                Jardson Almeida Design Concept
+            </a>
+        </div>
+    </section>
+
+    <script type="module" src="script.js" ></script>
+
+</body>
+</html>

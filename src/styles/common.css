@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: var(--content-size);
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    font-family: var(--primary-font);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+

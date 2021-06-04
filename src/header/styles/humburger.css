@@ -1,0 +1,24 @@
+.humburger {
+    width: 50px;
+}
+
+.humburger:before,
+.humburger:after,
+.humburger div {
+    background: var(--text-mid-gray);
+    content: "";
+    display: block;
+    height: 6px;
+    border-radius: 3px;
+    margin: 7px 0;
+    transition: 0.5s;
+}
+.humburger:hover:before {
+    transform: translateY(12px) rotate(135deg);
+}
+.humburger:hover:after {
+    transform: translateY(-12px) rotate(-135deg);
+}
+.humburger:hover div {
+    transform: scale(0);
+}
