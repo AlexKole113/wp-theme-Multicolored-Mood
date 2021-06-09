@@ -60,6 +60,17 @@
                     <h1 class="home-text__title"> Food & <span class="colored-blue">Colors</span></h1>
                     <span class="home-text__tiny-text"> 2018 Photography Awards </span>
                 </section>
+
+                <div class="slider-desktop-dots__container">
+                    <div class="slider-desktop-dots">
+                        <ul class="dots">
+                            <li class="dots__item active-dot"><a href="" class="dots__item_link"></a></li>
+                            <li class="dots__item"><a href="" class="dots__item_link"></a></li>
+                            <li class="dots__item"><a href="" class="dots__item_link"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
 
             <!--  COLUMN #2  -->
@@ -67,11 +78,13 @@
 
                 <div class="home-widget-area-1">
                     <!-- WIDGET-AREA: home-widget-area-1 = WIDGET: text-center  -->
+
                     <home-widget-centered
                             title="Follow Us"
                             text="Shot by @daaaaaavis"
-                            socialLinks="|#1,facebook|#2,instagramm|#3,twitter"
+                            socialLinks="|#1,facebook|#2,Instagram|#3,twitter"
                     ></home-widget-centered>
+
                 </div>
             </div>
 
@@ -85,6 +98,7 @@
 
                 <div class="home-widget-area-2">
                     <!-- WIDGET-AREA: home-widget-area-2 = WIDGET: text-left  -->
+
                     <home-widget-left
                             cssClassName="home-widget-slider-mob"
                             title="2017 Winners"
@@ -93,6 +107,7 @@
                             sliderController='true'
                     >
                     </home-widget-left>
+
                 </div>
             </div>
 
@@ -100,6 +115,7 @@
             <div class="main-group__column">
                 <div class="home-widget-area-3">
                     <!-- WIDGET-AREA: home-widget-area-3 = WIDGET: text-left  -->
+
                     <home-widget-left
                             title="Featured"
                             text="Ruslan Bardash"
@@ -114,12 +130,9 @@
             <div class="main-group__column">
                 <div class="home-widget-area-4">
                     <!-- WIDGET-AREA: home-widget-area-4 = WIDGET: POSTS-HOME  -->
-                    <div class="home-widget-posts">
-                        <div class="home-widget-posts__title">
-                            <span>in The News</span>
-                        </div>
 
-                        <div class="home-widget-posts__group">
+                    <home-widget-posts title="in The News">
+                        <div slot="posts" class="home-widget-posts__group">
                             <div class="home-widget-posts__item">
                                 <div class="home-widget-posts__item_img">
                                     <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
@@ -151,8 +164,8 @@
 
                             </div>
                         </div>
+                    </home-widget-posts>
 
-                    </div>
                 </div>
             </div>
 

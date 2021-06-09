@@ -1,24 +1,3 @@
-.home-widget-posts {
-    background: var(--back-light-black);
-    height: 100%;
-    padding-bottom: 5rem;
-}
-
-@media (min-width: 1024px) {
-    .home-widget-posts {
-        padding-bottom: 0rem;
-    }
-}
-
-.home-widget-posts__title {
-    color: var(--text-white);
-    padding-top: var(--page-padding);
-    padding-left: var(--page-padding);
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
-}
-
 .home-widget-posts__group {
     padding-left: var(--page-padding);
     padding-right: 1rem;
