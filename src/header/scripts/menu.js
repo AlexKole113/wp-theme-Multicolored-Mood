@@ -1,4 +1,5 @@
 import EventBus from "../../scripts/EventBus.js";
+import MenuEffect from "./MenuEffect.js";
 
 export default class MobileMenu extends EventBus {
 
@@ -8,13 +9,24 @@ export default class MobileMenu extends EventBus {
 
     _openMenu = () => {
         document.body.classList.add('mobile-menu-activated')
+
+        //canvas actions
         this._canvasElement = document.createElement("canvas");
         this._canvasElement.setAttribute('id', 'main-menu-canvas')
-        this._mainMenu.prepend(this._canvasElement);
+        this._mainMenu.prepend( this._canvasElement );
+
+        this._effect.init( this._canvasElement );
+
     }
 
     _closeMenu = () => {
-        document.body.classList.remove('mobile-menu-activated')
+        document.body.classList.remove('mobile-menu-activated');
+
+        //canvas actions remove
+        if( this._canvasElement ){
+            this._canvasElement.remove()
+        }
+
     }
 
     validateComponents = () => {
@@ -26,7 +38,8 @@ export default class MobileMenu extends EventBus {
         super();
         this._on('ERROR', this._error );
         this._on('START', this._openMenu );
-        this._on('END', this._closeMenu )
+        this._on('END', this._closeMenu );
+        this._effect = new MenuEffect();
     }
 
     init = () => {
@@ -37,6 +50,7 @@ export default class MobileMenu extends EventBus {
 
         this._menuStarter.addEventListener('click', (event) => {
             event.preventDefault();
+            event.stopPropagation();
 
             if ( MobileMenu.statement === 'closed' ) {
                 MobileMenu.statement = 'opened';
@@ -49,11 +63,8 @@ export default class MobileMenu extends EventBus {
             }
 
         })
-
         this._menuStarter.addEventListener( 'menu-open', () => { this._do('START' ) } );
         this._menuStarter.addEventListener( 'menu-close', () => { this._do('END' ) } );
 
     }
-
-
 }
