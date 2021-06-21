@@ -2,28 +2,34 @@ class MenuEffect {
 
     constructor() {
         this.imageDecoration = new Image();
-        this.imageDecoration.src   = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/2736535/smoke.png';
+        this.imageDecoration.src   = 'header/assets/smoke.png';
     }
 
     init = ( canvas ) => {
+        this.maxFrames = 100;
         let ctx = canvas.getContext("2d");
         let counter = 0;
-        let stop = 300;
         const draw = () => {
             counter++;
             ctx.beginPath();
             ctx.drawImage(
                 this.imageDecoration,
-                -window.innerWidth  * .25  * Math.random(),
-                -window.innerHeight * .25  * Math.random(),
-                counter * 25,
-                counter * 25
+                Math.round(window.innerWidth * -.075 * Math.random()   ),
+                Math.round( window.innerHeight * -.075 * Math.random() ),
+                window.innerWidth  * .02  * counter,
+                window.innerHeight * .02  * counter,
             );
             ctx.stroke();
-            if( counter < stop ) window.requestAnimationFrame( draw )
-            console.log(counter)
+            if( counter < this.maxFrames ) window.requestAnimationFrame( draw )
+            console.log(Math.round(window.innerWidth * Math.random()   ), Math.round( window.innerHeight * Math.random() ))
         }
-        window.requestAnimationFrame( draw )
+        this.requestAnimationFrameID = window.requestAnimationFrame( draw )
+
+    }
+
+    destroy = () => {
+        this.maxFrames = 0;
+        window.cancelAnimationFrame(this.requestAnimationFrameID);
 
     }
 }

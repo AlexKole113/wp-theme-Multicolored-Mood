@@ -21,6 +21,7 @@ export default class MobileMenu extends EventBus {
 
     _closeMenu = () => {
         document.body.classList.remove('mobile-menu-activated');
+        this._effect.destroy();
 
         //canvas actions remove
         if( this._canvasElement ){
