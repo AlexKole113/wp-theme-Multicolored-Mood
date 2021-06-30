@@ -15,7 +15,7 @@ body.mobile-menu-activated #main-menu {
     right: 0;
     bottom: 0;
     overflow:scroll;
-    background: #ffffffa1;
+    background: var(--back-pure-white);
     display: grid;
     padding-top: 20%;
 }

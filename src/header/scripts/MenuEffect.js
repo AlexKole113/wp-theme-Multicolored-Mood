@@ -16,8 +16,8 @@ class MenuEffect {
     init = () => {
         const app = new PIXI.Application();
         this._parentElm.prepend(app.view);
-        app.view.height = window.innerHeight;
-        app.view.width  = window.innerWidth;
+        app.view.height = 0;
+        app.view.width  = 0;
         // Build geometry.
         const geometry = new PIXI.Geometry()
             .addAttribute('aVertexPosition', // the attribute name
@@ -71,11 +71,11 @@ void main()
     gl_FragColor = vec4(color);
 }`;
         const noiseUniforms = {
-            limit: 0.5,
+            limit: .5,
             noise: perlinTexture,
         };
         const noiseShader = PIXI.Shader.from(vertexSrc, fragmentNoiseSrc, noiseUniforms);
-        const noiseTexture = PIXI.RenderTexture.create(500, 500);
+        const noiseTexture = PIXI.RenderTexture.create(innerWidth, innerWidth);
         const noiseQuad = new PIXI.Mesh(geometry, noiseShader);
         const noiseContainer = new PIXI.Container();
         noiseContainer.addChild(noiseQuad);
@@ -89,16 +89,28 @@ void main()
         app.stage.addChild(noiseContainer);
 
 
-        // start the animation..
-        let time = 0;
-        app.ticker.add((delta) => {
-            time += 1 / 90;
-            // gridQuad.shader.uniforms.zoom = Math.sin(time)*5+10;
-            noiseQuad.shader.uniforms.limit = time * .4;
+        new Promise((resolve ) => {
+            // start the animation..
+            let time = 0;
+            app.ticker.add((delta) => {
+                time += 1 / 90;
+                // gridQuad.shader.uniforms.zoom = Math.sin(time)*5+10;
+                noiseQuad.shader.uniforms.limit = time * .4;
 
-            // Render the passes to get textures.
-            app.renderer.render(noiseQuad, noiseTexture);
-        });
+                // Render the passes to get textures.
+                app.renderer.render(noiseQuad, noiseTexture);
+            });
+
+            setTimeout(()=>{
+                resolve(null)
+            },50)
+        })
+        .then(()=>{
+            app.view.height = window.innerHeight;
+            app.view.width  = window.innerWidth;
+        })
+
+
 
 
         this._app = app;
