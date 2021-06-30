@@ -9,25 +9,12 @@ export default class MobileMenu extends EventBus {
 
     _openMenu = () => {
         document.body.classList.add('mobile-menu-activated')
-
-        //canvas actions
-        this._canvasElement = document.createElement("canvas");
-        this._canvasElement.setAttribute('id', 'main-menu-canvas')
-        this._mainMenu.prepend( this._canvasElement );
-
-        this._effect.init( this._canvasElement );
-
+        this._effect.init();
     }
 
     _closeMenu = () => {
         document.body.classList.remove('mobile-menu-activated');
         this._effect.destroy();
-
-        //canvas actions remove
-        if( this._canvasElement ){
-            this._canvasElement.remove()
-        }
-
     }
 
     validateComponents = () => {
@@ -40,12 +27,12 @@ export default class MobileMenu extends EventBus {
         this._on('ERROR', this._error );
         this._on('START', this._openMenu );
         this._on('END', this._closeMenu );
-        this._effect = new MenuEffect();
     }
 
     init = () => {
         this._menuStarter = document.querySelector('#menu-starter');
         this._mainMenu    = document.querySelector('#main-menu');
+        this._effect = new MenuEffect( this._mainMenu );
 
         this.validateComponents();
 
