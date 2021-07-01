@@ -13,7 +13,18 @@ class MenuEffect {
 
     }
 
-    init = () => {
+    _getMaxScreenSide = () => (window.innerWidth > window.innerHeight) ? window.innerWidth : window.innerHeight
+
+    _setCanvasSizes = () => {
+        if(!this._app) {
+            console.log('no app');
+            return;
+        }
+        this._app.view.height = window.innerHeight;
+        this._app.view.width  = window.innerWidth;
+    }
+
+    _menuOpenEffectCreate = () => {
         const app = new PIXI.Application();
         this._parentElm.prepend(app.view);
         app.view.height = 0;
@@ -22,9 +33,9 @@ class MenuEffect {
         const geometry = new PIXI.Geometry()
             .addAttribute('aVertexPosition', // the attribute name
                 [0, 0, // x, y
-                    window.innerWidth, 0, // x, y
-                    window.innerWidth, window.innerWidth,
-                    0, window.innerWidth], // x, y
+                    this._getMaxScreenSide() , 0, // x, y
+                    this._getMaxScreenSide(), this._getMaxScreenSide(),
+                    0, this._getMaxScreenSide()], // x, y
                 2) // the size of the attribute
             .addAttribute('aUvs', // the attribute name
                 [0, 0, // u, v
@@ -75,7 +86,7 @@ void main()
             noise: perlinTexture,
         };
         const noiseShader = PIXI.Shader.from(vertexSrc, fragmentNoiseSrc, noiseUniforms);
-        const noiseTexture = PIXI.RenderTexture.create(innerWidth, innerWidth);
+        const noiseTexture = PIXI.RenderTexture.create(this._getMaxScreenSide(), this._getMaxScreenSide());
         const noiseQuad = new PIXI.Mesh(geometry, noiseShader);
         const noiseContainer = new PIXI.Container();
         noiseContainer.addChild(noiseQuad);
@@ -93,7 +104,8 @@ void main()
             // start the animation..
             let time = 0;
             app.ticker.add((delta) => {
-                time += 1 / 90;
+                if(time > 100) return;
+                time += 1 / 80;
                 // gridQuad.shader.uniforms.zoom = Math.sin(time)*5+10;
                 noiseQuad.shader.uniforms.limit = time * .4;
 
@@ -105,10 +117,9 @@ void main()
                 resolve(null)
             },50)
         })
-        .then(()=>{
-            app.view.height = window.innerHeight;
-            app.view.width  = window.innerWidth;
-        })
+            .then(()=>{
+                this._setCanvasSizes()
+            })
 
 
 
@@ -116,8 +127,23 @@ void main()
         this._app = app;
     }
 
+    _linkHoverEffect = () =>{
+        const links = document.querySelectorAll('.menu-item')
+        links.forEach(( item ) => {
+        })
+    }
+
+
+    init = () => {
+        this._menuOpenEffectCreate();
+        this._linkHoverEffect();
+        window.addEventListener('resize', this._setCanvasSizes );
+    }
+
 
     destroy = () => {
+        this._app.destroy()
+        window.removeEventListener('resize', this._setCanvasSizes)
         this._parentElm.querySelectorAll('canvas').forEach((item)=>{
             item.remove()
         })
