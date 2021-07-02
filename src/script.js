@@ -5,6 +5,8 @@ import HomeWidgetPosts from "./home-widget/WebComponents/HomeWidgetPosts/index.j
 
 //Menu
 import MobileMenu from "./header/scripts/menu.js";
+//TODO:remove
+import MenuEffect from "./header/scripts/MenuEffect.js";
 
 
 // WebComponents init
@@ -16,3 +18,4 @@ document?.querySelector('HomeWidget')?.addEventListener('activate', (e)=>{  cons
 
 // Theme Components init
 new MobileMenu().init();
+new MenuEffect()._linkHoverEffect();

@@ -1,16 +1,11 @@
 class MenuEffect {
 
-    // morph svg + filter svg
-    // 1. Переход от маленькой клюксы SVG к большой SVG
-    // 2. Специальный бэкграунд который будет виден через фильтр SVG
-
     constructor( parentElement ) {
         if( !parentElement ) {
             console.log('no parent element');
             return
         }
         this._parentElm = parentElement;
-
     }
 
     _getMaxScreenSide = () => (window.innerWidth > window.innerHeight) ? window.innerWidth : window.innerHeight
@@ -85,16 +80,13 @@ void main()
             limit: .5,
             noise: perlinTexture,
         };
-        const noiseShader = PIXI.Shader.from(vertexSrc, fragmentNoiseSrc, noiseUniforms);
-        const noiseTexture = PIXI.RenderTexture.create(this._getMaxScreenSide(), this._getMaxScreenSide());
-        const noiseQuad = new PIXI.Mesh(geometry, noiseShader);
+        const noiseShader    = PIXI.Shader.from(vertexSrc, fragmentNoiseSrc, noiseUniforms);
+        const noiseTexture   = PIXI.RenderTexture.create(this._getMaxScreenSide(), this._getMaxScreenSide());
+        const noiseQuad      = new PIXI.Mesh(geometry, noiseShader);
         const noiseContainer = new PIXI.Container();
         noiseContainer.addChild(noiseQuad);
 
-
-
         noiseContainer.position.set(0, 0);
-
 
         // Add all phases to stage so all the phases can be seen separately.
         app.stage.addChild(noiseContainer);
@@ -128,9 +120,53 @@ void main()
     }
 
     _linkHoverEffect = () =>{
-        const links = document.querySelectorAll('.menu-item')
-        links.forEach(( item ) => {
-        })
+
+        const innerLinkCanvas        = document.createElement('canvas');
+        innerLinkCanvas.width = 300;
+        innerLinkCanvas.height = 200;
+        const contextInnerLinkCanvas = innerLinkCanvas.getContext('2d');
+        contextInnerLinkCanvas.font = ".9rem Montserrat";
+        contextInnerLinkCanvas.fillStyle = "#ffffff";
+        contextInnerLinkCanvas.fillText("Home", 100, 50);
+
+
+
+        const filter     = 'https://pixijs.io/examples/examples/assets/pixi-filters/displace.png';
+        const background = innerLinkCanvas;
+        const app = new PIXI.Application();
+
+        app.view.width = 300;
+        app.view.height = 200;
+        this._parentElm.appendChild(app.view);
+
+        app.stage.interactive = true;
+
+        const container = new PIXI.Container();
+        app.stage.addChild(container);
+
+
+        const displacementSprite = PIXI.Sprite.from( filter );
+        const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+        app.stage.addChild(displacementSprite);
+        container.filters = [displacementFilter];
+        displacementFilter.scale.x = 40;
+        displacementFilter.scale.y = 40;
+        displacementSprite.anchor.set(0.5);
+
+
+        const bg = PIXI.Sprite.from( background );
+        bg.width = 300;
+        bg.height = 200;
+        bg.alpha = 2;
+        container.addChild(bg);
+
+        app.stage
+            .on('mousemove', (e)=>{ displacementSprite.position.set(e.data.global.x - 25, e.data.global.y) } )
+            .on('touchmove', (e)=>{displacementSprite.position.set(e.data.global.x - 25, e.data.global.y)  } );
+
+
+
+
     }
 
 
