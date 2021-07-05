@@ -119,66 +119,75 @@ void main()
         this._app = app;
     }
 
-    _linkHoverEffect = () =>{
+    _linkHoverEffect = ( element , textContent ) =>{
+        const width  = textContent.length * 20;
+        const height = 80;
+        const filter = 'header/assets/displace-1.png';
 
-        const innerLinkCanvas        = document.createElement('canvas');
-        innerLinkCanvas.width = 300;
-        innerLinkCanvas.height = 200;
-        const contextInnerLinkCanvas = innerLinkCanvas.getContext('2d');
-        contextInnerLinkCanvas.font = ".9rem Montserrat";
-        contextInnerLinkCanvas.fillStyle = "#ffffff";
-        contextInnerLinkCanvas.fillText("Home", 100, 50);
-
-
-
-        const filter     = 'https://pixijs.io/examples/examples/assets/pixi-filters/displace.png';
-        const background = innerLinkCanvas;
-        const app = new PIXI.Application();
-
-        app.view.width = 300;
-        app.view.height = 200;
-        this._parentElm.appendChild(app.view);
-
+        const app = new PIXI.Application({width, height, antialias: true, transparent: true});
+        app.view.width  = width;
+        app.view.height = height;
+        element.appendChild( app.view );
         app.stage.interactive = true;
-
         const container = new PIXI.Container();
         app.stage.addChild(container);
 
-
         const displacementSprite = PIXI.Sprite.from( filter );
+        displacementSprite.width  = 50;
+        displacementSprite.height = 50;
+
         const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
         app.stage.addChild(displacementSprite);
         container.filters = [displacementFilter];
-        displacementFilter.scale.x = 40;
-        displacementFilter.scale.y = 40;
+        displacementFilter.scale.x = 65;
+        displacementFilter.scale.y = 65;
         displacementSprite.anchor.set(0.5);
 
 
-        const bg = PIXI.Sprite.from( background );
-        bg.width = 300;
-        bg.height = 200;
-        bg.alpha = 2;
+
+        const textCanvas = new PIXI.Application({width, height, antialias: true, transparent: true});
+        const text = new PIXI.Text( textContent );
+        textCanvas.stage.addChild( text )
+        text.style = new PIXI.TextStyle({
+            fontFamily: "Montserrat",
+            letterSpacing: 5,
+            fontSize: '16px',
+            fill: "#ffffff",
+        })
+        text.x = textCanvas.screen.width/2 - text.width/2;
+        text.y = textCanvas.screen.height/2- text.height/2;
+        textCanvas.render()
+
+
+
+        const bg = PIXI.Sprite.from( textCanvas.view );
+        bg.width  = width;
+        bg.height = height;
+        bg.alpha  = 1;
         container.addChild(bg);
 
+
         app.stage
-            .on('mousemove', (e)=>{ displacementSprite.position.set(e.data.global.x - 25, e.data.global.y) } )
-            .on('touchmove', (e)=>{displacementSprite.position.set(e.data.global.x - 25, e.data.global.y)  } );
-
-
-
+            .on('mousemove', (e)=>{ displacementSprite.position.set(e.data.global.x, e.data.global.y) } )
+            .on('touchmove', (e)=>{displacementSprite.position.set(e.data.global.x, e.data.global.y)  } );
 
     }
 
 
     init = () => {
         this._menuOpenEffectCreate();
-        this._linkHoverEffect();
+        this._parentElm.querySelectorAll('a').forEach((link) => {
+            const text = link.textContent;
+            link.textContent = ``;
+            this._linkHoverEffect(link , text);
+        })
+
         window.addEventListener('resize', this._setCanvasSizes );
     }
 
 
     destroy = () => {
-        this._app.destroy()
+        this._app.destroy();
         window.removeEventListener('resize', this._setCanvasSizes)
         this._parentElm.querySelectorAll('canvas').forEach((item)=>{
             item.remove()

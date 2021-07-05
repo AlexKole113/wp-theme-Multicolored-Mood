@@ -3,9 +3,11 @@ import HomeWidgetTextCentered from "./home-widget/WebComponents/HomeWidgetTextCe
 import HomeWidgetTextLeft from "./home-widget/WebComponents/HomeWidgetTextLeft/index.js";
 import HomeWidgetPosts from "./home-widget/WebComponents/HomeWidgetPosts/index.js";
 
+
+//TODO: 1. Create Pixi aliases
+
 //Menu
 import MobileMenu from "./header/scripts/menu.js";
-
 
 // WebComponents init
 customElements.define( 'home-widget-centered',  HomeWidgetTextCentered );
