@@ -6,6 +6,7 @@ class MenuEffect {
             return
         }
         this._parentElm = parentElement;
+        this._linksEffect = [];
     }
 
     _getMaxScreenSide = () => (window.innerWidth > window.innerHeight) ? window.innerWidth : window.innerHeight
@@ -119,13 +120,14 @@ void main()
         this._app = app;
     }
 
-    _linkHoverEffect = ( element , textContent ) =>{
+    //TODO: Delete
+    _linkHoverEffect = ( element , textContent ) => {
         const width  = textContent.length * 20;
         const height = 80;
         const filter = 'header/assets/displace-1.png';
 
-        const app = new PIXI.Application({width, height, antialias: true, transparent: true});
-        app.view.width  = width;
+        const app = new PIXI.Application({width, height, antialias: true, transparent: true });
+        app.view.width  = width*1.1;
         app.view.height = height;
         element.appendChild( app.view );
         app.stage.interactive = true;
@@ -133,14 +135,13 @@ void main()
         app.stage.addChild(container);
 
         const displacementSprite = PIXI.Sprite.from( filter );
-        displacementSprite.width  = 50;
-        displacementSprite.height = 50;
-
+        displacementSprite.width  = 20;
+        displacementSprite.height = 20;
         const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
         app.stage.addChild(displacementSprite);
         container.filters = [displacementFilter];
-        displacementFilter.scale.x = 65;
-        displacementFilter.scale.y = 65;
+        displacementFilter.scale.x = 15;
+        displacementFilter.scale.y = 30;
         displacementSprite.anchor.set(0.5);
 
 
@@ -152,7 +153,9 @@ void main()
             fontFamily: "Montserrat",
             letterSpacing: 5,
             fontSize: '16px',
-            fill: "#ffffff",
+            fill: "#fff",
+            // stroke: "gray",
+            // strokeThickness: 1,
         })
         text.x = textCanvas.screen.width/2 - text.width/2;
         text.y = textCanvas.screen.height/2- text.height/2;
@@ -171,23 +174,28 @@ void main()
             .on('mousemove', (e)=>{ displacementSprite.position.set(e.data.global.x, e.data.global.y) } )
             .on('touchmove', (e)=>{displacementSprite.position.set(e.data.global.x, e.data.global.y)  } );
 
+        return app;
+    }
+
+    _linkHoverEffect2 = () => {
+
     }
 
 
     init = () => {
         this._menuOpenEffectCreate();
-        this._parentElm.querySelectorAll('a').forEach((link) => {
-            const text = link.textContent;
-            link.textContent = ``;
-            this._linkHoverEffect(link , text);
-        })
-
+        // this._parentElm.querySelectorAll('a').forEach((link) => {
+        //     const text = link.textContent;
+        //     link.textContent = ``;
+        //     this._linksEffect.push( this._linkHoverEffect(link , text) );
+        // })
         window.addEventListener('resize', this._setCanvasSizes );
     }
 
 
     destroy = () => {
         this._app.destroy();
+        //this._linksEffect.forEach((item)=>{ item.destroy() })
         window.removeEventListener('resize', this._setCanvasSizes)
         this._parentElm.querySelectorAll('canvas').forEach((item)=>{
             item.remove()
