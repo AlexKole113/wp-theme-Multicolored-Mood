@@ -35,26 +35,52 @@
                         <div id="main-menu" class="main-menu">
                             <ul class="primary-menu">
                                 <li class="menu-item">
-                                    <a href="#product-collection">
-                                        <svg width="120px" height="20px" viewBox="0 0 120 20">
-<!--                                            <filter id="myFilter">-->
-<!--                                                <feGaussianBlur stDeviation="5"></feGaussianBlur>-->
-<!--                                            </filter>-->
-                                            <text color="#fff" fill="#fff" font-size=".9rem" font-weight="bold" filter="url(#myFilter)">Home</text>
+                                    <a class="primary-menu-link" href="#">
+                                        <svg  class="svg" width="100%" height="100%">
+                                            <filter id="filter-1" >
+                                                <feTurbulence type="fractalNoise" baseFrequency="0 0" numOctaves="1" result="warp" />
+                                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+                                            </filter>
+                                            <!-- DILATED TEXT -->
+                                            <text fill="white" dx="50%" dy="50%" filter="url(#filter-1)" >Home</text>
                                         </svg>
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#blog-collection">About Us</a>
+                                    <a class="primary-menu-link" href="#">
+                                        <svg  class="svg" width="100%" height="100%">
+                                            <filter id="filter-2" >
+                                                <feTurbulence type="fractalNoise" baseFrequency="0 0" numOctaves="1" result="warp" />
+                                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+                                            </filter>
+                                            <!-- DILATED TEXT -->
+                                            <text fill="white" dx="50%" dy="50%" filter="url(#filter-2)">About Us</text>
+                                        </svg>
+                                    </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#contact-us">Galleries</a>
+                                    <a class="primary-menu-link" href="#">
+                                        <svg  class="svg" width="100%" height="100%">
+                                            <filter id="filter-3" >
+                                                <feTurbulence type="fractalNoise" baseFrequency="0 0" numOctaves="1" result="warp" />
+                                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+                                            </filter>
+                                            <!-- DILATED TEXT -->
+                                            <text fill="white" dx="50%" dy="50%" filter="url(#filter-3)">Galleries</text>
+                                        </svg>
+                                    </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#contact-us">Submit</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#contact-us">Search</a>
+                                    <a class="primary-menu-link" href="#">
+                                        <svg  class="svg" width="100%" height="100%">
+                                            <filter id="filter-4" >
+                                                <feTurbulence type="fractalNoise" baseFrequency="0 0" numOctaves="1" result="warp" />
+                                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+                                            </filter>
+                                            <!-- DILATED TEXT -->
+                                            <text fill="white" dx="0" dy="100%" filter="url(#filter-4)" >Contacts</text>
+                                        </svg>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -204,72 +230,6 @@
             </a>
         </div>
     </section>
-
-
-
-
-<!-- TEST -->
-    <style>
-        #test-link {
-            position: relative;
-            display: inline-block;
-            background-color: black;
-            color: white;
-        }
-        #link-text {
-            position: absolute;
-            top: 20%;
-            right: 0;
-            bottom: 0;
-            left: 40%;
-            font-size: 30px;
-            z-index: 0;
-        }
-        #middleware {
-            display: block;
-            position: absolute;
-            border-radius: 100%;
-            background-color: black;
-            z-index: 1;
-        }
-        #svg {
-            z-index: 2;
-            position: relative;
-            background-color: transparent;
-        }
-    </style>
-    <a id="test-link" href="#">
-        <span id="link-text">Home</span>
-        <span id="middleware"></span>
-        <svg  id="svg" width="100%" height="100%">
-            <filter id="filter" >
-                <feTurbulence type="fractalNoise" baseFrequency="0 0.15" numOctaves="1" result="warp" />
-                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
-            </filter>
-            <mask id="mask" >
-                <circle r="15" fill="white" ></circle>
-            </mask>
-            <!-- DILATED TEXT -->
-            <text fill="white" font-size="30px" dx="40%" dy="40%" filter="url(#filter)" mask="url(#mask)" >Home</text>
-        </svg>
-        <script>
-
-            const cursorSize = 50;
-
-
-            document.querySelector('#test-link').addEventListener('mousemove',(e) => {
-                const mask = document.querySelector('#test-link circle');
-                const middleWare = document.querySelector('#middleware');
-                mask.setAttribute('cx',`${e.offsetX}px`);
-                mask.setAttribute('cy',`${e.offsetY}px`);
-                mask.setAttribute('r', cursorSize/2);
-                middleWare.setAttribute('style', `left:${e.offsetX - cursorSize/2}px; top:${e.offsetY - cursorSize/2}px; width:${cursorSize}px; height:${cursorSize}px;`);
-            })
-
-        </script>
-    </a>
-<!-- /TEST -->
-
 
 
 

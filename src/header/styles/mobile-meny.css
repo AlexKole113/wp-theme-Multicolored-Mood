@@ -92,6 +92,29 @@ body.mobile-menu-activated #main-menu .menu-item {
 }
 
 
+.primary-menu-link {
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+}
+.primary-menu-link-text {
+    display: block;
+    font-size: .9rem;
+    z-index: 0;
+}
+.primary-menu-link-middleware {
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    background-color: black;
+    z-index: 1;
+}
+.primary-menu-link svg {
+    z-index: 2;
+    background-color: transparent;
+}
+
 
 @media ( min-width: 1024px ) {
     .primary-menu {

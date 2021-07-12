@@ -120,75 +120,40 @@ void main()
         this._app = app;
     }
 
-    //TODO: Delete
-    _linkHoverEffect = ( element , textContent ) => {
-        const width  = textContent.length * 20;
-        const height = 80;
-        const filter = 'header/assets/displace-1.png';
 
-        const app = new PIXI.Application({width, height, antialias: true, transparent: true });
-        app.view.width  = width*1.1;
-        app.view.height = height;
-        element.appendChild( app.view );
-        app.stage.interactive = true;
-        const container = new PIXI.Container();
-        app.stage.addChild(container);
+    _linkHoverEffect = (linkItem) => {
 
-        const displacementSprite = PIXI.Sprite.from( filter );
-        displacementSprite.width  = 20;
-        displacementSprite.height = 20;
-        const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
-        app.stage.addChild(displacementSprite);
-        container.filters = [displacementFilter];
-        displacementFilter.scale.x = 15;
-        displacementFilter.scale.y = 30;
-        displacementSprite.anchor.set(0.5);
+        let interval = null;
+        let amounAnimationFrames = 25;
 
+        const animate = () => {
+            const randomVal =  Math.random() * (0.90 - 0) + 0;
+            linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 ${randomVal}`)
+            amounAnimationFrames -=1;
+            if(amounAnimationFrames >= 0 ) window.requestAnimationFrame(animate);
+            if(amounAnimationFrames < 0 ) {
+                linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 0`)
+            }
+        }
 
-
-        const textCanvas = new PIXI.Application({width, height, antialias: true, transparent: true});
-        const text = new PIXI.Text( textContent );
-        textCanvas.stage.addChild( text )
-        text.style = new PIXI.TextStyle({
-            fontFamily: "Montserrat",
-            letterSpacing: 5,
-            fontSize: '16px',
-            fill: "#fff",
-            // stroke: "gray",
-            // strokeThickness: 1,
+        linkItem.addEventListener('mouseenter',(e) => {
+            interval =  window.requestAnimationFrame(animate);
         })
-        text.x = textCanvas.screen.width/2 - text.width/2;
-        text.y = textCanvas.screen.height/2- text.height/2;
-        textCanvas.render()
-
-
-
-        const bg = PIXI.Sprite.from( textCanvas.view );
-        bg.width  = width;
-        bg.height = height;
-        bg.alpha  = 1;
-        container.addChild(bg);
-
-
-        app.stage
-            .on('mousemove', (e)=>{ displacementSprite.position.set(e.data.global.x, e.data.global.y) } )
-            .on('touchmove', (e)=>{displacementSprite.position.set(e.data.global.x, e.data.global.y)  } );
-
-        return app;
-    }
-
-    _linkHoverEffect2 = () => {
-
+        linkItem.addEventListener('mouseleave',(e) => {
+           if(interval){
+               window.cancelAnimationFrame(interval);
+               amounAnimationFrames = 10;
+               linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 0`)
+           }
+        })
     }
 
 
     init = () => {
         this._menuOpenEffectCreate();
-        // this._parentElm.querySelectorAll('a').forEach((link) => {
-        //     const text = link.textContent;
-        //     link.textContent = ``;
-        //     this._linksEffect.push( this._linkHoverEffect(link , text) );
-        // })
+        this._parentElm.querySelectorAll('a').forEach((link) => {
+            this._linkHoverEffect(link);
+        })
         window.addEventListener('resize', this._setCanvasSizes );
     }
 
