@@ -121,38 +121,38 @@ void main()
     }
 
 
-    _linkHoverEffect = (linkItem) => {
+    _linkHoverEffect = (linkItem) => () => {
+        const amounAnimationFrames = 50;
+        const letterSize = 17.5;
+        const lineHeight = 25;
 
+        const filter = linkItem.querySelector('feTurbulence');
+        const text = linkItem.querySelector('text').textContent;
         let interval = null;
-        let amounAnimationFrames = 25;
+        let counterFrame = amounAnimationFrames;
+
+        linkItem.querySelector('svg').setAttribute('width', `${text.length * letterSize}` );
+        linkItem.querySelector('svg').setAttribute('height', `${lineHeight}`);
 
         const animate = () => {
-            const randomVal =  Math.random() * (0.90 - 0) + 0;
-            linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 ${randomVal}`)
-            amounAnimationFrames -=1;
-            if(amounAnimationFrames >= 0 ) window.requestAnimationFrame(animate);
-            if(amounAnimationFrames < 0 ) {
-                linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 0`)
+            counterFrame -=1;
+            const randomVal =  Math.random() * (50 - 0) + 0;
+            filter.setAttribute('baseFrequency', `0 ${randomVal}`)
+            if(counterFrame > 0 ) window.requestAnimationFrame(animate);
+            if(counterFrame <= 0 ) {
+                window.cancelAnimationFrame(interval);
+                counterFrame = amounAnimationFrames;
+                filter.setAttribute('baseFrequency', `0 0`);
             }
         }
-
-        linkItem.addEventListener('mouseenter',(e) => {
-            interval =  window.requestAnimationFrame(animate);
-        })
-        linkItem.addEventListener('mouseleave',(e) => {
-           if(interval){
-               window.cancelAnimationFrame(interval);
-               amounAnimationFrames = 10;
-               linkItem.querySelector('feTurbulence').setAttribute('baseFrequency', `0 0`)
-           }
-        })
+        linkItem.addEventListener('mouseenter',(e) => { interval =  window.requestAnimationFrame(animate) })
     }
 
 
     init = () => {
         this._menuOpenEffectCreate();
         this._parentElm.querySelectorAll('a').forEach((link) => {
-            this._linkHoverEffect(link);
+            this._linkHoverEffect(link)();
         })
         window.addEventListener('resize', this._setCanvasSizes );
     }
