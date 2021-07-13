@@ -122,27 +122,29 @@ void main()
 
 
     _linkHoverEffect = (linkItem) => () => {
-        const amounAnimationFrames = 50;
-        const letterSize = 17.5;
+        const amounAnimationFrames = 40;
+        const letterSize = 7;
         const lineHeight = 25;
 
         const filter = linkItem.querySelector('feTurbulence');
-        const text = linkItem.querySelector('text').textContent;
+        const filterProp = 'baseFrequency'
+
+        const text = linkItem.querySelector('text')
         let interval = null;
         let counterFrame = amounAnimationFrames;
 
-        linkItem.querySelector('svg').setAttribute('width', `${text.length * letterSize}` );
+        linkItem.querySelector('svg').setAttribute('width', `${Math.round(text .getBoundingClientRect().width + letterSize )}` );
         linkItem.querySelector('svg').setAttribute('height', `${lineHeight}`);
 
         const animate = () => {
             counterFrame -=1;
-            const randomVal =  Math.random() * (50 - 0) + 0;
-            filter.setAttribute('baseFrequency', `0 ${randomVal}`)
+            const randomVal =  Math.random() * (0.1 - 0.05) + 0.05;
+            filter.setAttribute(filterProp, `${randomVal} ${randomVal}`)
             if(counterFrame > 0 ) window.requestAnimationFrame(animate);
             if(counterFrame <= 0 ) {
                 window.cancelAnimationFrame(interval);
                 counterFrame = amounAnimationFrames;
-                filter.setAttribute('baseFrequency', `0 0`);
+                filter.setAttribute(filterProp, `0 0`);
             }
         }
         linkItem.addEventListener('mouseenter',(e) => { interval =  window.requestAnimationFrame(animate) })
