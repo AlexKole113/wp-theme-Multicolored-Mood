@@ -138,8 +138,8 @@ void main()
 
         const animate = () => {
             counterFrame -=1;
-            const randomVal =  Math.random() * (0.1 - 0.05) + 0.05;
-            filter.setAttribute(filterProp, `${randomVal} ${randomVal}`)
+            const randomVal =  Math.random() * (.1 - .01) + .01;
+            filter.setAttribute(filterProp, `${(randomVal).toFixed(2)} ${(randomVal * .5).toFixed(2)}`)
             if(counterFrame > 0 ) window.requestAnimationFrame(animate);
             if(counterFrame <= 0 ) {
                 window.cancelAnimationFrame(interval);
@@ -147,7 +147,9 @@ void main()
                 filter.setAttribute(filterProp, `0 0`);
             }
         }
-        linkItem.addEventListener('mouseenter',(e) => { interval =  window.requestAnimationFrame(animate) })
+        linkItem.addEventListener('mouseenter',(e) => {
+            interval =  window.requestAnimationFrame(animate)
+        })
     }
 
 
