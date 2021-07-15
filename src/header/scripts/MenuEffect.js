@@ -1,21 +1,14 @@
 class MenuEffect {
 
     constructor( parentElement ) {
-        if( !parentElement ) {
-            console.log('no parent element');
-            return
-        }
+        if( !parentElement ) return;
         this._parentElm = parentElement;
-        this._linksEffect = [];
     }
 
     _getMaxScreenSide = () => (window.innerWidth > window.innerHeight) ? window.innerWidth : window.innerHeight
 
     _setCanvasSizes = () => {
-        if(!this._app) {
-            console.log('no app');
-            return;
-        }
+        if(!this._app) return;
         this._app.view.height = window.innerHeight;
         this._app.view.width  = window.innerWidth;
     }
@@ -125,11 +118,10 @@ void main()
         const amounAnimationFrames = 40;
         const letterSize = 7;
         const lineHeight = 25;
-
+        const text = linkItem.querySelector('text')
         const filter = linkItem.querySelector('feTurbulence');
         const filterProp = 'baseFrequency'
 
-        const text = linkItem.querySelector('text')
         let interval = null;
         let counterFrame = amounAnimationFrames;
 
@@ -138,8 +130,8 @@ void main()
 
         const animate = () => {
             counterFrame -=1;
-            const randomVal =  Math.random() * (.1 - .01) + .01;
-            filter.setAttribute(filterProp, `${(randomVal).toFixed(2)} ${(randomVal * .5).toFixed(2)}`)
+            const randomVal =  Math.random() * (.25 - .001) + .001;
+            filter.setAttribute(filterProp, `${(randomVal).toFixed(3)} ${(randomVal * .5).toFixed(3)}`)
             if(counterFrame > 0 ) window.requestAnimationFrame(animate);
             if(counterFrame <= 0 ) {
                 window.cancelAnimationFrame(interval);
@@ -152,7 +144,6 @@ void main()
         })
     }
 
-
     init = () => {
         this._menuOpenEffectCreate();
         this._parentElm.querySelectorAll('a').forEach((link) => {
@@ -160,7 +151,6 @@ void main()
         })
         window.addEventListener('resize', this._setCanvasSizes );
     }
-
 
     destroy = () => {
         this._app.destroy();

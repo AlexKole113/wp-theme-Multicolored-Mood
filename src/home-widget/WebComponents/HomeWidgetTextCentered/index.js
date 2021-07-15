@@ -6,16 +6,10 @@ export default class HomeWidgetTextCentered extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         const props = {
-            title: this.getAttribute('title' ) ?? 'Title',
-            text:  this.getAttribute('text' ) ?? 'text',
-            link:  this.getAttribute('link' ) ?? '#',
-            image: this.getAttribute('image' ) ?? 'home-widget/assets/widget-1.png',
-            socialLinks: this.getAttribute('socialLinks') ?? false,
+            data: JSON.parse( this.getAttribute('data' ) ),
         }
-
-        HomeWidgetTextCentered.template.innerHTML = HomeWidgetTextCentered.getHTML( props );
+        HomeWidgetTextCentered.template.innerHTML = HomeWidgetTextCentered.getHTML( props.data );
         this?.shadowRoot?.append( HomeWidgetTextCentered.template.content.cloneNode(true) );
-
 
         this.onmousedown = (event) => {
             event.preventDefault();
@@ -29,12 +23,12 @@ export default class HomeWidgetTextCentered extends HTMLElement {
         }
     }
 
-    static observedAttributes = [ 'cssClassName', 'title', 'text' , 'link', 'image', 'socialLinks' ];
+    static observedAttributes = [ 'data' ];
     static template = document.createElement('template');
 
-    static getHTML = ({ title, text, link, image , socialLinks }) => (`
+    static getHTML = ({ items, socialLinks }) => (`
         ${ componentCSS }
-        ${ componentHTML( title, text, link, image , socialLinks ) }
+        ${ componentHTML( items , socialLinks ) }
     `);
 
     connectedCallback() {

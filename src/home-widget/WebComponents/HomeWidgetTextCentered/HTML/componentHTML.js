@@ -1,39 +1,24 @@
-const HTML = ( title, text, link, image , socialLinks ) => (`
-<div class="home-widget-text-center">
+import slide from "./slide.js";
+import socialLink from "./socialLink.js";
+
+const HTML = ( items , socialLinks ) => {
+    const slides = items.reduce(( accum, item ) => accum + slide( item ),'');
+    const smLinks = socialLinks.reduce(( accum, item ) => accum + socialLink( item ),'');
+    return (`
+    <div class="home-widget-text-center">
     <div class="home-widget-collection">
-        <div class="home-widget-collection__item">
-            <div class="home-widget-text-center__text">
-                <span class="widget-title">
-                    ${title}
-                </span>
-                <span class="widget-tiny-text">
-                    ${text}
-                </span>
-            </div>
-            <img class="home-widget-image" src="${image}" alt="${title}">
-            <a class="home-widget-link" href="${link}"></a>
-        </div>
+        ${slides}
     </div>
     <!--   SOCIAL LINKS  -->
     ${ (socialLinks?.length) ? 
         (`<div class="social-links">
                 <ul class="social-links__group">
-                    ${ (() => socialLinks
-                                .split('|')
-                                .reduce( ( result, item) => { 
-                                            const [ url, text ] = item.split(',');
-                                            return result += (
-    `                                                            <li class="social-links__item">
-                                                                    <a href="${url}" class="social-links__link">${text}</a>
-                                                                  </li>`
-                                                             )
-                                          })
-            
-                        )() 
-                    }
+                    ${ smLinks }
                 </ul>
-            </div>`) : '' }         
+            </div>`) : '' 
+    }         
         </div>
-`);
+    `)
+};
 
 export default HTML;
