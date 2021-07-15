@@ -2,6 +2,14 @@ import componentCSS from "./CSS/componentCSS.js";
 import componentHTML from "./HTML/componentHTML.js";
 export default class HomeWidgetTextCentered extends HTMLElement {
 
+    static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
+    static observedAttributes = [ 'data' ];
+    static template = document.createElement('template');
+    static getHTML = ({ items, socialLinks }) => (`
+        ${ componentCSS }
+        ${ componentHTML( items , socialLinks ) }
+    `);
+
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -23,30 +31,21 @@ export default class HomeWidgetTextCentered extends HTMLElement {
         }
     }
 
-    static observedAttributes = [ 'data' ];
-    static template = document.createElement('template');
 
-    static getHTML = ({ items, socialLinks }) => (`
-        ${ componentCSS }
-        ${ componentHTML( items , socialLinks ) }
-    `);
 
     connectedCallback() {
-
+            console.log(this)
     }
 
     attributeChangedCallback( name, oldVal, newVal ) {
         switch ( name ) {
-            case 'text':
-                if( HomeWidgetTextCentered.isNewValChanged( newVal, oldVal ) ) console.log( 'text changed' );
-                break;
-            case 'link':
-                if( HomeWidgetTextCentered.isNewValChanged( newVal, oldVal ) )  console.log( 'link changed' );
+            case 'data':
+                if( HomeWidgetTextCentered.isNewValChanged( newVal, oldVal ) ) console.log( 'data changed' );
                 break;
         }
     }
 
-    static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
+
 }
 
 
