@@ -34,7 +34,6 @@ export default class HomeWidgetTextCentered extends HTMLElement {
     }
 
     connectedCallback() {
-
         this.sliderEffect = new Slider({
             uniforms: {
                 intensity: {value: 1, type:'f', min:0., max:3}

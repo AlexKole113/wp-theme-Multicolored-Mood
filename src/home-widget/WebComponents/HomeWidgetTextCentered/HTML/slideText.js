@@ -1,4 +1,4 @@
-const slide = ({title,text,imageUrl}) =>
+const slideText = ({title,text,imageUrl}) =>
     (`<div class="home-widget-collection__item">
         <div class="home-widget-text-center__text">
             <span class="widget-title">
@@ -8,8 +8,7 @@ const slide = ({title,text,imageUrl}) =>
                 ${text}
             </span>
         </div>
-        <img class="home-widget-image" src="${imageUrl}" alt="${title}">
         <a class="home-widget-link" href="#"></a>
     </div>`);
 
-export default slide;
+export default slideText;

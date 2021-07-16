@@ -14,8 +14,7 @@ class Slider extends EventBus {
     this.renderer.setSize(this.width, this.height);
     this.renderer.setClearColor(0xeeeeee, 1);
     this.duration = opts.duration || 1;
-    this.debug = opts.debug || false
-    this.easing = opts.easing || 'easeInOut'
+    this.easing = opts.easing || 'easeOut'
 
     this.clicker = document.body;
     this.container = opts.container;
@@ -44,9 +43,6 @@ class Slider extends EventBus {
       this.clickEvent();
       this.play();
     })
-
-
-    console.log(this.container)
   }
 
   initiate(cb){
@@ -62,7 +58,6 @@ class Slider extends EventBus {
       cb();
     });
   }
-
   clickEvent(){
     this.clicker.addEventListener('click',()=>{
       this.next();
@@ -107,11 +102,11 @@ class Slider extends EventBus {
     this.camera.updateProjectionMatrix();
   }
   addObjects() {
-    let that = this;
     this.material = new THREE.ShaderMaterial({
       extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"
       },
+      fog:true,
       side: THREE.DoubleSide,
       uniforms: {
         time: { type: "f", value: 0 },
@@ -129,15 +124,15 @@ class Slider extends EventBus {
         displacement: { type: "f", value: new THREE.TextureLoader().load('home-widget/assets/disp1.jpg') },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
-      // wireframe: true,
       vertexShader: this.vertex,
       fragmentShader: this.fragment
     });
 
     this.geometry = new THREE.PlaneGeometry(1, 1, 2, 2);
-
     this.plane = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.plane);
+
+
   }
   stop() {
     this.paused = true;
@@ -150,7 +145,7 @@ class Slider extends EventBus {
     if(this.isRunning) return;
     this.isRunning = true;
     let len = this.textures.length;
-    let nextTexture =this.textures[(this.current +1)%len];
+    let nextTexture = this.textures[(this.current +1)%len];
     this.material.uniforms.texture2.value = nextTexture;
     let tl = new TimelineMax();
     tl.to(this.material.uniforms.progress,this.duration,{
