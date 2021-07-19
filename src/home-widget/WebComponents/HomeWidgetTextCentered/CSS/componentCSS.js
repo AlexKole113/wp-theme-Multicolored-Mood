@@ -43,15 +43,13 @@ const CSS = `
                 font-weight: 700;
                 letter-spacing: .75px;
                 margin-bottom: .2rem;
-                width: 100%;
-                overflow: hidden;
+                width: 100%;        
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
             :host .widget-tiny-text {
                 text-align: center;
-                letter-spacing: -0.5px;
-                overflow: hidden;
+                letter-spacing: -0.5px;        
                 text-overflow: ellipsis;
                 width: 100%;
                 text-align: center;
