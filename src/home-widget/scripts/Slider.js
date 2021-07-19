@@ -1,6 +1,13 @@
 import EventBus from "../../scripts/EventBus.js";
+import textEffect from "./textEffect.js";
+import TextEffect from "./textEffect.js";
 
 class Slider extends EventBus {
+
+  //TODO: EVENTS and hooks
+  // NEXT, PAUSE, STOP, RENDER, DESTROY, RESIZE, etc.
+
+
   constructor(opts) {
     super();
     this.scene = new THREE.Scene();
@@ -36,6 +43,9 @@ class Slider extends EventBus {
     this.textures = [];
 
     this.paused = true;
+
+    this.textEffect = new TextEffect(opts.container.querySelectorAll('.home-widget-text-center__text'));
+
     this.initiate(()=>{
       this.settingsSetup();
       this.addObjects();
@@ -144,15 +154,22 @@ class Slider extends EventBus {
   next(){
     if(this.isRunning) return;
     this.isRunning = true;
-    let len = this.textures.length;
-    let nextTexture = this.textures[(this.current +1)%len];
+    const len = this.textures.length;
+    const currentSlide = (this.current +1)%len;
+
+
+    let nextTexture = this.textures[currentSlide];
     this.material.uniforms.texture2.value = nextTexture;
     let tl = new TimelineMax();
+
+    this.container.setAttribute('data-active', currentSlide )
+    this.textEffect.effectStart( currentSlide );
+
     tl.to(this.material.uniforms.progress,this.duration,{
       value:1,
       ease: Power2[this.easing],
       onComplete:()=>{
-        this.current = (this.current +1)%len;
+        this.current = currentSlide;
         this.material.uniforms.texture1.value = nextTexture;
         this.material.uniforms.progress.value = 0;
         this.isRunning = false;
