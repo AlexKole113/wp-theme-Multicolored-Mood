@@ -1,12 +1,12 @@
 const slideText = ({title,text,imageUrl}) =>
     (`<div class="home-widget-collection__item">
         <div class="home-widget-text-center__text">
-            <span class="widget-title">
+            <div class="widget-title">
                 ${title}
-            </span>
-            <span class="widget-tiny-text">
+            </div>
+            <div class="widget-tiny-text">
                 ${text}
-            </span>
+            </div>
         </div>
         <a class="home-widget-link" href="#"></a>
     </div>`);

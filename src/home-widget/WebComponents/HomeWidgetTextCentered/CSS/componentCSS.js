@@ -87,7 +87,9 @@ const CSS = `
                 font-size: .85rem;
                 font-weight: 400;
                 letter-spacing: .2px;
-            } 
+            }        
+           
+           
             @media (min-width: 1024px) {
                
                 :host .home-widget-collection {

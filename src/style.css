@@ -3,6 +3,11 @@
 @import './styles/common.css';
 @import './styles/colors.css';
 
+/* GLOBAL TASKS  */
+/* TODO: add testing by Cypress */
+
+
+
 
 /* elements */
 @import './header/styles/header.css';

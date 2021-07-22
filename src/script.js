@@ -3,8 +3,7 @@ import HomeWidgetTextCentered from "./home-widget/WebComponents/HomeWidgetTextCe
 import HomeWidgetTextLeft from "./home-widget/WebComponents/HomeWidgetTextLeft/index.js";
 import HomeWidgetPosts from "./home-widget/WebComponents/HomeWidgetPosts/index.js";
 
-
-//TODO: 1. Create Pixi aliases
+// TODO: try to replace Three.js instead PIXI
 
 //Menu
 import MobileMenu from "./header/scripts/menu.js";
