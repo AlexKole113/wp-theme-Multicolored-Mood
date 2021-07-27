@@ -1,0 +1,22 @@
+{
+  "name": "multicolored-mood",
+  "version": "1.0.0",
+  "description": "WordPress Theme",
+  "main": "script.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexKole113/wp-theme-Multicolored-Mood.git"
+  },
+  "author": "Alexander Koledov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexKole113/wp-theme-Multicolored-Mood/issues"
+  },
+  "homepage": "https://github.com/AlexKole113/wp-theme-Multicolored-Mood#readme",
+  "devDependencies": {
+    "cypress": "^8.0.0"
+  }
+}

@@ -5,11 +5,11 @@ class TextEffect {
     }
 
     _textHideEffect = (item) => {
-
+        item.style.opacity = '0';
     }
 
     _textShowEffect = (item) => {
-
+        item.style.opacity = '1';
     }
 
     _textShowingUpdate = ( num = 0 ) => {
@@ -22,8 +22,16 @@ class TextEffect {
         })
     }
 
-    effectStart = (num) => {
-        this._textShowingUpdate(num)
+
+
+
+    next = (next) => {
+        return new Promise((res)=>{
+            this._textShowingUpdate(next)
+            setTimeout(()=>{
+                res(true)
+            },1000);
+        })
     }
 
 }
