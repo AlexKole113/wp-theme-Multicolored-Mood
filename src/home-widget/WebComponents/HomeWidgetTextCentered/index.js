@@ -37,6 +37,7 @@ export default class HomeWidgetTextCentered extends HTMLElement {
         this.slider = new Slider({
             items: this.props.data.items,
             container: this?.shadowRoot.querySelector('.home-widget-collection'),
+            transition: 2
         });
     }
 

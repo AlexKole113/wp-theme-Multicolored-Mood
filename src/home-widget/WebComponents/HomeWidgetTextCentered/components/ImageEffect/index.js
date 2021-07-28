@@ -12,7 +12,7 @@ class ThreeImageChange {
         this.renderer.setSize(this.width, this.height);
         this.renderer.setClearColor(0xeeeeee, 1);
         this.duration = opts.duration || 1;
-        this.easing = opts.easing || 'easeOut'
+        this.easing = opts.easing || 'linear'
 
         this.clicker = document.body;
         this.container = opts.container;
@@ -153,7 +153,7 @@ class ThreeImageChange {
         return new Promise((res)=>{
             tl.to(this.material.uniforms.progress,this.duration,{
                 value:1,
-                ease: Power2[this.easing],
+                ease: this.easing,
                 onComplete:()=>{
                     this.current = currentSlide;
                     this.material.uniforms.texture1.value = nextTexture;

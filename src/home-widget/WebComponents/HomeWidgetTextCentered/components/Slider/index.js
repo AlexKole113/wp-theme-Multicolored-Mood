@@ -15,17 +15,19 @@ class Slider extends EventBus {
         ['DESTROY',   []]
     ])
 
-    _next = () => {
-        this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
+    _process = false;
 
+    _next = () => {
+        if(this._process) return;
+        this._process = true;
+        this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
         const currentSlide = (this.currentSlide + 1) % this.slidesAmount;
 
         Promise.all([this.imageEffect.next( currentSlide ),this.textEffect.next( currentSlide )])
             .then(()=>{
                 this.currentSlide = currentSlide;
+                this._process = false;
             })
-
-
     }
 
     _pause = () => {
@@ -47,7 +49,7 @@ class Slider extends EventBus {
     }
 
 
-    constructor({items, container}) {
+    constructor({items, container, transition = 1}) {
         super()
         this.container = container;
         this.images = items.map(({imageUrl}) => imageUrl);
@@ -57,6 +59,7 @@ class Slider extends EventBus {
         this.slidesAmount = this.images.length;
         this.currentSlide = 0;
         this.imageEffect = new ThreeImageChange({
+            duration: transition,
             uniforms: {
                 intensity: {value: 1, type:'f', min:0., max:3}
             },
@@ -105,7 +108,7 @@ class Slider extends EventBus {
             images:this.images,
             container
         });
-        this.textEffect = new TextEffect(container.querySelectorAll('.home-widget-text-center__text'));
+        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.home-widget-text-center__text .widget-title'), duration:transition});
         this.init()
     }
 

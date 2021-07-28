@@ -35,7 +35,8 @@ const CSS = `
                 display: flex;
                 flex-flow: column;
                 align-items: center;
-                z-index: 1;
+                z-index: 1;    
+                filter: url(#threshold) blur(0.6px);         
             }
             :host .widget-title {
                 text-align: center;
@@ -52,7 +53,6 @@ const CSS = `
                 letter-spacing: -0.5px;        
                 text-overflow: ellipsis;
                 width: 100%;
-                text-align: center;
                 padding-left: 10px;
                 font-size: 1.09rem;
             }           
