@@ -1,7 +1,7 @@
 import componentCSS from "./CSS/componentCSS.js";
 import componentHTML from "./HTML/componentHTML.js";
 import Slider from "./components/Slider/index.js";
-export default class HomeWidgetTextCentered extends HTMLElement {
+export default class HomeWidget extends HTMLElement {
 
     static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
     static observedAttributes = [ 'data' ];
@@ -17,8 +17,8 @@ export default class HomeWidgetTextCentered extends HTMLElement {
         this.props = {
             data: JSON.parse( this.getAttribute('data' ) ),
         }
-        HomeWidgetTextCentered.template.innerHTML = HomeWidgetTextCentered.getHTML( this.props.data );
-        this?.shadowRoot?.append( HomeWidgetTextCentered.template.content.cloneNode(true) );
+        HomeWidget.template.innerHTML = HomeWidget.getHTML( this.props.data );
+        this?.shadowRoot?.append( HomeWidget.template.content.cloneNode(true) );
 
         this.onmousedown = (event) => {
             event.preventDefault();
@@ -36,7 +36,7 @@ export default class HomeWidgetTextCentered extends HTMLElement {
     connectedCallback() {
         this.slider = new Slider({
             items: this.props.data.items,
-            container: this?.shadowRoot.querySelector('.home-widget-collection'),
+            container: this?.shadowRoot.querySelector('.home-widget-container'),
             transition: 2
         });
     }
@@ -44,7 +44,7 @@ export default class HomeWidgetTextCentered extends HTMLElement {
     attributeChangedCallback( name, oldVal, newVal ) {
         switch ( name ) {
             case 'data':
-                if( HomeWidgetTextCentered.isNewValChanged( newVal, oldVal ) ) {
+                if( HomeWidget.isNewValChanged( newVal, oldVal ) ) {
                     console.log( 'data changed' );
                 }
                 break;

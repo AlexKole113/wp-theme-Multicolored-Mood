@@ -3,18 +3,17 @@ class TextEffect {
         this.textContainer = textContainer;
         this.morphTime = duration * 1000;
         this.nextSlide = 0;
-       // this.reset();
+        this.reset();
     }
 
-
     _hideEffect = (item, fraction) => {
-        fraction = Math.cos(fraction * Math.PI) / -2 + .5;
+        fraction = 1 - fraction;
         item.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
         item.style.opacity = `${Math.pow(fraction, 0.2) * 100}%`;
     }
 
     _showEffect = (item, fraction) => {
-        fraction = 1 - fraction;
+        fraction = Math.cos(fraction * Math.PI) / -2 + .5;
         item.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
         item.style.opacity = `${Math.pow(fraction, 0.2) * 100}%`;
     }
@@ -29,7 +28,6 @@ class TextEffect {
 
     _doMorph = (time) => {
         this.fraction =  ( 1 - ((time + this.morphTime) - Date.now()) / this.morphTime ).toFixed(3);
-        // this.fraction = ( this.fraction > 1)  ? 1 : this.fraction;
         this._setMorph();
     }
 

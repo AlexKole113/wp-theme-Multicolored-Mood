@@ -42,7 +42,7 @@
 }
 @media ( min-width: 1024px ) {
     .main-group {
-        grid-template-rows: minmax(24.85rem, .8fr) 1fr;
+        grid-template-rows: minmax(24.85rem, 50vh) 1fr;
     }
 }
 

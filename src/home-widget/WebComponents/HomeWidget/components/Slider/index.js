@@ -4,9 +4,6 @@ import ThreeImageChange from "../ImageEffect/index.js";
 
 class Slider extends EventBus {
 
-    //TODO: EVENTS and hooks
-    // NEXT, PAUSE, STOP, DESTROY,
-
     events = new Map([
         ['START',   []],
         ['NEXT',     []],
@@ -47,7 +44,6 @@ class Slider extends EventBus {
             throw new Error('Slider Error images.length !== text.length');
         }
     }
-
 
     constructor({items, container, transition = 1}) {
         super()
@@ -108,7 +104,7 @@ class Slider extends EventBus {
             images:this.images,
             container
         });
-        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.home-widget-text-center__text .widget-title'), duration:transition});
+        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.widget-title'), duration:transition});
         this.init()
     }
 
