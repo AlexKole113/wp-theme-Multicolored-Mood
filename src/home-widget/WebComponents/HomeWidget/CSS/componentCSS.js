@@ -9,7 +9,7 @@ const CSS = `
             :host .home-widget-container {
                 position: relative;
                 padding-right: 2.5rem;
-                height: 100%;
+                height: 33vh;
             }            
             :host .home-widget-collection-text {
                  position: absolute;
@@ -64,11 +64,14 @@ const CSS = `
                 font-size: .85rem;
                 font-weight: 400;
                 letter-spacing: .2px;
-            }
+            }  
             :host canvas {
                 max-height: 100%!important;
                 max-width: 100%!important;
-            }                    
+            } 
+            :host  svg {
+                display: none;
+            }                   
             @media (min-width: 1024px) {              
                 :host .home-widget-container {
                     padding-right: 0;

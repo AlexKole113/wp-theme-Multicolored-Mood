@@ -74,7 +74,6 @@ class ThreeImageChange {
         this.renderer.setSize(this.width, this.height);
         this.camera.aspect = this.width / this.height;
 
-
         // image cover
         this.imageAspect = this.textures[0].image.height/this.textures[0].image.width;
         let a1; let a2;
