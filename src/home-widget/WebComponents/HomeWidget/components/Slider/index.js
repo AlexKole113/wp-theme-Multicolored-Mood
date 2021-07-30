@@ -14,7 +14,7 @@ class Slider extends EventBus {
 
     _process = false;
 
-    _next = () => {
+    next = () => {
         if(this._process) return;
         this._process = true;
         this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
@@ -27,15 +27,15 @@ class Slider extends EventBus {
             })
     }
 
-    _pause = () => {
+    pause = () => {
         this.container.dispatchEvent( new CustomEvent( 'slider-pause', { cancelable:true } ) );
     }
 
-    _stop = () => {
+    stop = () => {
         this.container.dispatchEvent( new CustomEvent( 'slider-stop', { cancelable:true } ) );
     }
 
-    _destroy = () => {
+    destroy = () => {
         this.container.dispatchEvent( new CustomEvent( 'slider-destroy', { cancelable:true } ) );
     }
 
@@ -109,14 +109,10 @@ class Slider extends EventBus {
     }
 
     init = () => {
-        this._on('NEXT', this._next );
-        this._on('PAUSE', this._pause  );
-        this._on('STOP', this._stop );
-        this._on('DESTROY', this._destroy );
-
-        //TODO: test changing slides
-        document.body.addEventListener('click', ()=>{ this._do('NEXT')})
-
+        this._on('NEXT', this.next );
+        this._on('PAUSE', this.pause  );
+        this._on('STOP', this.stop );
+        this._on('DESTROY', this.destroy );
         this.container.addEventListener('slider-next', (e)=>{
            // console.log(e)
         })

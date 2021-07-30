@@ -7,7 +7,7 @@ export default class HomeWidget extends HTMLElement {
     //  1. add JSON to data attribute (10 JSON cases) and check queue;
     //  2. Mobile and crossbrowser check
 
-    static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
+    //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
     static observedAttributes = [ 'data' ];
     static template = document.createElement('template');
     static getHTML = ({ items, socialLinks }) => (`
@@ -21,16 +21,19 @@ export default class HomeWidget extends HTMLElement {
         this.props = {
             data: JSON.parse( this.getAttribute('data' ) ),
         }
-        HomeWidget.template.innerHTML = HomeWidget.getHTML( this.props.data );
+
+        const { data , data:{items} } = this.props;
+
+        HomeWidget.template.innerHTML = HomeWidget.getHTML( data );
         this?.shadowRoot?.append( HomeWidget.template.content.cloneNode(true) );
 
+        this.setAttribute('charged', items.length)
         this.onmousedown = (event) => {
             event.preventDefault();
             const e = new CustomEvent( 'activate',{ cancelable:true } );
             this.dispatchEvent(e)
             this.setAttribute('activate', true)
         }
-
         this.onmouseup = () => {
             this.removeAttribute('activate')
         }
@@ -43,17 +46,24 @@ export default class HomeWidget extends HTMLElement {
             container: this?.shadowRoot.querySelector('.home-widget-container'),
             transition: 2
         });
+
+
+        //Subscribe on Mediator Event "NEXT" then call -> this.slider._do('NEXT')
+        document.body.addEventListener('click', ()=>{
+            this.slider._do('NEXT')
+        })
     }
 
-    attributeChangedCallback( name, oldVal, newVal ) {
-        switch ( name ) {
-            case 'data':
-                if( HomeWidget.isNewValChanged( newVal, oldVal ) ) {
-                    console.log( 'data changed' );
-                }
-                break;
-        }
-    }
+    // attributeChangedCallback( name, oldVal, newVal ) {
+    //     console.log('name->',name)
+    //     switch ( name ) {
+    //         case 'data':
+    //             if( HomeWidget.isNewValChanged( newVal, oldVal ) ) {
+    //                 console.log( 'data changed' );
+    //             }
+    //             break;
+    //     }
+    // }
 
 
 }
