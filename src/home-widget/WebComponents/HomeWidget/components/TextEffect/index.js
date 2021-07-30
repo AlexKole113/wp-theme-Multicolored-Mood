@@ -2,8 +2,9 @@ class TextEffect {
     constructor( { textContainer , duration }) {
         this.textContainer = textContainer;
         this.morphTime = duration * 1000;
+        this.prevSlide = 0;
         this.nextSlide = 0;
-        this.reset();
+        this.animate();
     }
 
     _hideEffect = (item, fraction) => {
@@ -18,26 +19,17 @@ class TextEffect {
         item.style.opacity = `${Math.pow(fraction, 0.2) * 100}%`;
     }
 
-
-    _setMorph = () => {
-       this.textContainer.forEach((item, index ) => {
-           if( index !== this.nextSlide) this._hideEffect(item,this.fraction);
-       } );
-       this._showEffect(this.textContainer[this.nextSlide],this.fraction)
-    }
-
     _doMorph = (time) => {
         this.fraction =  ( 1 - ((time + this.morphTime) - Date.now()) / this.morphTime ).toFixed(3);
-        this._setMorph();
-    }
-
-    reset = () => {
-        this.textContainer.forEach((item,index)=>{
-            if(index !== this.nextSlide){
-                item.style.opacity = '0';
-                item.style.filter = '';
+        this.textContainer.forEach((item, index ) => {
+            if( index === this.nextSlide ) {
+                this._showEffect(this.textContainer[this.nextSlide],this.fraction)
+            }else if( index === this.prevSlide){
+                this._hideEffect(item,this.fraction);
+            } else {
+                item.style.opacity = `0`;
             }
-        })
+        } );
     }
 
     animate = () => new Promise((res) => {
@@ -46,6 +38,7 @@ class TextEffect {
             this._doMorph(time);
             if( Date.now() > time + this.morphTime ){
                 window.cancelAnimationFrame(rAf);
+                this.prevSlide = this.nextSlide;
                 res(true);
             } else {
                 requestAnimationFrame(work);

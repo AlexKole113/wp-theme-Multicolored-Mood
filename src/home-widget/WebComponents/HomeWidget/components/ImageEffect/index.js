@@ -42,9 +42,11 @@ class ThreeImageChange {
             // this.clickEvent();
             this.play();
         })
+
+        window.addEventListener('resize', this.resize )
     }
 
-    initiate(cb){
+    initiate = (cb) => {
         const promises = [];
         this.images.forEach((url,i)=>{
             let promise = new Promise(resolve => {
@@ -62,13 +64,13 @@ class ThreeImageChange {
     //         this.next();
     //     })
     // }
-    settingsSetup() {
+    settingsSetup = () => {
         this.settings = {progress:0.5};
         Object.keys(this.uniforms).forEach((item)=> {
             this.settings[item] = this.uniforms[item].value;
         })
     }
-    resize() {
+    resize = () => {
         this.width = this.container.offsetWidth;
         this.height = this.container.offsetHeight;
         this.renderer.setSize(this.width, this.height);
@@ -99,7 +101,7 @@ class ThreeImageChange {
 
         this.camera.updateProjectionMatrix();
     }
-    addObjects() {
+    addObjects = () => {
         this.material = new THREE.ShaderMaterial({
             extensions: {
                 derivatives: "#extension GL_OES_standard_derivatives : enable"
@@ -132,14 +134,14 @@ class ThreeImageChange {
 
 
     }
-    stop() {
+    stop = () => {
         this.paused = true;
     }
-    play() {
+    play = () => {
         this.paused = false;
         this.render();
     }
-    next(num){
+    next = (num) => {
         if(this.isRunning) return;
         this.isRunning = true;
         const len = this.textures.length;
@@ -163,7 +165,7 @@ class ThreeImageChange {
         })
 
     }
-    render() {
+    render = () => {
         if (this.paused) return;
         this.time += 0.05;
         this.material.uniforms.time.value = this.time;

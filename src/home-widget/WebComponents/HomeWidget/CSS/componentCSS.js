@@ -75,6 +75,8 @@ const CSS = `
             @media (min-width: 1024px) {              
                 :host .home-widget-container {
                     padding-right: 0;
+                    height: 100%;
+                    width: 100%;
                 }                                                           
                 :host .widget-title {                        
                     text-align: center;
