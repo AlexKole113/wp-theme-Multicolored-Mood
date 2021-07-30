@@ -27,6 +27,7 @@ export default class HomeWidget extends HTMLElement {
         HomeWidget.template.innerHTML = HomeWidget.getHTML( data );
         this?.shadowRoot?.append( HomeWidget.template.content.cloneNode(true) );
 
+        // Todo: Need delete ?
         this.setAttribute('charged', items.length)
         this.onmousedown = (event) => {
             event.preventDefault();
