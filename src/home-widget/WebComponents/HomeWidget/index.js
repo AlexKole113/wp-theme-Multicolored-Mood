@@ -3,6 +3,10 @@ import componentHTML from "./HTML/componentHTML.js";
 import Slider from "./components/Slider/index.js";
 export default class HomeWidget extends HTMLElement {
 
+    // TODO: Cypress test cases
+    //  1. add JSON to data attribute (10 JSON cases) and check queue;
+    //  2. Mobile and crossbrowser check
+
     static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
     static observedAttributes = [ 'data' ];
     static template = document.createElement('template');
