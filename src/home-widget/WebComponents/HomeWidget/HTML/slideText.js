@@ -1,7 +1,10 @@
-const slideText = ({title}) =>
+const slideText = ({title, text }) =>
     (`
     <span class="widget-title">
-        ${title}
+        ${title}  
+         <span class="widget-excerpt">
+            ${text}
+        </span>    
     </span>
 `);
 

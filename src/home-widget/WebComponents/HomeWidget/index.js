@@ -4,9 +4,9 @@ import Slider from "./components/Slider/index.js";
 export default class HomeWidget extends HTMLElement {
 
     //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
-    static observedAttributes = [ 'data' , 'text' ];
+    static observedAttributes = [ 'data' , 'text', 'displacement', 'effect' ];
     static template = document.createElement('template');
-    static getHTML = (textAlignment, {items, socialLinks }) => (`
+    static getTemplate = (textAlignment, {items, socialLinks }) => (`
         ${ componentCSS }
         ${ componentHTML(textAlignment, items , socialLinks ) }
     `);
@@ -16,12 +16,14 @@ export default class HomeWidget extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.props = {
             data: JSON.parse( this.getAttribute('data' ) ),
-            text: this.getAttribute('text') ?? 'center'
+            text: this.getAttribute('text'),
+            displacement: this.getAttribute('displacement'),
+            effect: this.getAttribute('effect'),
         }
 
         const { text, data , data:{items} } = this.props;
 
-        HomeWidget.template.innerHTML = HomeWidget.getHTML(text, data );
+        HomeWidget.template.innerHTML = HomeWidget.getTemplate(text, data );
         this?.shadowRoot?.append( HomeWidget.template.content.cloneNode(true) );
 
         // Todo: Need delete ?
@@ -42,7 +44,9 @@ export default class HomeWidget extends HTMLElement {
         this.slider = new Slider({
             items: this.props.data.items,
             container: this?.shadowRoot.querySelector('.home-widget-container'),
-            transition: 2
+            transition: 2,
+            displacement: this.props.displacement,
+            effect: this.props.effect,
         });
 
 

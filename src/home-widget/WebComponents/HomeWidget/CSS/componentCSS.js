@@ -20,6 +20,7 @@ const CSS = `
                  filter: url(#threshold) blur(0px); 
             }
             :host .widget-title {
+                display: block;
                 color: var(--font-color);
                 position: absolute;
                 top: 6%;
@@ -32,7 +33,10 @@ const CSS = `
                 margin-bottom: .2rem;     
                 text-overflow: ellipsis;
                 white-space: nowrap;
-            }                    
+            }  
+            :host .widget-excerpt {
+                display: none;              
+            }                  
             :host .social-links {
                 display: none;
             }
@@ -79,8 +83,14 @@ const CSS = `
                     width: 100%;
                 }                                                           
                 :host  .widget-title {                                           
-                    font-size: 2.25rem;
+                    font-size: 2.45rem;
                 }  
+                :host .widget-excerpt {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 800;
+     
+                } 
                 :host .home-widget-text-center .widget-title {
                     text-align: center;    
                 } 
@@ -90,7 +100,7 @@ const CSS = `
                 }                                                        
                 :host .social-links__group {
                     padding: 0;
-                }         
+                }                      
                 :host .social-links {
                     display: block;
                     position: absolute;

@@ -1,10 +1,12 @@
+import getEffect from "./effects.js";
+
 class ThreeImageChange {
 
     constructor(opts) {
         this.scene = new THREE.Scene();
         this.vertex = `varying vec2 vUv;void main() {vUv = uv;gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );}`;
-        this.fragment = opts.fragment;
-        this.uniforms = opts.uniforms;
+        this.fragment = getEffect(opts.effect).fragment;
+        this.uniforms = getEffect(opts.effect).uniforms;
         this.renderer = new THREE.WebGLRenderer();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -12,9 +14,10 @@ class ThreeImageChange {
         this.renderer.setSize(this.width, this.height);
         this.renderer.setClearColor(0xeeeeee, 1);
         this.duration = opts.duration || 1;
+        this.displacement = opts.displacement
         this.easing = opts.easing || 'easeOut'
 
-        this.clicker = document.body;
+        // this.clicker = document.body;
         this.container = opts.container;
         this.images = opts.images;
         this.width = this.container.offsetWidth;
@@ -121,7 +124,7 @@ class ThreeImageChange {
                 radius: { type: "f", value: 0 },
                 texture1: { type: "f", value: this.textures[0] },
                 texture2: { type: "f", value: this.textures[1] },
-                displacement: { type: "f", value: new THREE.TextureLoader().load('home-widget/assets/disp1.jpg') },
+                displacement: { type: "f", value: new THREE.TextureLoader().load(this.displacement) },
                 resolution: { type: "v4", value: new THREE.Vector4() },
             },
             vertexShader: this.vertex,

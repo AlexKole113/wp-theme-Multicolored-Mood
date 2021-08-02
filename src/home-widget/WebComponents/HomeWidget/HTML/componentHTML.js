@@ -1,11 +1,11 @@
 import socialLink from "./socialLink.js";
 import slideText from "./slideText.js";
 
-const HTML = (textAllign, items , socialLinks ) => {
+const HTML = (textAlign = 'center' , items , socialLinks ) => {
     const smLinks = (socialLinks?.length) ? socialLinks.reduce(( accum, item ) => accum + socialLink( item ),'') : '';
     const text  = items.reduce(( accum, item ) => accum + slideText(item),'');
     return (`
-    <div class="home-widget home-widget-text-${textAllign}">
+    <div class="home-widget home-widget-text-${textAlign}">
         <div class="home-widget-container">
             <a href="" class="home-widget-collection-text">
                 ${text}
