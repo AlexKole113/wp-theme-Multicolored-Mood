@@ -3,16 +3,12 @@ import componentHTML from "./HTML/componentHTML.js";
 import Slider from "./components/Slider/index.js";
 export default class HomeWidget extends HTMLElement {
 
-    // TODO: Cypress test cases
-    //  1. add JSON to data attribute (10 JSON cases) and check queue;
-    //  2. Mobile and crossbrowser check
-
     //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
-    static observedAttributes = [ 'data' ];
+    static observedAttributes = [ 'data' , 'text' ];
     static template = document.createElement('template');
-    static getHTML = ({ items, socialLinks }) => (`
+    static getHTML = (textAlignment, {items, socialLinks }) => (`
         ${ componentCSS }
-        ${ componentHTML( items , socialLinks ) }
+        ${ componentHTML(textAlignment, items , socialLinks ) }
     `);
 
     constructor() {
@@ -20,11 +16,12 @@ export default class HomeWidget extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.props = {
             data: JSON.parse( this.getAttribute('data' ) ),
+            text: this.getAttribute('text') ?? 'center'
         }
 
-        const { data , data:{items} } = this.props;
+        const { text, data , data:{items} } = this.props;
 
-        HomeWidget.template.innerHTML = HomeWidget.getHTML( data );
+        HomeWidget.template.innerHTML = HomeWidget.getHTML(text, data );
         this?.shadowRoot?.append( HomeWidget.template.content.cloneNode(true) );
 
         // Todo: Need delete ?

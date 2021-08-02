@@ -78,10 +78,16 @@ const CSS = `
                     height: 100%;
                     width: 100%;
                 }                                                           
-                :host .widget-title {                        
-                    text-align: center;
+                :host  .widget-title {                                           
                     font-size: 2.25rem;
-                }                                                            
+                }  
+                :host .home-widget-text-center .widget-title {
+                    text-align: center;    
+                } 
+                :host .home-widget-text-left .widget-title {
+                    text-align: left; 
+                    left: 4.25vw;
+                }                                                        
                 :host .social-links__group {
                     padding: 0;
                 }         
