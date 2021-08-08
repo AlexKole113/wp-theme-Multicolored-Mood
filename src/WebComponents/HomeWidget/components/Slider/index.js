@@ -1,4 +1,4 @@
-import EventBus from "../../../../../scripts/EventBus.js";
+import EventBus from "../../../../scripts/EventBus.js";
 import TextEffect from "../TextEffect/index.js";
 import ThreeImageChange from "../ImageEffect/index.js";
 

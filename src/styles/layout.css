@@ -35,12 +35,6 @@
 
 /* ====================================== */
 
-.page-group {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 60% 40%;
-}
-
 .main-group {
     min-height: 100vh;
     display: grid;
@@ -59,10 +53,10 @@
 }
 @media ( min-width: 1024px ) {
     .grid-home-row-1 {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 38.6%;
     }
     .grid-home-row-2 {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 41.35% 1fr 1fr;
     }
 }
 

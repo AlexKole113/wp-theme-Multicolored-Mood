@@ -70,6 +70,7 @@ const CSS = `
                 letter-spacing: .2px;
             }  
             :host canvas {
+                background: transparent;
                 max-height: 100%!important;
                 max-width: 100%!important;
             } 

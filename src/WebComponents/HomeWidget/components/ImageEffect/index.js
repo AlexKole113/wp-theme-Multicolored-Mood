@@ -12,12 +12,10 @@ class ThreeImageChange {
         this.height = window.innerHeight;
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(this.width, this.height);
-        this.renderer.setClearColor(0xeeeeee, 1);
+        this.renderer.setClearColor(0xeeeeee, 0);
         this.duration = opts.duration || 1;
         this.displacement = opts.displacement
         this.easing = opts.easing || 'easeOut'
-
-        // this.clicker = document.body;
         this.container = opts.container;
         this.images = opts.images;
         this.width = this.container.offsetWidth;
@@ -42,7 +40,6 @@ class ThreeImageChange {
             this.settingsSetup();
             this.addObjects();
             this.resize();
-            // this.clickEvent();
             this.play();
         })
 
@@ -62,11 +59,6 @@ class ThreeImageChange {
             cb();
         });
     }
-    // clickEvent(){
-    //     this.clicker.addEventListener('click',()=>{
-    //         this.next();
-    //     })
-    // }
     settingsSetup = () => {
         this.settings = {progress:0.5};
         Object.keys(this.uniforms).forEach((item)=> {

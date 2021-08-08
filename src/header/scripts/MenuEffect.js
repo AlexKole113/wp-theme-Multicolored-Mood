@@ -14,7 +14,7 @@ class MenuEffect {
     }
 
     _menuOpenEffectCreate = () => {
-        const app = new PIXI.Application();
+        const app = new PIXI.Application({backgroundAlpha:0});
         this._parentElm.prepend(app.view);
         app.view.height = 0;
         app.view.width  = 0;
@@ -71,7 +71,7 @@ void main()
     gl_FragColor = vec4(color);
 }`;
         const noiseUniforms = {
-            limit: .5,
+            limit: .1,
             noise: perlinTexture,
         };
         const noiseShader    = PIXI.Shader.from(vertexSrc, fragmentNoiseSrc, noiseUniforms);
