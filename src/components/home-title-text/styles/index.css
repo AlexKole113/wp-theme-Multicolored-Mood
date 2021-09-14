@@ -1,0 +1,29 @@
+.home-title-text {
+    margin-bottom: 5.55rem;
+}
+.home-title-text__title {
+    font-size: 2rem;
+    margin-bottom: .25rem;
+}
+
+@media ( min-width: 1024px ) {
+
+    .home-title-text {
+        padding: 0 0 0 var(--page-padding);
+    }
+
+    .home-title-text__title {
+        font-size: 4.1rem;
+        letter-spacing: .1px;
+        margin-bottom: .25rem;
+    }
+
+    .home-title-text__tiny-text {
+        font-size: 1.5rem;
+        letter-spacing: .1px;
+    }
+
+
+}
+
+

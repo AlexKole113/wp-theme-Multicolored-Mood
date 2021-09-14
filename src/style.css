@@ -1,17 +1,20 @@
-@import './styles/layout.css';
-@import './styles/fonts.css';
-@import './styles/common.css';
-@import './styles/colors.css';
+@import './common/styles/layout.css';
+@import './common/styles/fonts.css';
+@import './common/styles/common.css';
+@import './common/styles/colors.css';
 
 /* GLOBAL TASKS  */
 /* TODO: add testing by Cypress */
 
 
-/* elements */
-@import './header/styles/header.css';
-@import './home-text/styles/home-text.css';
-@import './home-widget/styles/home-widget.css';
-@import "./home-posts/styles/home-posts.css";
+/* components */
+@import './components/header/styles/index.css';
+@import './components/home-title-text/styles/index.css';
+@import './components/last-posts/styles/index.css';
+@import './components/top-post-item/styles/index.css';
+@import './components/slider/styles/index.css';
 
 
-@import "./mobile-footer/styles/mobile-footer.css";
+/* pages */
+@import './pages/Home/styles/index.css';
+

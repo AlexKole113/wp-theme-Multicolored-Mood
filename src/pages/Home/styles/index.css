@@ -1,0 +1,37 @@
+.home-page {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+.home-page__block-item_full-right {
+    min-height: 23.5rem;
+}
+.home-page__block-bottom-left {
+    min-height: 22.5rem;
+}
+.home-page__block-top-left {
+    padding: 1rem 1.5rem 0;
+}
+
+@media (min-width: 767px) {
+    .home-page {
+        display: grid;
+        grid: 50vh 50vh / 60% 40%;
+    }
+    .home-page__block-top-left {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    .home-page__block-item_full-right {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+    }
+
+    .home-page__block-bottom-left {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+}
+
+
+

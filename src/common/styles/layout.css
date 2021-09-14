@@ -1,0 +1,35 @@
+:root {
+    --content-size: 5vw;
+    --side-spacing: 1.5rem;
+    --standard-container-width: initial;
+    --page-padding: 4rem;
+}
+@media ( min-width: 520px ) {
+    :root {
+        --content-size: 2.58vw;
+    }
+}
+@media ( min-width: 767px ) {
+    :root {
+        --content-size: 2.08vw;
+        --standard_container_width: 654px;
+        --side-spacing: 2.5rem;
+    }
+}
+@media ( min-width: 1024px ) {
+    :root {
+        --content-size: 18px;
+        --standard-container-width: 850px;
+    }
+}
+@media ( min-width: 1440px ) {
+    :root {
+        --content-size: 18px;
+        --standard-container-width: 1120px;
+    }
+}
+
+
+
+
+

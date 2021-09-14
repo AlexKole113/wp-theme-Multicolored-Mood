@@ -9,22 +9,13 @@
     <title>Document</title>
 </head>
 <body>
+    <main class="home-page">
+        <div class="home-page__block-top-left">
 
-
-    <section class="main-group">
-
-        <!--   ROW #1    -->
-        <div class="main-group__row grid-home-row-1">
-
-            <!--  COLUMN #1  -->
-            <div class="main-group__column pb-4">
-
-                <!-- MAIN MENU GROUP  -->
-                <section class="main-menu-group">
-                    <nav class="main-menu-group__menu">
-                        <a class="main-menu-group__menu_logo" href="#">
-                            <img src="header/assets/Logo.png" alt="logo-main">
-                        </a>
+            <!--  header  -->
+            <header class="main-header">
+                <section class="main-header__group">
+                    <nav class="main-header__group_menu">
                         <div id="menu-starter" class="humburger-slot">
                             <svg viewBox="0 0 100 80" width="30" height="30">
                                 <rect width="100" height="10"></rect>
@@ -93,164 +84,124 @@
                             </ul>
                         </div>
                     </nav>
-                </section >
-
-                <!--  HOME TEXT  -->
-                <section class="home-text">
-                    <h1 class="home-text__title"> <span>F</span><span>o</span><span>o</span>d & <span class="colored-blue">Colors</span></h1>
-                    <span class="home-text__tiny-text"> 2018 Photography Awards </span>
+                    <ul class="additional-menu">
+                        <li class="additional-menu__item">
+                            <a class="additional-menu__item_link" href="#">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
+                            </a>
+                        </li>
+                        <li class="additional-menu__item">
+                            <a class="additional-menu__item_link" href="#">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="svg-inline--fa fa-instagram fa-w-14" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                            </a>
+                        </li>
+                        <li class="additional-menu__item">
+                            <a class="additional-menu__item_link" href="#">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="svg-inline--fa fa-twitter fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+                            </a>
+                        </li>
+                    </ul>
                 </section>
-                <div class="slider-desktop-dots__container">
-                    <div class="slider-desktop-dots">
-                        <ul class="dots">
-                            <li class="dots__item active-dot"><a href="" class="dots__item_link"></a></li>
-                            <li class="dots__item"><a href="" class="dots__item_link"></a></li>
-                            <li class="dots__item"><a href="" class="dots__item_link"></a></li>
-                        </ul>
+            </header>
+
+            <!--  home-title-text  -->
+            <section class="home-title-text">
+                <h1 class="home-title-text__title"> <span>F</span><span>o</span><span>o</span>d & <span class="colored-blue">Colors</span></h1>
+                <span class="home-title-text__tiny-text"> 2018 Photography Awards </span>
+            </section>
+
+        </div>
+        <div class="home-page__block-item_full-right ">
+            <div class="home-widget-area-1">
+                <!-- WIDGET-AREA: home-widget-area-1 = WIDGET: text-center  -->
+                <slider-component
+                        data='{"items":[
+                                        {"title":"LOREM", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-2.png", "linkTo": "#"},
+                                        {"title":"IPSUM", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-3.png", "linkTo": "#"},
+                                        {"title":"Animal", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-1.png", "linkTo": "#"}
+                                    ]
+                                 }'
+                        text="center"
+                        displacement="components/slider/assets/disp1.jpg"
+                        effect="1-right"
+                ></slider-component>
+            </div>
+        </div>
+        <div class="home-page__block-bottom-left">
+            <div class="home-page__block-item_group">
+                <div class="home-page__block-item_group_column">
+                    <div class="home-widget-area-2">
+                        <!-- WIDGET-AREA: home-widget-area-2 = WIDGET: text-left  -->
+                        <home-widget
+                                data='{"items":[
+                                        {"title":"LOREM", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-2.png", "linkTo": "#"},
+                                        {"title":"IPSUM", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-3.png", "linkTo": "#"},
+                                        {"title":"Animal", "text": "Ruslan Bardash", "imageUrl": "components/slider/assets/widget-1.png", "linkTo": "#"}
+                                    ]
+                                 }'
+                                text="left"
+                                displacement="components/slider/assets/disp4.png"
+                                effect="4"
+                        ></home-widget>
+                    </div>
+                    <div class="home-widget-area-4">
+                        <!-- WIDGET-AREA: home-widget-area-4 = WIDGET: POSTS-HOME  -->
+
+                        <home-widget-posts title="in The News">
+                            <div slot="posts" class="home-widget-posts__group">
+                                <div class="home-widget-posts__item">
+                                    <div class="home-widget-posts__item_img">
+                                        <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                    </div>
+                                    <div class="home-widget-posts__item_text">
+                                        <a href="" class="home-widget-posts__item_text_title">Is “Food-Tech” the Future of Food?</a>
+                                        <span class="home-widget-posts__item_text_date">Mar 2, 2018</span>
+                                    </div>
+
+                                </div>
+                                <div class="home-widget-posts__item">
+                                    <div class="home-widget-posts__item_img">
+                                        <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                    </div>
+                                    <div class="home-widget-posts__item_text">
+                                        <a href="" class="home-widget-posts__item_text_title">5 Savory Food Photography Tips</a>
+                                        <span class="home-widget-posts__item_text_date">Feb 28, 2018</span>
+                                    </div>
+
+                                </div>
+                                <div class="home-widget-posts__item">
+                                    <div class="home-widget-posts__item_img">
+                                        <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
+                                    </div>
+                                    <div class="home-widget-posts__item_text">
+                                        <a href="" class="home-widget-posts__item_text_title">3 Food Magazines With Food Photography That Inspires</a>
+                                        <span class="home-widget-posts__item_text_date">Feb 25, 2018</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </home-widget-posts>
+
                     </div>
                 </div>
-
-            </div>
-
-            <!--  COLUMN #2  -->
-            <div class="main-group__column">
-                <div class="home-widget-area-1">
-                    <!-- WIDGET-AREA: home-widget-area-1 = WIDGET: text-center  -->
-                    <home-widget
-                            data='{"items":[
-                                        {"title":"Ice", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/ice.jpeg"},
-                                        {"title":"fire ", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/fire.jpeg"},
-                                        {"title":"animal", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/animal.jpeg"}
-                                    ],
-                                    "socialLinks":[
-                                        {"url":"#1","name":"facebook"},
-                                        {"url":"#2","name":"Instagram"},
-                                        {"url":"#2","name":"twitter"}
+                <div class="home-page__block-item_group_column">
+                    <div class="home-widget-area-2">
+                        <!-- WIDGET-AREA: home-widget-area-2 = WIDGET: text-left  -->
+                        <home-widget
+                                data='{"items":[
+                                        {"title":"Ice", "text": "Lorem", "imageUrl": "components/slider/assets/template.png"},
+                                        {"title":"fire ", "text": "Ipsum", "imageUrl": "components/slider/assets/white.jpg"}
                                     ]
                                  }'
-                            text="center"
-                            displacement="home-widget/assets/disp1.jpg"
-                            effect="1-right"
-                    ></home-widget>
+                                text="left"
+                                displacement="components/slider/assets/disp4.png"
+                                effect="4"
+                        ></home-widget>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-        <!--   ROW #2    -->
-        <div class="main-group__row grid-home-row-2">
-
-            <!--  COLUMN #1  -->
-            <div class="main-group__column">
-
-                <div class="home-widget-area-2">
-                    <!-- WIDGET-AREA: home-widget-area-2 = WIDGET: text-left  -->
-
-<!--                    <home-widget-->
-<!--                            data='{"items":[-->
-<!--                                        {"title":"Ice", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/ice.jpeg"},-->
-<!--                                        {"title":"fire ", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/fire.jpeg"},-->
-<!--                                        {"title":"animal", "text": "Shot by @daaaaaavis", "imageUrl": "home-widget/assets/animal.jpeg"},-->
-<!--                                    ]-->
-<!--                                 }'-->
-<!--                            text="left"-->
-<!--                            displacement="home-widget/assets/disp1.jpg"-->
-<!--                            effect="type-a-left"-->
-<!--                    ></home-widget>-->
-
-                </div>
-            </div>
-
-            <!--  COLUMN #2  -->
-            <div class="main-group__column">
-                <div class="home-widget-area-3">
-                    <!-- WIDGET-AREA: home-widget-area-3 = WIDGET: text-left  -->
-
-                    <home-widget
-                            data='{"items":[
-                                        {"title":"Ice", "text": "Lorem", "imageUrl": "home-widget/assets/template.png"},
-                                        {"title":"fire ", "text": "Ipsum", "imageUrl": "home-widget/assets/white.jpg"}
-                                    ]
-                                 }'
-                            text="left"
-                            displacement="home-widget/assets/disp4.png"
-                            effect="4"
-                    ></home-widget>
-
-                </div>
-            </div>
-
-            <!--  COLUMN #3  -->
-            <div class="main-group__column">
-                <div class="home-widget-area-4">
-                    <!-- WIDGET-AREA: home-widget-area-4 = WIDGET: POSTS-HOME  -->
-
-                    <home-widget-posts title="in The News">
-                        <div slot="posts" class="home-widget-posts__group">
-                            <div class="home-widget-posts__item">
-                                <div class="home-widget-posts__item_img">
-                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
-                                </div>
-                                <div class="home-widget-posts__item_text">
-                                    <a href="" class="home-widget-posts__item_text_title">Is “Food-Tech” the Future of Food?</a>
-                                    <span class="home-widget-posts__item_text_date">Mar 2, 2018</span>
-                                </div>
-
-                            </div>
-                            <div class="home-widget-posts__item">
-                                <div class="home-widget-posts__item_img">
-                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
-                                </div>
-                                <div class="home-widget-posts__item_text">
-                                    <a href="" class="home-widget-posts__item_text_title">5 Savory Food Photography Tips</a>
-                                    <span class="home-widget-posts__item_text_date">Feb 28, 2018</span>
-                                </div>
-
-                            </div>
-                            <div class="home-widget-posts__item">
-                                <div class="home-widget-posts__item_img">
-                                    <img src="https://source.unsplash.com/user/erondu/200x200" alt="">
-                                </div>
-                                <div class="home-widget-posts__item_text">
-                                    <a href="" class="home-widget-posts__item_text_title">3 Food Magazines With Food Photography That Inspires</a>
-                                    <span class="home-widget-posts__item_text_date">Feb 25, 2018</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </home-widget-posts>
-
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="mobile-footer">
-        <!--   SOCIAL LINKS  -->
-        <div class="social-links">
-            <ul class="social-links__group">
-                <li class="social-links__item">
-                    <a href="#1" class="social-links__link">Facebook</a>
-                </li>
-                <li class="social-links__item">
-                    <a href="#2" class="social-links__link">Instagram</a>
-                </li>
-                <li class="social-links__item">
-                    <a href="#3" class="social-links__link">Twitter</a>
-                </li>
-            </ul>
-        </div>
-        <div class="copyright">
-            <a class="copyright-author" href="https://profiles.wordpress.org/alexanderkoledov/">
-                Developed by @alexanderkoledov
-            </a>
-            <a href="https://dribbble.com/jardson">
-                Jardson Almeida Design Concept
-            </a>
-        </div>
-    </section>
+    </main>
 
 
 <!--
@@ -279,10 +230,10 @@
 -->
 
 
-    <script src="scripts/libraries/three.js"></script>
+    <script src="common/scripts/libraries/three.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
 <!--    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>-->
 
     <script type="module" src="script.js" ></script>
 
