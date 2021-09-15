@@ -6,7 +6,7 @@ export default class SliderWidget extends HTMLElement {
     //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
     static observedAttributes = [ 'data' , 'text', 'displacement', 'effect' ];
     static template = document.createElement('template');
-    static getTemplate = (textAlignment, {items}) => (`
+    static getTemplate = (textAlignment, {items} ) => (`
         ${ componentCSS }
         ${ componentHTML(textAlignment, items) }
     `);
@@ -23,10 +23,9 @@ export default class SliderWidget extends HTMLElement {
 
         const { text, data , data:{items} } = this.props;
 
-        SliderWidget.template.innerHTML = SliderWidget.getTemplate(text, data );
+        SliderWidget.template.innerHTML = SliderWidget.getTemplate( text, data );
         this?.shadowRoot?.append( SliderWidget.template.content.cloneNode(true) );
 
-        // Todo: Need delete ?
         this.setAttribute('charged', items.length)
         this.onmousedown = (event) => {
             event.preventDefault();
@@ -37,23 +36,30 @@ export default class SliderWidget extends HTMLElement {
         this.onmouseup = () => {
             this.removeAttribute('activate')
         }
-
     }
 
     connectedCallback() {
-        this.slider = new Slider({
+        const slider = new Slider({
             items: this.props.data.items,
             container: this?.shadowRoot.querySelector('.home-widget-container'),
             transition: 2,
             displacement: this.props.displacement,
             effect: this.props.effect,
+            navigationContainer: this?.shadowRoot.querySelector('.dots-container')
         });
 
 
-        //Subscribe on Mediator Event "NEXT" then call -> this.slider._do('NEXT')
-        document.body.addEventListener('click', ()=>{
-            this.slider._do('NEXT')
-        })
+        if(this?.shadowRoot.querySelectorAll('.dots-item')){
+
+            this?.shadowRoot.querySelectorAll('.dots-item')
+            .forEach(item => {
+                item.addEventListener('click', ()=>{
+                    if(item.hasAttribute('data-slide')){
+                        slider.goTo(item.getAttribute('data-slide'))
+                    }
+                })
+            })
+        }
     }
 
     // attributeChangedCallback( name, oldVal, newVal ) {

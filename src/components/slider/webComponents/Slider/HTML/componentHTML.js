@@ -7,7 +7,8 @@ const HTML = (textAlign = 'center' , items ) => {
         <div class="home-widget-container">
             <div class="home-widget-collection-text">
                 ${text}
-            </div>    
+            </div> 
+            <div class="dots-container"></div>    
         </div> 
         <svg id="filters">
             <defs>
@@ -20,7 +21,7 @@ const HTML = (textAlign = 'center' , items ) => {
                                            0 0 0 255 -140" />
                 </filter>
             </defs>
-        </svg>        
+        </svg>                
     </div>
     `)
 };

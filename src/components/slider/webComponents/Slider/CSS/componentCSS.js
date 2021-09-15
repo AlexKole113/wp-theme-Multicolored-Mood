@@ -1,5 +1,13 @@
 const CSS = `
-        <style>           
+        <style> 
+            :host  canvas {
+                background: transparent;
+                max-height: 100%!important;
+                max-width: 100%!important;
+            } 
+            :host  svg {
+                display: none;
+            }               
             :host .home-widget {
                 --font-color: #fff;
                 position: relative;
@@ -8,7 +16,7 @@ const CSS = `
             }     
             :host .home-widget-container {
                 position: relative;
-                height: 23.5rem;
+                height: 100%;
             }            
             :host .home-widget-collection-text {
                  position: absolute;
@@ -47,18 +55,49 @@ const CSS = `
                 font-size: .75rem; 
             }         
             :host .widget-link {
-                 margin-top: .5rem;
-                font-size: 1rem; 
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: .5rem auto 0;
+                max-width: 20%;
+                height: 1.25rem;             
+            }
+            :host .widget-link__text {
+                 font-size: 1rem; 
+            }
+            :host .widget-link__icon {
+                display: inline;
+                color: var(--text-white);
+                height: .6rem;
+            }  
+            :host .dots-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 4.25rem;
+            }
+            :host .dots-item {
+                width: 1rem;
+                height: 1rem;
+                border-radius: 100%;
+                display: block;
+                margin: 0 .5rem;
+                position: relative;
+                border: 1px solid var(--text-white);
             } 
-                             
-            :host canvas {
-                background: transparent;
-                max-height: 100%!important;
-                max-width: 100%!important;
-            } 
-            :host  svg {
-                display: none;
-            }                   
+            :host .dots-item.active-dot:before {
+                content: '';
+                position: absolute;
+                background-color: var(--text-white);
+                top: 2px;
+                right: 2px;
+                bottom: 2px;
+                left: 2px;
+                border-radius: 100%;
+            }               
             @media (min-width: 1024px) {              
                 :host .home-widget-container {
                     padding-right: 0;
