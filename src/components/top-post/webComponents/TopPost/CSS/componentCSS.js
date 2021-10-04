@@ -10,6 +10,7 @@ const CSS = `
                 background-size: cover;
                 display: flex;
                 flex-flow: column;
+                background-position: 50% 50%;
             }
             :host .home-widget-collection-text {
                  position: absolute;
@@ -17,7 +18,6 @@ const CSS = `
                  right: 0;
                  bottom: 0;
                  left:0;
-                 filter: url(#threshold) blur(0px); 
             }
             :host .widget-title {
                 display: block;
