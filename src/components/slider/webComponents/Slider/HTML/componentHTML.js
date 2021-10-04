@@ -1,9 +1,9 @@
 import slideText from "./slideText.js";
 
-const HTML = (textAlign = 'center' , items ) => {
+const HTML = ({ textAlignment, data:{items} }) => {
     const text  = items.reduce(( accum, item ) => accum + slideText(item),'');
     return (`
-    <div class="home-widget home-widget-text-${textAlign}">
+    <div class="home-widget home-widget-text-${textAlignment}">
         <div class="home-widget-container">
             <div class="home-widget-collection-text">
                 ${text}

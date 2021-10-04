@@ -3,17 +3,11 @@
 @import './common/styles/common.css';
 @import './common/styles/colors.css';
 
-/* GLOBAL TASKS  */
-/* TODO: add testing by Cypress */
-
-
 /* components */
 @import './components/header/styles/index.css';
 @import './components/home-title-text/styles/index.css';
-@import './components/last-posts/styles/index.css';
-@import './components/top-post-item/styles/index.css';
+@import './components/top-post/styles/index.css';
 @import './components/slider/styles/index.css';
-
 
 /* pages */
 @import './pages/Home/styles/index.css';

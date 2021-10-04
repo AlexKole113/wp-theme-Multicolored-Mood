@@ -10,6 +10,9 @@ const CSS = `
             }               
             :host .home-widget {
                 --font-color: #fff;
+                --title-size:2rem;
+                --link-size:1rem;
+                --excerpt-size:.75rem;
                 position: relative;
                 height: 100%;
                 overflow: hidden;
@@ -17,7 +20,8 @@ const CSS = `
             :host .home-widget-container {
                 position: relative;
                 height: 100%;
-            }            
+            }  
+                      
             :host .home-widget-collection-text {
                  position: absolute;
                  top:0;
@@ -35,7 +39,7 @@ const CSS = `
                 right: 0;
                 bottom: 0;  
                 text-align: center;
-                font-size: 2rem;
+                font-size: var(--title-size);
                 font-weight: 700;
                 letter-spacing: .75px;
                 margin-bottom: .2rem;     
@@ -43,33 +47,31 @@ const CSS = `
                 white-space: nowrap;
                 padding-top: 2.75rem;
             }  
-            :host .widget-excerpt,
-            :host .widget-link{
-                display: block;  
-              
-                color: var(--font-color);   
-                text-decoration: none;        
-            }  
             :host .widget-excerpt {
+                display: block;
+                font-weight: 500;
                 margin-top: .5rem;
-                font-size: .75rem; 
+                font-size: var(--excerpt-size)
             }         
             :host .widget-link {
+                font-weight: 500;
+                color: var(--font-color);   
+                text-decoration: none;     
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                margin: .5rem auto 0;
-                max-width: 20%;
-                height: 1.25rem;             
+                justify-content: center;
+                margin: 1rem auto 0;
             }
             :host .widget-link__text {
-                 font-size: 1rem; 
+                margin-right: .5rem;
+                font-size: var(--link-size); 
             }
             :host .widget-link__icon {
                 display: inline;
                 color: var(--text-white);
-                height: .6rem;
+                height: var(--link-size); 
             }  
+            
             :host .dots-container {
                 display: flex;
                 align-items: center;

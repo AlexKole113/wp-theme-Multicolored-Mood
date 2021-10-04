@@ -3,13 +3,17 @@ import componentHTML from "./HTML/componentHTML.js";
 import Slider from "./components/Slider/index.js";
 export default class SliderWidget extends HTMLElement {
 
+
+    static getTemplate = ( props ) => (`
+        ${ componentCSS }
+        ${ componentHTML( props ) }
+    `);
     //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
+
+
     static observedAttributes = [ 'data' , 'text', 'displacement', 'effect' ];
     static template = document.createElement('template');
-    static getTemplate = (textAlignment, {items} ) => (`
-        ${ componentCSS }
-        ${ componentHTML(textAlignment, items) }
-    `);
+
 
     constructor() {
         super();
@@ -21,11 +25,10 @@ export default class SliderWidget extends HTMLElement {
             effect: this.getAttribute('effect'),
         }
 
-        const { text, data , data:{items} } = this.props;
-
-        SliderWidget.template.innerHTML = SliderWidget.getTemplate( text, data );
+        SliderWidget.template.innerHTML = SliderWidget.getTemplate( this.props );
         this?.shadowRoot?.append( SliderWidget.template.content.cloneNode(true) );
 
+        const {data:items} = this.props;
         this.setAttribute('charged', items.length)
         this.onmousedown = (event) => {
             event.preventDefault();
