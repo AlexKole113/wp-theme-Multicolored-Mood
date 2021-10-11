@@ -3,27 +3,20 @@ const CSS = `
             :host .last-posts {
                 --background-color: #242424;
                 --color: #fff;
-                --loading-color: #9F9F9F;
+                --loading-color: rgba(159,159,159,0.5);
                 background-color: var(--background-color);
                 color: var(--color);
-                padding: 2.5rem 1.65rem;
+                padding: 2.5rem 1.65rem 1.25rem;
             }
             :host .last-posts__title {
                 margin: 0;
                 margin-bottom: 3.5rem;
-              
-            }
-            :host .last-posts__group {
-            
             }
             :host .last-posts__item,
             :host .last-posts__item__loading {
                 display: grid;
                 grid-template-columns: 3rem 1fr;
                 margin-bottom: 2.7rem;
-            }
-            :host .last-posts__item__loading {
-                animation: loading 3s infinite;
             }
             :host .last-posts__item_img {
                 height: 3rem;
@@ -32,7 +25,6 @@ const CSS = `
                 border-radius: 100%;
                 width: 100%;
                 height: 3rem;
-                background-color: var(--loading-color);
             }
             :host .last-posts__item_img img {
                 border-radius: 100%;
@@ -54,21 +46,25 @@ const CSS = `
             :host .last-posts__item_text_title__loading_2 {
                 width: 100%;
                 height: 1rem;
-                background-color: var(--loading-color);
                 border-radius: 5px;
+            }
+            :host .last-posts__item_text_title__loading {
+                 animation: loading 2s .5s infinite;  
             }
             :host .last-posts__item_text_title__loading_2 {
                 width: 50%;
-                margin: .5rem 0;
-               
+                margin: .5rem 0; 
+                 animation: loading 2s infinite;  
             }
-            :host .last-posts__item_text_date {
-            
+            :host .last-posts__item_img__loading,
+            :host .last-posts__item_text_title__loading,
+            :host .last-posts__item_text_title__loading_2 {
+                background-color:  var(--loading-color);
             }
             @keyframes loading {
-                0% { opacity: .5}
-                50% { opacity: .1}
-                100% { opacity: .5}    
+                0% { width: 80% }
+                50% { width: 100% }
+                100% { width: 80% }    
             }
         </style>
     `;

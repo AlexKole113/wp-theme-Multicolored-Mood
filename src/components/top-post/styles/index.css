@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-@media (min-width: 1024px) {
+@mixin lg {
     .home-widget-area-4 {
         height: 100%;
     }

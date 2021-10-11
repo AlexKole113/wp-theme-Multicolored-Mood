@@ -1,3 +1,4 @@
+@import "./common/styles/partials/mixins.css";
 @import './common/styles/layout.css';
 @import './common/styles/fonts.css';
 @import './common/styles/common.css';
@@ -8,6 +9,7 @@
 @import './components/home-title-text/styles/index.css';
 @import './components/top-post/styles/index.css';
 @import './components/slider/styles/index.css';
+@import './components/footer/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';

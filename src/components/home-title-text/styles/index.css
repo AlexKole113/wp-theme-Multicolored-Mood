@@ -1,29 +1,28 @@
 .home-title-text {
     margin-bottom: 5.55rem;
-}
-.home-title-text__title {
-    font-size: 2rem;
-    margin-bottom: .25rem;
+
+    &__title {
+        font-size: 2rem;
+        margin-bottom: .25rem;
+    }
 }
 
-@media ( min-width: 1024px ) {
+@mixin lg  {
 
     .home-title-text {
         padding: 0 0 0 var(--page-padding);
+
+        &__title {
+            font-size: 4.1rem;
+            letter-spacing: .1px;
+            margin-bottom: .25rem;
+        }
+
+        &__tiny-text {
+            font-size: 1.5rem;
+            letter-spacing: .1px;
+        }
     }
-
-    .home-title-text__title {
-        font-size: 4.1rem;
-        letter-spacing: .1px;
-        margin-bottom: .25rem;
-    }
-
-    .home-title-text__tiny-text {
-        font-size: 1.5rem;
-        letter-spacing: .1px;
-    }
-
-
 }
 
 

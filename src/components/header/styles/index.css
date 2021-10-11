@@ -2,53 +2,38 @@
     height: 2rem;
     margin-bottom: 1.5rem;
 }
-
 #main-menu {
     display: none;
 }
-
 #menu-starter {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 #menu-starter svg{
     width: 1rem;
 
 }
-
 .main-header__group {
     display: flex;
     justify-content: space-between;
 }
-
-.main-header__group_menu {
-
-}
-
 .additional-menu {
     list-style: none;
     padding: 0;
     display: flex;
     order: -1;
-    display: flex;
     align-items: center;
 
-}
-.additional-menu__item {
-    margin-right: .5rem;
-}
-
-.additional-menu__item_link {
-
-}
-
-.additional-menu__item_link svg,
-.additional-menu__item_link img {
-    width: .9rem;
+    &__item {
+        margin-right: .5rem;
+    }
+    &__item_link svg,
+    &__item_link img {
+        width: .9rem;
+    }
+    &__item_link svg {
+        color: var(--back-light-black);
+    }
 }
 
-.additional-menu__item_link svg {
-    color: var(--back-light-black);
-}

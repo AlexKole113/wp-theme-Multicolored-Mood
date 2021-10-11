@@ -26,13 +26,14 @@ const HTML = ({title}) => (`
                 <a href="" class="last-posts__item_text_title">Is “Food-Tech” the Future of Food?</a>
             </div>
         </div>
-        <div class="last-posts__item__loading">
-            <div class="last-posts__item_img__loading"></div>
-            <div class="last-posts__item_text">
-                <div href="" class="last-posts__item_text_title__loading"></div>
-                <div href="" class="last-posts__item_text_title__loading_2"></div>
-            </div>
-        </div>
+        
+<!--        <div class="last-posts__item__loading">-->
+<!--            <div class="last-posts__item_img__loading"></div>-->
+<!--            <div class="last-posts__item_text">-->
+<!--                <div href="" class="last-posts__item_text_title__loading"></div>-->
+<!--                <div href="" class="last-posts__item_text_title__loading_2"></div>-->
+<!--            </div>-->
+<!--        </div>-->
         
     </div>        
        

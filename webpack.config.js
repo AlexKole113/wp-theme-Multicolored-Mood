@@ -48,25 +48,25 @@ module.exports = {
 				}
 			],
 		},
-		{
-			test: /\.html$/,
-			use: 'html-loader',
-		},
-		{
-			test: /\.js$/,
-			use: {
-				loader: 'babel-loader',
-				options: {
-					presets: ['@babel/preset-env']
+			{
+				test: /\.html$/,
+				use: 'html-loader',
+			},
+			{
+				test: /\.js$/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env']
+					}
 				}
-			}
-		},
-		{
-			test: /\.(png|jpg|jpeg)/,
-			use: [ {
-				loader: 'file-loader',
-			} ],
-		},
+			},
+			{
+				test: /\.(png|jpg|jpeg)/,
+				use: [ {
+					loader: 'file-loader',
+				} ],
+			},
 		],
 	},
 	plugins: [
@@ -84,6 +84,5 @@ module.exports = {
 			new CssMinimizerPlugin(),
 		],
 	},
-
 };
 
