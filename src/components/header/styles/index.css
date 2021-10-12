@@ -1,7 +1,3 @@
-.main-header {
-    height: 2rem;
-    margin-bottom: 1.5rem;
-}
 #main-menu {
     display: none;
 }
@@ -12,11 +8,15 @@
 }
 #menu-starter svg{
     width: 1rem;
-
 }
-.main-header__group {
-    display: flex;
-    justify-content: space-between;
+
+.main-header {
+    height: 2rem;
+    margin-bottom: 1.5rem;
+    &__group {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .additional-menu {
     list-style: none;
@@ -27,13 +27,42 @@
 
     &__item {
         margin-right: .5rem;
+        &_link svg,
+        &_link img {
+            width: .9rem;
+        }
+        &_link svg {
+            color: var(--back-light-black);
+        }
     }
-    &__item_link svg,
-    &__item_link img {
-        width: .9rem;
+
+}
+
+@mixin lg {
+    .main-header {
+        margin-bottom: 1.25rem;
+        &__group {
+          &_menu {
+              order: -1;
+          }
+        }
     }
-    &__item_link svg {
-        color: var(--back-light-black);
+
+    #menu-starter svg{
+        width: .75rem;
+    }
+
+    .additional-menu {
+        &__item {
+            &:last-child {
+                margin-right: 0;
+            }
+            &_link svg,
+            &_link img {
+                width: .75rem;
+            }
+        }
+
     }
 }
 

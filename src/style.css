@@ -7,8 +7,6 @@
 /* components */
 @import './components/header/styles/index.css';
 @import './components/home-title-text/styles/index.css';
-@import './components/top-post/styles/index.css';
-@import './components/slider/styles/index.css';
 @import './components/footer/styles/index.css';
 
 /* pages */

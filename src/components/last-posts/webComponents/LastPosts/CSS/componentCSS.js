@@ -66,6 +66,37 @@ const CSS = `
                 50% { width: 100% }
                 100% { width: 80% }    
             }
+            
+            
+            @media ( min-width: 1024px ) {
+                :host .last-posts {
+                     height: 100%;
+                     padding: 1.5rem 2.95rem 1.25rem;
+                }
+                 :host .last-posts__title {
+                    margin: 0;
+                    margin-bottom: 1.5rem;
+                }
+                :host .last-posts__item_text_title {
+                    font-size: .71rem;
+                }
+                :host .last-posts__item,
+                :host .last-posts__item__loading {
+                    display: grid;
+                    grid-template-columns: 2.85rem 1fr;
+                    margin-bottom: 1.25rem;
+                }
+                :host .last-posts__group {
+                    padding-left: .3rem;
+                }
+                :host .last-posts__item_img {
+                    height: 2.85rem;     
+                }
+                :host .last-posts__item_text {
+                        align-items: center;
+                        justify-content: center;
+                }
+            }
         </style>
     `;
 

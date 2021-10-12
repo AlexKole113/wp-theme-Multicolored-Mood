@@ -24,8 +24,8 @@ img {
 }
 
 .page-container {
-    padding-left: 1.65rem;
-    padding-right: 1.65rem;
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
 }
 
 

@@ -107,36 +107,13 @@ const CSS = `
                     width: 100%;
                 }                                                           
                 :host  .widget-title {                                           
-                    font-size: 2.45rem;
-                }  
-                :host .widget-excerpt {
-                    display: block;
-                    font-size: 1rem;
-                    font-weight: 800;
-     
-                } 
-                :host .home-widget-text-center .widget-title {
-                    text-align: center;    
-                } 
-                :host .home-widget-text-left .widget-title {
-                    text-align: left; 
-                    left: 4.25vw;
+                    font-size: 3.45rem;
+                    padding-top: 1.5rem;
                 }                                                        
-                :host .social-links__group {
-                    padding: 0;
-                }                      
-                :host .social-links {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    right: 0;
-                    width: 5.75rem;
-                    z-index: 5;
+                :host .dots-container {
+                    bottom: 1.15rem;
                 }
-                :host .social-links__item:first-child {
-                    margin-top: 2.8rem;
-                }
+                
             }
         </style>
 `;

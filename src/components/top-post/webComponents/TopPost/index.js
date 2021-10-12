@@ -17,8 +17,9 @@ export default class TopPost extends HTMLElement {
             title: this.getAttribute('title'),
             excerpt: this.getAttribute('excerpt'),
             link: this.getAttribute('link'),
-            lentText: this.getAttribute('lentText'),
+            linkText: this.getAttribute('linkText') ?? 'More',
             imageURL: this.getAttribute('imageURL'),
+            titleSize: this.getAttribute('titleSize') ?? 'medium',
         }
         TopPost.template.innerHTML = TopPost.getTemplate( this.props );
         this?.shadowRoot?.append( TopPost.template.content.cloneNode(true) );

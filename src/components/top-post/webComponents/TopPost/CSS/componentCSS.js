@@ -11,7 +11,7 @@ const CSS = `
                 display: flex;
                 flex-flow: column;
                 background-position: 50% 50%;
-            }
+            }       
             :host .home-widget-collection-text {
                  position: absolute;
                  top:0;
@@ -59,7 +59,30 @@ const CSS = `
                 display: inline;
                 color: var(--text-white);
                 height: var(--link-size); 
-            }     
+            } 
+            @media (min-width: 1024px) {
+                :host .top-post {
+                    height: 100%;
+                    min-height: 100%;
+                    position: relative;
+                }
+                :host .widget-title {
+                    padding-top: 1.5rem;
+                    text-align: left;
+                    left: 2.5rem;
+                    font-size: 1rem;
+                }
+                :host .widget-title.big {
+                   padding-top: 2rem;
+                   font-size: 2.5rem;
+                }
+                
+                :host .widget-link {
+                    position: absolute;
+                    right: 3rem;
+                    bottom: 1rem;        
+                }
+            }   
         </style>
 `;
 

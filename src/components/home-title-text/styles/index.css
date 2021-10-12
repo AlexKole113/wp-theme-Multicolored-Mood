@@ -7,20 +7,15 @@
     }
 }
 
-@mixin lg  {
-
+@mixin lg {
     .home-title-text {
-        padding: 0 0 0 var(--page-padding);
-
         &__title {
-            font-size: 4.1rem;
+            font-size: 3rem;
             letter-spacing: .1px;
             margin-bottom: .25rem;
         }
-
         &__tiny-text {
-            font-size: 1.5rem;
-            letter-spacing: .1px;
+            font-size: .84rem;
         }
     }
 }
