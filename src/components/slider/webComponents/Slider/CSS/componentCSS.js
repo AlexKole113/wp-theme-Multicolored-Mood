@@ -20,8 +20,7 @@ const CSS = `
             :host .home-widget-container {
                 position: relative;
                 height: 100%;
-            }  
-                      
+            }       
             :host .home-widget-collection-text {
                  position: absolute;
                  top:0;
@@ -71,7 +70,6 @@ const CSS = `
                 color: var(--text-white);
                 height: var(--link-size); 
             }  
-            
             :host .dots-container {
                 display: flex;
                 align-items: center;
@@ -90,16 +88,20 @@ const CSS = `
                 position: relative;
                 border: 1px solid var(--text-white);
             } 
-            :host .dots-item.active-dot:before {
-                content: '';
-                position: absolute;
-                background-color: var(--text-white);
-                top: 2px;
-                right: 2px;
-                bottom: 2px;
-                left: 2px;
-                border-radius: 100%;
-            }               
+            :host .dots-item circle {
+              fill: rgba(221,221,221,0.32);
+              stroke: var(--text-white);
+              stroke-width: 20;
+              stroke-dasharray: 0 64;
+              transition: stroke-dasharray .3s ease;
+            }
+            :host .dots-item svg {
+              margin: -1px;
+              transform: rotate(-90deg);
+              background: transparent;
+              border-radius: 50%;
+              display: block;
+            }              
             @media (min-width: 1024px) {              
                 :host .home-widget-container {
                     padding-right: 0;

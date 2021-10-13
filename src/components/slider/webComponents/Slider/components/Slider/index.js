@@ -5,6 +5,9 @@ import Swipe from "../Swiper";
 
 class Slider extends EventBus {
 
+    static getDotTemplate = (attrs = '') => `<svg width="20" height="20" class="chart"><circle r="10" cx="10" cy="10" ${attrs} /></svg>`;
+    static dotDashArrayValue = 64;
+
     events = new Map([
         ['START',   []],
         ['NEXT',     []],
@@ -22,7 +25,6 @@ class Slider extends EventBus {
         this.container.dispatchEvent( new CustomEvent( 'slider-prev', { cancelable:true } ) );
         const currentSlide =  ( this.currentSlide - 1 < 0) ? this.slidesAmount - 1 : this.currentSlide - 1 ;
 
-        this._activeDotsUpdate(currentSlide);
         this._work(currentSlide);
     }
 
@@ -32,7 +34,6 @@ class Slider extends EventBus {
         this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
         const currentSlide = (this.currentSlide + 1) % this.slidesAmount;
 
-        this._activeDotsUpdate(currentSlide);
         this._work(currentSlide);
     }
 
@@ -40,7 +41,6 @@ class Slider extends EventBus {
         if(this._process) return;
         this._process = true;
 
-        this._activeDotsUpdate(num);
         this._work(num);
     }
 
@@ -65,12 +65,27 @@ class Slider extends EventBus {
     _activeDotsUpdate = (newActiveSlide) => {
         if(this.navigationContainer){
             this.navigationContainer.querySelectorAll('.dots-item').forEach(item => {
-                if(item.getAttribute('data-slide') === `${newActiveSlide}`) {
+                item.innerHTML = '';
+            })
+            return new Promise((resolve) => {
+                this.navigationContainer.querySelectorAll('.dots-item').forEach(item => {
+                    if( item.getAttribute('data-slide') === `${newActiveSlide}` ) {
+                        item.innerHTML = Slider.getDotTemplate();
 
-                    item.classList.add('active-dot')
-                } else {
-                    item.classList.remove('active-dot')
-                }
+                        const percent = Slider.dotDashArrayValue / 18;
+                        let start = 0;
+
+                        const interval = setInterval(() => {
+                            item.querySelector( 'circle' ).style.strokeDasharray = `${ (start+=percent).toFixed(0) } ${Slider.dotDashArrayValue}`;
+
+                            if ( start > Slider.dotDashArrayValue ) {
+                                clearInterval(interval);
+                                resolve(null)
+                            }
+
+                        },100 )
+                    }
+                })
             })
         }
     }
@@ -80,7 +95,9 @@ class Slider extends EventBus {
         for(let i = 0; i < this.images.length; i++){
             const dot = document.createElement('span');
             dot.classList.add('dots-item')
-            if(i === 0) dot.classList.add('active-dot')
+            if(i === 0) {
+                dot.innerHTML = Slider.getDotTemplate(`style="stroke-dasharray: 64 64"`);
+            }
             dot.setAttribute('data-slide', i);
             dot.addEventListener('click', ()=>{
                 this.goTo(i)
@@ -90,8 +107,8 @@ class Slider extends EventBus {
         this.navigationContainer = container;
     }
 
-    _work = (slideNum) => {
-        Promise.all([this.imageEffect.next( slideNum ),this.textEffect.next( slideNum )])
+    _work = ( slideNum ) => {
+        Promise.all([this.imageEffect.next( slideNum ), this.textEffect.next( slideNum ), this._activeDotsUpdate( slideNum ) ])
             .then(()=>{
                 this.currentSlide = slideNum;
                 this._process = false;
@@ -135,7 +152,7 @@ class Slider extends EventBus {
         const swiper = new Swipe(this.container);
         swiper.onLeft(()=>{
            this._do('NEXT')
-        }).onRight(()=>{
+        }).onRight(() => {
             this._do('PREV')
         }).run()
     }
