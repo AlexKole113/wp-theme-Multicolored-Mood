@@ -80,10 +80,12 @@ const CSS = `
                 height: 4.25rem;
             }
             :host .dots-item {
-                width: 1rem;
-                height: 1rem;
+                width: 24px;
+                height: 24px;
                 border-radius: 100%;
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 margin: 0 .5rem;
                 position: relative;
                 border: 1px solid var(--text-white);
@@ -96,7 +98,7 @@ const CSS = `
               transition: stroke-dasharray .3s ease;
             }
             :host .dots-item svg {
-              margin: -1px;
+              margin: 0;
               transform: rotate(-90deg);
               background: transparent;
               border-radius: 50%;
@@ -114,6 +116,15 @@ const CSS = `
                 }                                                        
                 :host .dots-container {
                     bottom: 1.15rem;
+                }
+                :host .dots-item {
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                }
+                
+                :host .dots-item svg {
+                    /*margin: -1px;*/
                 }
                 
             }

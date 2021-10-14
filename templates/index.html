@@ -15,18 +15,14 @@
             <!--  header  -->
             <header class="main-header">
                 <section class="main-header__group">
-                    <nav class="main-header__group_menu">
-                        <div id="menu-starter" class="humburger-slot">
-                            <svg viewBox="0 0 100 80" width="30" height="30">
-                                <rect width="100" height="10"></rect>
-                                <rect y="25" width="100" height="10"></rect>
-                                <rect y="50" width="100" height="10"></rect>
-                            </svg>
-                        </div>
-                        <div id="main-menu" class="main-menu">
-                            <ul class="primary-menu">
-                                <li class="menu-item">
-                                    <a class="primary-menu-link" href="#">
+
+                    <!--   MainMenu  -->
+                    <nav class="main-menu">
+                        <div class="main-menu__container">
+
+                            <ul class="main-menu__list">
+                                <li class="main-menu__list_item">
+                                    <a class="main-menu__list_item_link" href="#">
                                         <svg class="svg" width="300" height="30"  >
                                             <filter id="filter-1" >
                                                 <feTurbulence type="fractalNoise" baseFrequency="2"
@@ -39,51 +35,59 @@
                                         </svg>
                                     </a>
                                 </li>
-                                <li class="menu-item">
-                                    <a class="primary-menu-link" href="#">
-                                        <svg class="svg" width="100%" height="100%" >
-                                            <filter id="filter-2" >
+                                <li class="main-menu__list_item">
+                                    <a class="main-menu__list_item_link" href="#">
+                                        <svg class="svg" width="300" height="30"  >
+                                            <filter id="filter-1" >
                                                 <feTurbulence type="fractalNoise" baseFrequency="2"
                                                               numOctaves="3" result="turbulence"/>
                                                 <feDisplacementMap in2="turbulence" in="SourceGraphic"
                                                                    scale="6" xChannelSelector="R" yChannelSelector="G"/>
                                             </filter>
                                             <!-- DILATED TEXT -->
-                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-2)">About Us</text>
+                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-1)" >Home</text>
                                         </svg>
                                     </a>
                                 </li>
-                                <li class="menu-item">
-                                    <a class="primary-menu-link" href="#">
-                                        <svg  class="svg" width="100%" height="100%">
-                                            <filter id="filter-3" >
+                                <li class="main-menu__list_item">
+                                    <a class="main-menu__list_item_link" href="#">
+                                        <svg class="svg" width="300" height="30"  >
+                                            <filter id="filter-1" >
                                                 <feTurbulence type="fractalNoise" baseFrequency="2"
                                                               numOctaves="3" result="turbulence"/>
                                                 <feDisplacementMap in2="turbulence" in="SourceGraphic"
                                                                    scale="6" xChannelSelector="R" yChannelSelector="G"/>
                                             </filter>
                                             <!-- DILATED TEXT -->
-                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-3)">Galleries</text>
+                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-1)" >Home</text>
                                         </svg>
                                     </a>
                                 </li>
-                                <li class="menu-item">
-                                    <a class="primary-menu-link" href="#">
-                                        <svg  class="svg" width="100%" height="100%">
-                                            <filter id="filter-4" >
+                                <li class="main-menu__list_item">
+                                    <a class="main-menu__list_item_link" href="#">
+                                        <svg class="svg" width="300" height="30"  >
+                                            <filter id="filter-1" >
                                                 <feTurbulence type="fractalNoise" baseFrequency="2"
                                                               numOctaves="3" result="turbulence"/>
                                                 <feDisplacementMap in2="turbulence" in="SourceGraphic"
                                                                    scale="6" xChannelSelector="R" yChannelSelector="G"/>
                                             </filter>
                                             <!-- DILATED TEXT -->
-                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-4)" >Contacts</text>
+                                            <text fill="white" dx="0" dy="50%" filter="url(#filter-1)" >Home</text>
                                         </svg>
                                     </a>
                                 </li>
                             </ul>
                         </div>
+                        <div class="main-menu__hamburger-slot">
+                            <svg viewBox="0 0 100 80" width="30" height="30">
+                                <rect width="100" height="10"></rect>
+                                <rect y="25" width="100" height="10"></rect>
+                                <rect y="50" width="100" height="10"></rect>
+                            </svg>
+                        </div>
                     </nav>
+
                     <ul class="additional-menu">
                         <li class="additional-menu__item">
                             <a class="additional-menu__item_link" href="#">

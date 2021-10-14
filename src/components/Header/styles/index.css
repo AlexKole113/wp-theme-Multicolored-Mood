@@ -1,15 +1,3 @@
-#main-menu {
-    display: none;
-}
-#menu-starter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#menu-starter svg{
-    width: 1rem;
-}
-
 .main-header {
     height: 2rem;
     margin-bottom: 1.5rem;
@@ -37,21 +25,10 @@
     }
 
 }
-
 @mixin lg {
     .main-header {
         margin-bottom: 1.25rem;
-        &__group {
-          &_menu {
-              order: -1;
-          }
-        }
     }
-
-    #menu-starter svg{
-        width: .75rem;
-    }
-
     .additional-menu {
         &__item {
             &:last-child {

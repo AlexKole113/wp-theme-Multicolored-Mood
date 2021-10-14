@@ -1,0 +1,89 @@
+.main-menu {
+    &__hamburger-slot {
+        user-select: none;
+        cursor: pointer;
+    }
+    &__container {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        top:0;
+        right: 0;
+        bottom: 0;
+        left:0;
+        position: fixed;
+        z-index: 10;
+        &:before {
+            position: absolute;
+            content: ' ';
+            left: 50%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-2%);
+            width: 42000px;
+            height: 943.82px;
+            background: url(./components/MainMenu/assets/ink.png) no-repeat 0 0;
+            background-size: 100% 100%;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        transition: all 2s;
+        opacity: 0;
+        z-index: 5;
+
+        &_item {
+            &_link {
+
+            }
+        }
+    }
+}
+
+.menu-open {
+    overflow: hidden;
+    .main-menu {
+        &__hamburger-slot {
+            position: fixed;
+            z-index: 10;
+        }
+        &__container {
+            display: flex;
+            &:before {
+                animation: cd-sprite 1s steps(24) forwards;
+            }
+        }
+        &__list {
+            opacity: 1;
+        }
+    }
+}
+
+.menu-closing {
+    overflow: hidden;
+    .main-menu {
+        &__container {
+            display: flex;
+            &:before {
+                animation: cd-sprite-reverse 1s steps(24) forwards;
+            }
+        }
+    }
+}
+
+@keyframes cd-sprite{
+    0% { transform:translateY(-50%) translateX(-2%) }
+    100% {transform:translateY(-50%) translateX(-98%)}
+}
+@keyframes cd-sprite-reverse{
+    0% { transform: translateY(-50%) translateX(-98%) }
+    100% { transform:translateY(-50%) translateX(-2%) }
+}
+
+@mixin lg {
+    .main-menu {
+        order: -1;
+    }
+}

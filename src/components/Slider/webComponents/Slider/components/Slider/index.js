@@ -5,7 +5,7 @@ import Swipe from "../Swiper";
 
 class Slider extends EventBus {
 
-    static getDotTemplate = (attrs = '') => `<svg width="20" height="20" class="chart"><circle r="10" cx="10" cy="10" ${attrs} /></svg>`;
+    static getDotTemplate = (attrs = '') => `<svg width="20" height="20"><circle r="10" cx="10" cy="10" ${attrs} /></svg>`;
     static dotDashArrayValue = 64;
 
     events = new Map([

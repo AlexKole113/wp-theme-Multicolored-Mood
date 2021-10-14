@@ -5,9 +5,10 @@
 @import './common/styles/colors.css';
 
 /* components */
-@import './components/header/styles/index.css';
-@import './components/home-title-text/styles/index.css';
-@import './components/footer/styles/index.css';
+@import './components/Header/styles/index.css';
+@import './components/MainMenu/styles/index.css';
+@import './components/HomeTitleText/styles/index.css';
+@import './components/Footer/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';
