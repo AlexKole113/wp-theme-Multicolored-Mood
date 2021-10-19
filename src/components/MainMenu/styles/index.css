@@ -21,7 +21,7 @@
             transform: translateY(-50%) translateX(-2%);
             width: 42000px;
             height: 943.82px;
-            background: url(./components/MainMenu/assets/ink.png) no-repeat 0 0;
+            background: url(./components/MainMenu/assets/ink1.png) no-repeat 0 0;
             background-size: 100% 100%;
         }
     }
@@ -39,7 +39,6 @@
         }
     }
 }
-
 .menu-open {
     overflow: hidden;
     .main-menu {
