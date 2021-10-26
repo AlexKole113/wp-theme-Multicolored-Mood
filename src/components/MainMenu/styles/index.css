@@ -1,7 +1,12 @@
 .main-menu {
+    z-index: 10;
     &__hamburger-slot {
         user-select: none;
         cursor: pointer;
+        svg {
+            transition: fill .9s .2s;
+            fill: var(--back-pure-black);
+        }
     }
     &__container {
         display: none;
@@ -12,7 +17,7 @@
         bottom: 0;
         left:0;
         position: fixed;
-        z-index: 10;
+        z-index: -1;
         &:before {
             position: absolute;
             content: ' ';
@@ -20,44 +25,56 @@
             top: 50%;
             transform: translateY(-50%) translateX(-2%);
             width: 42000px;
-            height: 943.82px;
+            min-height: 943.82px;
+            height: 100%;
             background: url(./components/MainMenu/assets/ink1.png) no-repeat 0 0;
             background-size: 100% 100%;
         }
+
     }
     &__list {
+        width: 100%;
+        height: 100%;
         list-style: none;
         display: flex;
+        flex-flow: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
         padding: 0;
         opacity: 0;
         z-index: 5;
+    }
+    &__item {
+        text-align: center;
 
-        &_item {
-            &_link {
-
-            }
-        }
+    }
+    &__link {
+        font-weight: 300;
+        font-size: 1.25rem;
+        text-decoration: none;
+        color: var(--text-white);
     }
 }
 .menu-open {
     overflow: hidden;
     .main-menu {
         &__hamburger-slot {
-            position: fixed;
-            z-index: 10;
+            svg {
+                fill: var(--text-white);
+            }
         }
         &__container {
             display: flex;
             &:before {
-                animation: cd-sprite 1s steps(24) forwards;
+                animation: cd-sprite 1.2s steps(24) forwards;
             }
         }
         &__list {
-            animation: show-menu 1s .8s forwards;
+            animation: show-menu 1s 1s forwards;
         }
     }
 }
-
 .menu-closing {
     overflow: hidden;
     .main-menu {
@@ -72,7 +89,6 @@
         }
     }
 }
-
 @keyframes cd-sprite{
     0% { transform:translateY(-50%) translateX(-2%) }
     100% {transform:translateY(-50%) translateX(-98%)}
@@ -81,7 +97,6 @@
     0% { transform: translateY(-50%) translateX(-98%) }
     100% { transform:translateY(-50%) translateX(-2%) }
 }
-
 @keyframes show-menu {
     0% { opacity: 0 }
     100% { opacity: 1 }
@@ -90,9 +105,12 @@
     0% {  opacity: 1 }
     100% { opacity: 0 }
 }
-
 @mixin lg {
     .main-menu {
         order: -1;
+        &__list {
+            height: auto;
+            flex-flow: row;
+        }
     }
 }

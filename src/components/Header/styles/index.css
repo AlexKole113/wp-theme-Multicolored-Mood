@@ -15,15 +15,14 @@
 
     &__item {
         margin-right: .5rem;
-        &_link svg,
-        &_link img {
-            width: .9rem;
-        }
-        &_link svg {
-            color: var(--back-light-black);
-        }
     }
-
+    &__link svg,
+    &__link img {
+        width: .9rem;
+    }
+    &__link svg {
+        color: var(--back-light-black);
+    }
 }
 @mixin lg {
     .main-header {
@@ -34,12 +33,11 @@
             &:last-child {
                 margin-right: 0;
             }
-            &_link svg,
-            &_link img {
-                width: .75rem;
-            }
         }
-
+        &__link svg,
+        &__link img {
+            width: .75rem;
+        }
     }
 }
 

@@ -1,0 +1,15 @@
+.social-links {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    &__list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__link {
+        svg {
+            width: 1.75rem;
+        }
+    }
+}

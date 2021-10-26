@@ -1,27 +1,5 @@
 .footer {
     background-color: var(--back-pure-black);
-    &__links {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        &_list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-            &_item {
-                &_link {
-
-                }
-            }
-        }
-    }
-    &__copyrights {
-        font-size: .79rem;
-        text-align: center;
-        padding-top: 2.85rem;
-        padding-bottom: 2.85rem;
-        color: var(--text-white);
-    }
 }
 @mixin lg {
     .footer {

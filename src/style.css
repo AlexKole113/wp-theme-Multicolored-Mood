@@ -9,6 +9,8 @@
 @import './components/MainMenu/styles/index.css';
 @import './components/HomeTitleText/styles/index.css';
 @import './components/Footer/styles/index.css';
+@import './components/Social-links/styles/index.css';
+@import './components/Copyrights/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';
