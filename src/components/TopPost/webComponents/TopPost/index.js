@@ -1,5 +1,6 @@
 import componentCSS from "./CSS/componentCSS.js";
 import componentHTML from "./HTML/componentHTML.js";
+import OpenPostHandler from "./components/OpenPostHandler";
 export default class TopPost extends HTMLElement {
 
     static getTemplate = ( props ) => (`
@@ -23,6 +24,16 @@ export default class TopPost extends HTMLElement {
         }
         TopPost.template.innerHTML = TopPost.getTemplate( this.props );
         this?.shadowRoot?.append( TopPost.template.content.cloneNode(true) );
+    }
+
+    connectedCallback() {
+        this.openPost = new OpenPostHandler({parent: this?.shadowRoot});
+        this.openPost.init();
+
+        this?.shadowRoot.querySelector('.widget-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openPost.toggle()
+        })
     }
 }
 
