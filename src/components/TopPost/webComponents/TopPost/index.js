@@ -1,3 +1,5 @@
+// Custom Events:
+// 'open-post' - on post open
 import componentCSS from "./CSS/componentCSS.js";
 import componentHTML from "./HTML/componentHTML.js";
 import OpenPostHandler from "./components/OpenPostHandler";
@@ -27,7 +29,7 @@ export default class TopPost extends HTMLElement {
     }
 
     connectedCallback() {
-        this.openPost = new OpenPostHandler({parent: this?.shadowRoot});
+        this.openPost = new OpenPostHandler({ parent: this });
         this.openPost.init();
 
         this?.shadowRoot.querySelector('.widget-link').addEventListener('click', (e) => {

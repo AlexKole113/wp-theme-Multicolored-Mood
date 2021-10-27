@@ -18,3 +18,4 @@ document?.querySelector('HomeWidget')?.addEventListener('activate', (e)=>{ e.pre
 //Components
 const mainMenu = new MainMenu({menu: document.querySelector('.main-menu__container'), button: document.querySelector('.main-menu__hamburger-slot')})
 mainMenu.init();
+

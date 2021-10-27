@@ -60,6 +60,24 @@ const CSS = `
                 color: var(--text-white);
                 height: var(--link-size); 
             } 
+           
+            :host .content {
+                transition: width .9s ease-in-out, transform .6s;
+                position: fixed;
+                top:0;
+                right:0;
+                height: 100vh;
+                width: 0;
+                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000 60%, rgba(0,0,0,0.02) 90%);
+                z-index: 1000;
+                transform: translateX(120vw);
+          
+            }
+            :host .is-open .content {
+                width: 125vw;
+                transform: translateX(0);
+            }
+            
             @media (min-width: 1024px) {
                 :host .top-post {
                     height: 100%;

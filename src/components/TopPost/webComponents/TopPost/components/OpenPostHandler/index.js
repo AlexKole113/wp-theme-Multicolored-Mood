@@ -13,6 +13,12 @@ class OpenPostHandler extends EventBus{
     init = () => {
         this._on('START', this.start );
         this._on('END', this.stop );
+
+        // DELETE (its for testing)
+        this.parent?.shadowRoot.querySelector('.content').addEventListener('click',()=>{
+            console.log('click')
+            this._do('END')
+        } )
     }
 
     start = () => {
@@ -20,23 +26,11 @@ class OpenPostHandler extends EventBus{
             ...this.state,
             isActive: true
         }
+        this.parent.dispatchEvent( new CustomEvent( 'open-post', { cancelable:true } ) );
 
+        //TEST
         console.log('OPEN POST WINDOW');
-
-        // EFFECT CREATE
-        this.overlay = document.createElement('div');
-        this.overlay.style.position = 'fixed';
-        this.overlay.style.overflow = 'hidden';
-        this.overlay.style.top = '0';
-        this.overlay.style.left = '0';
-        this.overlay.style.width = '100vw';
-        this.overlay.style.height = '100vh';
-        this.overlay.style.zIndex = '1000';
-        this.overlay.style.backgroundColor = 'rgba(0,0,0,0.48)';
-        this.overlay.onclick = () => {
-            this._do('END')
-        }
-        this.parent.append(this.overlay);
+        this.parent?.shadowRoot.querySelector('.top-post').classList.add('is-open')
 
     }
 
@@ -46,10 +40,9 @@ class OpenPostHandler extends EventBus{
             isActive: false
         }
 
+        //TEST
         console.log('CLOSE POST WINDOW');
-
-        // EFFECT remove
-        this.overlay.remove();
+        this.parent?.shadowRoot.querySelector('.top-post').classList.remove('is-open')
     }
 
 
