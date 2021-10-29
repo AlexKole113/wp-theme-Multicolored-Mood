@@ -85,7 +85,7 @@ const CSS = `
                 left:0;
                 background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000 60%, rgba(0,0,0,0.02) 90%);
                 background-size: 300%;
-                transition: background-size .4s ease-in-out .2s;      
+                transition: background-size .2s ease-in-out .2s;      
             }
             :host .is-open .content {
                 width: 125vw;
@@ -99,8 +99,8 @@ const CSS = `
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transform: scale(1.2) rotate(10deg);  
-                transition: transform .4s ease-in-out .4s;    
+                transform: scale(1.2) rotate(8deg);  
+                transition: transform .3s ease-in-out .4s;    
             }
             :host .is-open .content__image img {
                  transform: scale(1) rotate(0deg);   
