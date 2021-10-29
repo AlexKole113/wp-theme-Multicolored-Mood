@@ -62,20 +62,48 @@ const CSS = `
             } 
            
             :host .content {
-                transition: width .9s ease-in-out, transform .6s;
+                display: grid;
+                grid-template-columns: 57% 43%;
+                transition: width .4s ease-in-out,                           
+                            transform .4s ease-in-out,    
+                            opacity .4s ease-in-out;
                 position: fixed;
                 top:0;
                 right:0;
                 height: 100vh;
                 width: 0;
-                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000 60%, rgba(0,0,0,0.02) 90%);
                 z-index: 1000;
                 transform: translateX(120vw);
-          
+                opacity: 0;
+            }
+            :host .content:after {
+                content: ' ';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left:0;
+                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000 60%, rgba(0,0,0,0.02) 90%);
+                background-size: 300%;
+                transition: background-size .4s ease-in-out .2s;      
             }
             :host .is-open .content {
                 width: 125vw;
-                transform: translateX(0);
+                opacity: 1;
+                transform: translateX(0); 
+            }    
+            :host .is-open .content:after {
+                background-size: 100%;       
+            }
+            :host .content__image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: scale(1.2) rotate(10deg);  
+                transition: transform .4s ease-in-out .4s;    
+            }
+            :host .is-open .content__image img {
+                 transform: scale(1) rotate(0deg);   
             }
             
             @media (min-width: 1024px) {

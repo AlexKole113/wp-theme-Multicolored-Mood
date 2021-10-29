@@ -14,7 +14,9 @@ const HTML = ({title, excerpt, link, linkText, titleSize, imageURL}) => {
         </span>
          <div class="content">
               <div class="content__text"></div>
-              <div class="content__image"></div>
+              <div class="content__image">
+                    <img src="${imageURL}" alt="${title}">
+              </div>
         </div>         
     </div>
     `)
