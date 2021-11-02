@@ -54,7 +54,7 @@ const CSS = `
             :host .widget-link__text {
                 margin-right: .5rem;
                 font-size: var(--link-size); 
-            }
+            }  
             :host .widget-link__icon {
                 display: inline;
                 color: var(--text-white);
@@ -62,11 +62,13 @@ const CSS = `
             } 
            
             :host .content {
+                --transition-timing: .4s;
+                --transition-line: ease-in-out;
                 display: grid;
-                grid-template-columns: 57% 43%;
-                transition: width .4s ease-in-out,                           
-                            transform .4s ease-in-out,    
-                            opacity .4s ease-in-out;
+                grid-template-columns: 50% 50%;
+                transition: width var(--transition-timing) var(--transition-line),                           
+                            transform var(--transition-timing) var(--transition-line),    
+                            opacity var(--transition-timing) var(--transition-line);
                 position: fixed;
                 top:0;
                 right:0;
@@ -83,9 +85,9 @@ const CSS = `
                 right: 0;
                 bottom: 0;
                 left:0;
-                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000 60%, rgba(0,0,0,0.02) 90%);
+                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
                 background-size: 300%;
-                transition: background-size .2s ease-in-out .2s;      
+                transition: background-size var(--transition-timing) var(--transition-line);      
             }
             :host .is-open .content {
                 width: 125vw;
@@ -95,17 +97,23 @@ const CSS = `
             :host .is-open .content:after {
                 background-size: 100%;       
             }
+            :host .content__text {
+                position: relative;
+                z-index: 5;
+                color: var(--text-white);
+                padding: 8rem 4rem;
+                padding-left: 46%;
+            }
             :host .content__image img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transform: scale(1.2) rotate(8deg);  
-                transition: transform .3s ease-in-out .4s;    
+                transform: scale(1.15) rotate(8deg);  
+                transition: transform .3s ease-in-out .3s;    
             }
             :host .is-open .content__image img {
                  transform: scale(1) rotate(0deg);   
             }
-            
             @media (min-width: 1024px) {
                 :host .top-post {
                     height: 100%;
@@ -121,8 +129,7 @@ const CSS = `
                 :host .widget-title.big {
                    padding-top: 2rem;
                    font-size: 2.5rem;
-                }
-                
+                }                
                 :host .widget-link {
                     position: absolute;
                     right: 3rem;

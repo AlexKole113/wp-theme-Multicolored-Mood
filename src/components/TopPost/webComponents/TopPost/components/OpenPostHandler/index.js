@@ -1,4 +1,6 @@
 import EventBus from "../../../../../../common/scripts/EventBus";
+import textEffect from "../TextEffect";
+import TextEffect from "../TextEffect";
 
 class OpenPostHandler extends EventBus{
 
@@ -8,6 +10,8 @@ class OpenPostHandler extends EventBus{
             isActive : false
         }
         this.parent = parent;
+        this.textEffect = new TextEffect({parent, classNameTextContainer: '.widget-content'});
+        this.textEffect.init()
     }
 
     init = () => {
@@ -30,8 +34,9 @@ class OpenPostHandler extends EventBus{
 
         //TEST
         console.log('OPEN POST WINDOW');
-        this.parent?.shadowRoot.querySelector('.top-post').classList.add('is-open')
-
+        this.parent?.shadowRoot.querySelector('.top-post').classList.add('is-open');
+        document.body.classList.add('top-post-widget-open');
+        this.textEffect.start();
     }
 
     stop = () => {
@@ -43,6 +48,8 @@ class OpenPostHandler extends EventBus{
         //TEST
         console.log('CLOSE POST WINDOW');
         this.parent?.shadowRoot.querySelector('.top-post').classList.remove('is-open')
+        document.body.classList.remove('top-post-widget-open')
+        this.textEffect.stop();
     }
 
 

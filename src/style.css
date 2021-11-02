@@ -11,6 +11,7 @@
 @import './components/Footer/styles/index.css';
 @import './components/Social-links/styles/index.css';
 @import './components/Copyrights/styles/index.css';
+@import './components/TopPost/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';

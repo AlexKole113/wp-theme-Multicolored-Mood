@@ -1,0 +1,22 @@
+.widget-content {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility 0s .4s;
+    &__title {
+        font-size: 3.12rem;
+        margin-bottom: 3rem;
+    }
+    &__text{
+        line-height: 1.25;
+        margin-bottom: 1.25rem;
+        font-size: 1.2rem;
+    }
+}
+
+.top-post-widget-open {
+    .widget-content {
+        transition: opacity .4s, visibility 0s;
+        visibility: visible;
+        opacity: 1;
+    }
+}

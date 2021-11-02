@@ -31,7 +31,6 @@ export default class TopPost extends HTMLElement {
     connectedCallback() {
         this.openPost = new OpenPostHandler({ parent: this });
         this.openPost.init();
-
         this?.shadowRoot.querySelector('.widget-link').addEventListener('click', (e) => {
             e.preventDefault();
             this.openPost.toggle()

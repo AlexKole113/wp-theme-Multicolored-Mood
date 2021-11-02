@@ -13,7 +13,9 @@ const HTML = ({title, excerpt, link, linkText, titleSize, imageURL}) => {
             </a>  
         </span>
          <div class="content">
-              <div class="content__text"></div>
+              <div class="content__text">
+                <slot name="content"></slot>
+              </div>
               <div class="content__image">
                     <img src="${imageURL}" alt="${title}">
               </div>
