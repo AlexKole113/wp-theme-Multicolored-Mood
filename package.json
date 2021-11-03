@@ -4,7 +4,7 @@
   "description": "WordPress Theme",
   "main": "script.js",
   "scripts": {
-    "start": "webpack --mode=production",
+    "start": "webpack --progress --mode=production",
     "build": "webpack",
     "test": "npx cypress open"
   },
@@ -53,9 +53,9 @@
     "postcss-simple-vars": "6.0.2",
     "sass-loader": "10.1.0",
     "style-loader": "2.0.0",
-    "webpack": "5.6.0",
-    "webpack-cli": "4.2.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "browserslist": [
     "IE 10",

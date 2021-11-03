@@ -7,8 +7,6 @@ import Slider from "./components/Slider/webComponents/Slider/index.js";
 import TopPost from "./components/TopPost/webComponents/TopPost/index.js";
 import LastPosts from "./components/LastPosts/webComponents/LastPosts/index.js";
 
-
-
 // WebComponents init
 customElements.define( 'slider-component',  Slider );
 customElements.define( 'top-post-component',  TopPost );

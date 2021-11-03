@@ -1,3 +1,4 @@
+import componentContentCSS from "./partials/componentContentCSS";
 const CSS = `
         <style>           
             :host .top-post {
@@ -61,59 +62,7 @@ const CSS = `
                 height: var(--link-size); 
             } 
            
-            :host .content {
-                --transition-timing: .4s;
-                --transition-line: ease-in-out;
-                display: grid;
-                grid-template-columns: 50% 50%;
-                transition: width var(--transition-timing) var(--transition-line),                           
-                            transform var(--transition-timing) var(--transition-line),    
-                            opacity var(--transition-timing) var(--transition-line);
-                position: fixed;
-                top:0;
-                right:0;
-                height: 100vh;
-                width: 0;
-                z-index: 1000;
-                transform: translateX(120vw);
-                opacity: 0;
-            }
-            :host .content:after {
-                content: ' ';
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left:0;
-                background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
-                background-size: 300%;
-                transition: background-size var(--transition-timing) var(--transition-line);      
-            }
-            :host .is-open .content {
-                width: 125vw;
-                opacity: 1;
-                transform: translateX(0); 
-            }    
-            :host .is-open .content:after {
-                background-size: 100%;       
-            }
-            :host .content__text {
-                position: relative;
-                z-index: 5;
-                color: var(--text-white);
-                padding: 8rem 4rem;
-                padding-left: 46%;
-            }
-            :host .content__image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transform: scale(1.15) rotate(8deg);  
-                transition: transform .3s ease-in-out .3s;    
-            }
-            :host .is-open .content__image img {
-                 transform: scale(1) rotate(0deg);   
-            }
+            
             @media (min-width: 1024px) {
                 :host .top-post {
                     height: 100%;
@@ -137,6 +86,7 @@ const CSS = `
                 }
             }   
         </style>
+        ${componentContentCSS}
 `;
 
 export default CSS;
