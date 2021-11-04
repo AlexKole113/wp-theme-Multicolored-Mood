@@ -8,9 +8,9 @@ const componentContentCSS = `
         --transition-line: ease-in-out;
         display: grid;
         grid-template-columns: 50% 50%;
-        transition: width var(--transition-timing) var(--transition-line),                           
-                    transform var(--transition-timing) var(--transition-line),    
-                    opacity var(--transition-timing) var(--transition-line);
+        transition: width .4s var(--transition-line),                           
+                    transform .4s var(--transition-line),    
+                    opacity .4s var(--transition-line) .3s;
         position: fixed;
         top:0;
         right:0;
@@ -29,7 +29,14 @@ const componentContentCSS = `
         left:0;
         background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
         background-size: 300%;
-        transition: background-size var(--transition-timing) var(--transition-line);      
+        transition: background-size .3s var(--transition-line);      
+    }
+    :host .content__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.25) rotate(12deg);  
+        transition: transform .3s ease-in-out .3s;    
     }
     :host .is-open .content {
         width: 125vw;
@@ -46,13 +53,6 @@ const componentContentCSS = `
         padding: 8rem 4rem;
         padding-left: 46%;
         max-height: 100vh;
-    }
-    :host .content__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scale(1.15) rotate(8deg);  
-        transition: transform .3s ease-in-out .3s;    
     }
     :host .is-open .content__image img {
          transform: scale(1) rotate(0deg);   

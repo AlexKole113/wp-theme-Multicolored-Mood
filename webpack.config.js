@@ -19,14 +19,14 @@ module.exports = {
 	output: {
 		path: path.resolve( __dirname, 'dist' ),
 		filename: '[name].min.js',
-		publicPath: '/',
+		publicPath: '',
 	},
 	watch: true,
-	devServer: {
-		contentBase: path.resolve( __dirname ),
-		port: 9000,
-		hot: true
-	},
+	// devServer: {
+	// 	contentBase: path.resolve( __dirname ),
+	// 	port: 9000,
+	// 	hot: true
+	// },
 	module: {
 		rules: [ {
 			test: /\.css$/i,
