@@ -36,12 +36,17 @@ class ThreeImageChange {
 
         this.paused = true;
 
-        this.initiate(()=>{
-            this.settingsSetup();
-            this.addObjects();
-            this.resize();
-            this.play();
+        this.wasInitiated = new Promise((resolve)=>{
+            this.initiate(() => {
+                this.addObjects().then(()=>{
+                    this.settingsSetup();
+                    this.resize();
+                    this.play();
+                    resolve({initiated:true})
+                })
+            })
         })
+
 
         window.addEventListener('resize', this.resize )
     }
@@ -96,7 +101,8 @@ class ThreeImageChange {
 
         this.camera.updateProjectionMatrix();
     }
-    addObjects = () => {
+
+    addObjects = () => new Promise((resolve) => {
         this.material = new THREE.ShaderMaterial({
             extensions: {
                 derivatives: "#extension GL_OES_standard_derivatives : enable"
@@ -116,19 +122,17 @@ class ThreeImageChange {
                 radius: { type: "f", value: 0 },
                 texture1: { type: "f", value: this.textures[0] },
                 texture2: { type: "f", value: this.textures[1] },
-                displacement: { type: "f", value: new THREE.TextureLoader().load(this.displacement) },
+                displacement: { type: "f", value: new THREE.TextureLoader().load(this.displacement, resolve) },
                 resolution: { type: "v4", value: new THREE.Vector4() },
             },
             vertexShader: this.vertex,
             fragmentShader: this.fragment
         });
-
         this.geometry = new THREE.PlaneGeometry(1, 1, 2, 2);
         this.plane = new THREE.Mesh(this.geometry, this.material);
         this.scene.add(this.plane);
+    })
 
-
-    }
     stop = () => {
         this.paused = true;
     }

@@ -44,12 +44,14 @@ export default class SliderWidget extends HTMLElement {
     connectedCallback() {
         const slider = new Slider({
             items: this.props.data.items,
+            delay: 3000,
             container: this?.shadowRoot.querySelector('.home-widget-container'),
             transition: 2,
             displacement: this.props.displacement,
             effect: this.props.effect,
             navigationContainer: this?.shadowRoot.querySelector('.dots-container')
         });
+        slider.init();
 
 
         if(this?.shadowRoot.querySelectorAll('.dots-item')){
@@ -64,19 +66,6 @@ export default class SliderWidget extends HTMLElement {
             })
         }
     }
-
-    // attributeChangedCallback( name, oldVal, newVal ) {
-    //     console.log('name->',name)
-    //     switch ( name ) {
-    //         case 'data':
-    //             if( HomeWidget.isNewValChanged( newVal, oldVal ) ) {
-    //                 console.log( 'data changed' );
-    //             }
-    //             break;
-    //     }
-    // }
-
-
 }
 
 

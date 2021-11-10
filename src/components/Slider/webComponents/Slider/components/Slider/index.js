@@ -18,6 +18,53 @@ class Slider extends EventBus {
     ])
 
     _process = false;
+    _clearInterval = null;
+    _interval = 3000;
+
+    constructor({items, container, transition = 1 , navigationContainer, displacement, effect, delay}) {
+        super()
+        this.container = container;
+        this.images = items.map(({imageUrl}) => imageUrl);
+        this.text =  items.map(({title,text}) => [title,text]);
+        this._validateData();
+        this._interval = delay ?? 3000;
+        this.slidesAmount = this.images.length;
+        this.currentSlide = 0;
+        this.imageEffect = new ThreeImageChange({
+            displacement,
+            effect,
+            duration: transition,
+            images:this.images,
+            container
+        });
+        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.text-morph'), duration:transition});
+
+        if(navigationContainer){
+            this._setupNavigation(navigationContainer)
+        }
+    }
+
+    init = () => {
+        this._on('NEXT', this.next );
+        this._on('PREV', this.prev );
+        this._on('PAUSE', this.pause  );
+        this._on('STOP', this.stop );
+        this._on('DESTROY', this.destroy );
+        this.container.addEventListener('slider-next', (e)=>{
+            // console.log(e)
+        })
+        const swiper = new Swipe(this.container);
+        swiper.onLeft(()=>{
+            this._do('NEXT')
+        }).onRight(() => {
+            this._do('PREV')
+        }).run()
+
+        this.imageEffect.wasInitiated.then(()=>{
+            this.goTo(0)
+        })
+    }
+
 
     prev = () => {
         if(this._process) return;
@@ -29,6 +76,9 @@ class Slider extends EventBus {
     }
 
     next = () => {
+
+        window.clearInterval(this._clearInterval)
+
         if(this._process) return;
         this._process = true;
         this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
@@ -40,7 +90,7 @@ class Slider extends EventBus {
     goTo = (num) => {
         if(this._process) return;
         this._process = true;
-
+        window.clearInterval(this._clearInterval)
         this._work(num);
     }
 
@@ -112,51 +162,12 @@ class Slider extends EventBus {
             .then(()=>{
                 this.currentSlide = slideNum;
                 this._process = false;
+
+               this._clearInterval = setTimeout(()=>{
+                   this._do('NEXT')
+                },this._interval)
             })
     }
-
-    constructor({items, container, transition = 1 , navigationContainer, displacement, effect}) {
-        super()
-        this.container = container;
-        this.images = items.map(({imageUrl}) => imageUrl);
-        this.text =  items.map(({title,text}) => [title,text]);
-        this._validateData();
-
-        this.slidesAmount = this.images.length;
-        this.currentSlide = 0;
-        this.imageEffect = new ThreeImageChange({
-            displacement,
-            effect,
-            duration: transition,
-            images:this.images,
-            container
-        });
-        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.text-morph'), duration:transition});
-
-        if(navigationContainer){
-            this._setupNavigation(navigationContainer)
-        }
-        this.init()
-    }
-
-    init = () => {
-        this._on('NEXT', this.next );
-        this._on('PREV', this.prev );
-        this._on('PAUSE', this.pause  );
-        this._on('STOP', this.stop );
-        this._on('DESTROY', this.destroy );
-        this.container.addEventListener('slider-next', (e)=>{
-           // console.log(e)
-        })
-
-        const swiper = new Swipe(this.container);
-        swiper.onLeft(()=>{
-           this._do('NEXT')
-        }).onRight(() => {
-            this._do('PREV')
-        }).run()
-    }
-
 
 }
 
