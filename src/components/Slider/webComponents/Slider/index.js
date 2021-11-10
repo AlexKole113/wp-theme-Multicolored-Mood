@@ -23,6 +23,7 @@ export default class SliderWidget extends HTMLElement {
             text: this.getAttribute('text'),
             displacement: this.getAttribute('displacement'),
             effect: this.getAttribute('effect'),
+            delay: parseFloat(this.getAttribute('delay')),
         }
 
         SliderWidget.template.innerHTML = SliderWidget.getTemplate( this.props );
@@ -44,7 +45,7 @@ export default class SliderWidget extends HTMLElement {
     connectedCallback() {
         const slider = new Slider({
             items: this.props.data.items,
-            delay: 3000,
+            delay: this.props.delay,
             container: this?.shadowRoot.querySelector('.home-widget-container'),
             transition: 2,
             displacement: this.props.displacement,
