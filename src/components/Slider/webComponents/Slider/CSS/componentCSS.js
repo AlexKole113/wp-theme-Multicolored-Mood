@@ -27,9 +27,8 @@ const CSS = `
                  right: 0;
                  bottom: 0;
                  left:0;
-                 filter: url(#threshold) blur(0px); 
             }
-            :host .widget-title {
+            :host .widget-text {
                 display: block;
                 color: var(--font-color);
                 position: absolute;
@@ -46,7 +45,7 @@ const CSS = `
                 white-space: nowrap;
                 padding-top: 2.75rem;
             }  
-            :host .widget-excerpt {
+            :host .widget-text__excerpt {
                 display: block;
                 font-weight: 500;
                 margin-top: .5rem;
@@ -103,7 +102,8 @@ const CSS = `
               background: transparent;
               border-radius: 50%;
               display: block;
-            }              
+            }  
+                  
             @media (min-width: 1024px) {              
                 :host .home-widget-container {
                     padding-right: 0;
@@ -122,11 +122,6 @@ const CSS = `
                     height: 24px;
                     cursor: pointer;
                 }
-                
-                :host .dots-item svg {
-                    /*margin: -1px;*/
-                }
-                
             }
         </style>
 `;

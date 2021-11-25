@@ -1,16 +1,14 @@
 import componentCSS from "./CSS/componentCSS.js";
 import componentHTML from "./HTML/componentHTML.js";
 import Slider from "./components/Slider/index.js";
-export default class SliderWidget extends HTMLElement {
 
+export default class SliderWidget extends HTMLElement {
 
     static getTemplate = ( props ) => (`
         ${ componentCSS }
         ${ componentHTML( props ) }
     `);
     //static isNewValChanged = ( newVal, oldVal ) => newVal !== oldVal
-
-
     static observedAttributes = [ 'data' , 'text', 'displacement', 'effect' ];
     static template = document.createElement('template');
 
@@ -53,7 +51,6 @@ export default class SliderWidget extends HTMLElement {
             navigationContainer: this?.shadowRoot.querySelector('.dots-container')
         });
         slider.init();
-
 
         if(this?.shadowRoot.querySelectorAll('.dots-item')){
 

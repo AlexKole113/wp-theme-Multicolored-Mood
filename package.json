@@ -63,5 +63,6 @@
     "> 0.25%",
     "iOS 7",
     "last 3 iOS versions"
-  ]
+  ],
+  "dependencies": {}
 }

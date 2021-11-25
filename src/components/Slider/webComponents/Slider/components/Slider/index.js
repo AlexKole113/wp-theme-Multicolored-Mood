@@ -38,10 +38,7 @@ class Slider extends EventBus {
             container
         });
         this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.text-morph'), duration:transition});
-
-        if(navigationContainer){
-            this._setupNavigation(navigationContainer)
-        }
+        if(navigationContainer) this._setupNavigation(navigationContainer);
     }
 
     init = () => {

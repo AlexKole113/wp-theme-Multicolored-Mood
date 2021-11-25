@@ -1,53 +1,62 @@
 class TextEffect {
+
     constructor( { textContainer , duration }) {
         this.textContainer = textContainer;
-        this.morphTime = duration * 1000;
         this.prevSlide = 0;
         this.nextSlide = 0;
+        this.animatePlugin = anime;
         this.animate();
     }
 
-    _hideEffect = (item, fraction) => {
-        fraction = 1 - fraction;
-        item.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-        item.style.opacity = `${Math.pow(fraction, 0.2) * 100}%`;
+    _hideEffect = (textWrapper) => {
+        this.animatePlugin.timeline({loop: false})
+            .add({
+                targets: textWrapper.querySelectorAll('.letter'),
+                translateX: [0,-30],
+                opacity: [1,0],
+                easing: "easeInExpo",
+                duration: 800,
+                delay: (el, i) => 100 + 30 * i
+            })
     }
 
-    _showEffect = (item, fraction) => {
-        fraction = Math.cos(fraction * Math.PI) / -2 + .5;
-        item.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-        item.style.opacity = `${Math.pow(fraction, 0.2) * 100}%`;
-    }
-
-    _doMorph = (time) => {
-        this.fraction =  ( 1 - ((time + this.morphTime) - Date.now()) / this.morphTime ).toFixed(3);
-        this.textContainer.forEach((item, index ) => {
-            if( index === this.nextSlide ) {
-                this._showEffect(this.textContainer[this.nextSlide],this.fraction)
-            }else if( index === this.prevSlide){
-                this._hideEffect(item,this.fraction);
-            } else {
-                item.style.opacity = `0`;
-            }
-        } );
+    _showEffect = (textWrapper) => {
+        this.animatePlugin.timeline({loop: false})
+            .add({
+                targets:  textWrapper.querySelectorAll('.letter')  ,
+                translateX: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 2200,
+                delay: (el, i) => 800 + 30 * i
+            })
     }
 
     animate = () => new Promise((res) => {
-        let time = Date.now();
-        const work = () => {
-            this._doMorph(time);
-            if( Date.now() > time + this.morphTime ){
-                window.cancelAnimationFrame(rAf);
-                this.prevSlide = this.nextSlide;
-                res(true);
+        console.log(this.prevSlide, this.nextSlide)
+        for( let i = 0; i < this.textContainer.length; i += 1 ) {
+            let textWrapper = this.textContainer[i].querySelector('.widget-text__excerpt')
+             textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+            if (i === this.nextSlide) {
+               this._showEffect(textWrapper)
+            } else if ( i === this.prevSlide) {
+               this._hideEffect(textWrapper)
             } else {
-                requestAnimationFrame(work);
+                textWrapper.querySelectorAll('.letter').forEach((item) => item.style.opacity = '0' )
+                textWrapper.querySelectorAll('.letter').forEach((item) => item.style.transform = 'translateX(40px)' )
             }
         }
-        let rAf = window.requestAnimationFrame(work);
+
+        setTimeout(()=>{
+            res(true);
+        },2000)
+
     }) ;
 
     next = (next) => {
+        this.prevSlide = this.nextSlide;
         this.nextSlide = next;
         return this.animate();
     }
