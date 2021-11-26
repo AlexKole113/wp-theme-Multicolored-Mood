@@ -5,6 +5,7 @@ class TextEffect {
         this.prevSlide = 0;
         this.nextSlide = 0;
         this.animatePlugin = anime;
+        this.duration = duration * 1000 * .8;
         this.animate();
     }
 
@@ -15,12 +16,12 @@ class TextEffect {
                 translateX: [0,-30],
                 opacity: [1,0],
                 easing: "easeInExpo",
-                duration: 800,
+                duration: this.duration * .34,
                 delay: (el, i) => 100 + 30 * i
             })
     }
 
-    _showEffect = (textWrapper) => {
+    _showEffect = (textWrapper , resolve) => {
         this.animatePlugin.timeline({loop: false})
             .add({
                 targets:  textWrapper.querySelectorAll('.letter')  ,
@@ -28,31 +29,40 @@ class TextEffect {
                 translateZ: 0,
                 opacity: [0,1],
                 easing: "easeOutExpo",
-                duration: 2200,
-                delay: (el, i) => 800 + 30 * i
+                duration: this.duration,
+                delay: (el, i) => 800 + 30 * i,
+                complete: () => resolve(true)
             })
     }
 
-    animate = () => new Promise((res) => {
-        console.log(this.prevSlide, this.nextSlide)
-        for( let i = 0; i < this.textContainer.length; i += 1 ) {
-            let textWrapper = this.textContainer[i].querySelector('.widget-text__excerpt')
-             textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    _defaultStyleState = (textWrapper) => {
+        textWrapper.querySelectorAll('.letter').forEach((item) => item.style.opacity = '0' )
+        textWrapper.querySelectorAll('.letter').forEach((item) => item.style.transform = 'translateX(40px)' )
+    }
 
-            if (i === this.nextSlide) {
-               this._showEffect(textWrapper)
-            } else if ( i === this.prevSlide) {
-               this._hideEffect(textWrapper)
-            } else {
-                textWrapper.querySelectorAll('.letter').forEach((item) => item.style.opacity = '0' )
-                textWrapper.querySelectorAll('.letter').forEach((item) => item.style.transform = 'translateX(40px)' )
-            }
+
+    animate = () => new Promise((res) => {
+
+        const addSpecialPluginCSSClass = (container, selector) => {
+            if( container.querySelector( `${selector} .letter`) ) return container.querySelector( selector );
+
+            const textWrapper = container.querySelector( selector )
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            return textWrapper;
         }
 
-        setTimeout(()=>{
-            res(true);
-        },2000)
-
+        for( let i = 0; i < this.textContainer.length; i += 1 ) {
+            if (i === this.nextSlide) {
+               this._showEffect( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__excerpt') , res );
+               this._showEffect( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__title') , res);
+            } else if ( i === this.prevSlide) {
+               this._hideEffect( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__excerpt') )
+               this._hideEffect( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__title') )
+            } else {
+               this._defaultStyleState( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__excerpt') )
+               this._defaultStyleState( addSpecialPluginCSSClass(this.textContainer[i],'.widget-text__title') )
+            }
+        }
     }) ;
 
     next = (next) => {

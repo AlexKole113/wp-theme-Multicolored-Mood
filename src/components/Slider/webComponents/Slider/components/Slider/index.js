@@ -28,16 +28,18 @@ class Slider extends EventBus {
         this.text =  items.map(({title,text}) => [title,text]);
         this._validateData();
         this._interval = delay ?? 3000;
+        this._transition = transition;
         this.slidesAmount = this.images.length;
         this.currentSlide = 0;
+
         this.imageEffect = new ThreeImageChange({
             displacement,
             effect,
-            duration: transition,
+            duration: this._transition,
             images:this.images,
             container
         });
-        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.text-morph'), duration:transition});
+        this.textEffect = new TextEffect({textContainer: container.querySelectorAll('.text-morph'), duration: this._transition });
         if(navigationContainer) this._setupNavigation(navigationContainer);
     }
 
@@ -130,7 +132,7 @@ class Slider extends EventBus {
                                 resolve(null)
                             }
 
-                        },100 )
+                        }, this._transition * 1000 / 18 )
                     }
                 })
             })
@@ -157,6 +159,7 @@ class Slider extends EventBus {
     _work = ( slideNum ) => {
         Promise.all([this.imageEffect.next( slideNum ), this.textEffect.next( slideNum ), this._activeDotsUpdate( slideNum ) ])
             .then(()=>{
+                console.log('complete')
                 this.currentSlide = slideNum;
                 this._process = false;
 
