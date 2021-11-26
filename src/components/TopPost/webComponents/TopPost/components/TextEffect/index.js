@@ -1,32 +1,37 @@
 class TextEffect {
     constructor({parent, classNameTextContainer}) {
-        if( !gsap ) {
-            throw new Error('Need GSAP');
-        }
-        this.gsap = gsap;
+        this.plugin = anime;
         this.textContainer = parent.querySelector(classNameTextContainer);
     }
 
     init = () => {
-        this.tl = gsap.timeline();
-        let mySplitText = new SplitText( this.textContainer, {type:"words,chars"});
-        let chars = mySplitText.chars;
-        this.gsap.set( this.textContainer, {perspective: 400});
-        this.tl.from(chars, {
-            duration: 0.8,
-            opacity: 0,
-            scale: 0,
-            y: 80,
-            rotationX: 180,
-            transformOrigin: "0% 50% -50",
-            ease: "back",
-            stagger: 0.01
-        });
+
     }
 
 
     start = () => {
-        this.tl.restart()
+        setTimeout(()=>{
+            const containers = this.textContainer.querySelectorAll('.widget-content__text');
+            for(let i = 0; i <= containers.length - 1; i += 1){
+                containers[i].innerHTML = containers[i].textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+                const targets = containers[i].querySelectorAll('.letter');
+                this.plugin.timeline({loop: false})
+                    .add({
+                        targets,
+                        scale: [0, 1],
+                        duration: 1500,
+                        elasticity: 600,
+                        delay: (el, i) => 45 * (i+1)
+                    }).add({
+                    targets: '.ml9',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                })
+            }
+        },800)
+
     }
 
 

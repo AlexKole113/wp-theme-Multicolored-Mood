@@ -61,8 +61,6 @@ const CSS = `
                 color: var(--text-white);
                 height: var(--link-size); 
             } 
-           
-            
             @media (min-width: 1024px) {
                 :host .top-post {
                     height: 100%;
