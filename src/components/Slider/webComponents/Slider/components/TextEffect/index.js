@@ -1,3 +1,5 @@
+import anime from 'animejs/lib/anime.es.js';
+
 class TextEffect {
 
     constructor( { textContainer , duration }) {

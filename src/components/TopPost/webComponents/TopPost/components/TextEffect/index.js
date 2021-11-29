@@ -1,3 +1,5 @@
+import anime from 'animejs/lib/anime.es.js';
+
 class TextEffect {
     constructor({parent, classNameTextContainer}) {
         this.plugin = anime;
@@ -5,7 +7,7 @@ class TextEffect {
     }
 
     init = () => {
-
+        this.stop();
     }
 
 
@@ -19,24 +21,30 @@ class TextEffect {
                     .add({
                         targets,
                         scale: [0, 1],
-                        duration: 1500,
-                        elasticity: 600,
-                        delay: (el, i) => 45 * (i+1)
-                    }).add({
-                    targets: '.ml9',
-                    opacity: 0,
-                    duration: 1000,
-                    easing: "easeOutExpo",
-                    delay: 1000
-                })
+                        duration: 600,
+                        elasticity: 400,
+                        delay: (el, i) => 25 * (i+1)
+                    })
             }
-        },800)
+        },600)
 
     }
 
 
     stop = () => {
-
+        const containers = this.textContainer.querySelectorAll('.widget-content__text');
+        for(let i = 0; i <= containers.length - 1; i += 1){
+            containers[i].innerHTML = containers[i].textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            const targets = containers[i].querySelectorAll('.letter');
+            this.plugin.timeline({loop: false})
+                .add({
+                targets,
+                opacity: 0,
+                duration: 300,
+                easing: "easeOutExpo",
+                delay: 0
+            })
+        }
     }
 
 }

@@ -64,5 +64,7 @@
     "iOS 7",
     "last 3 iOS versions"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "animejs": "^3.2.1"
+  }
 }

@@ -126,10 +126,9 @@ class Slider extends EventBus {
 
                         const interval = setInterval(() => {
                             item.querySelector( 'circle' ).style.strokeDasharray = `${ (start+=percent).toFixed(0) } ${Slider.dotDashArrayValue}`;
-
                             if ( start > Slider.dotDashArrayValue ) {
                                 clearInterval(interval);
-                                resolve(null)
+                                resolve(true)
                             }
 
                         }, this._transition * 1000 / 18 )
@@ -159,7 +158,6 @@ class Slider extends EventBus {
     _work = ( slideNum ) => {
         Promise.all([this.imageEffect.next( slideNum ), this.textEffect.next( slideNum ), this._activeDotsUpdate( slideNum ) ])
             .then(()=>{
-                console.log('complete')
                 this.currentSlide = slideNum;
                 this._process = false;
 

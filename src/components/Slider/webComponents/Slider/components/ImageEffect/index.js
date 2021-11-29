@@ -1,4 +1,6 @@
 import getEffect from "./effects.js";
+// import * as THREE from '../../../../../../common/scripts/libraries/three'
+import anime from 'animejs/lib/anime.es.js';
 
 class ThreeImageChange {
 
@@ -101,7 +103,6 @@ class ThreeImageChange {
 
         this.camera.updateProjectionMatrix();
     }
-
     addObjects = () => new Promise((resolve) => {
         this.material = new THREE.ShaderMaterial({
             extensions: {
@@ -148,21 +149,23 @@ class ThreeImageChange {
 
         let nextTexture = this.textures[num ?? currentSlide];
         this.material.uniforms.texture2.value = nextTexture;
-        let tl = new TimelineMax();
+
 
         return new Promise((res)=>{
-            tl.to(this.material.uniforms.progress,this.duration,{
-                value:1,
-                ease: Power2[this.easing],
-                onComplete:()=>{
+            anime({
+                targets: this.material.uniforms.progress,
+                value: 1,
+                easing: 'easeInOutQuad',
+                duration: this.duration * 1000,
+                complete: () => {
                     this.current = currentSlide;
                     this.material.uniforms.texture1.value = nextTexture;
                     this.material.uniforms.progress.value = 0;
                     this.isRunning = false;
                     res(num)
-                }})
+                }
+            })
         })
-
     }
     render = () => {
         if (this.paused) return;
