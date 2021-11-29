@@ -1,3 +1,5 @@
+import mainMenuHoverEffect from "./components/TextHoverEffect";
+
 class MainMenu {
 
     _validate = () => {
@@ -31,7 +33,8 @@ class MainMenu {
 
     init = () => {
         if (this._validate()) {
-            this.button.addEventListener( 'click', this.buttonClickHandler )
+            this.button.addEventListener( 'click', this.buttonClickHandler );
+            mainMenuHoverEffect();
         }
     }
 
