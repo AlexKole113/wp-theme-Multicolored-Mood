@@ -3,9 +3,19 @@
     &__hamburger-slot {
         user-select: none;
         cursor: pointer;
+        position: relative;
         svg {
-            transition: fill .9s .2s;
-            fill: var(--back-pure-black);
+            transition: opacity.9s .2s;
+        }
+        .close-menu-icon {
+            opacity: 0;
+            color: var(--text-white);
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+        .open-menu-icon {
+            opacity: 1;
         }
     }
     &__container {
@@ -50,7 +60,8 @@
 
     }
     &__link {
-        font-weight: 300;
+        font-family: var(--primary-font);
+        font-weight: 600;
         font-size: 1.25rem;
         text-decoration: none;
         color: var(--text-white);
@@ -60,8 +71,11 @@
     overflow: hidden;
     .main-menu {
         &__hamburger-slot {
-            svg {
-                fill: var(--text-white);
+            .close-menu-icon {
+                opacity: 1;
+            }
+            .open-menu-icon {
+                opacity: 0;
             }
         }
         &__container {
@@ -109,8 +123,10 @@
     .main-menu {
         order: -1;
         &__list {
-            height: auto;
-            flex-flow: row;
+            height: 80%;
+        }
+        &__link {
+            font-size: 2.5rem;
         }
     }
 }
