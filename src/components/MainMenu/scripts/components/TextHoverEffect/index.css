@@ -12,14 +12,14 @@
             position: absolute;
             left: 0;
             opacity: 0;
-            transform: translateX(100%) scale(2);
+            transform: translateX(100%);
         }
     }
     &:hover {
         span {
             .out {
                 opacity: 0;
-                transform: translateX(-100%) scale(.1);
+                transform: translateX(-100%);
             }
             .in {
                 opacity: 1;

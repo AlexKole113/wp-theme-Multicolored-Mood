@@ -6,8 +6,8 @@ const componentContentCSS = `
     :host .content {
         --transition-timing: .4s;
         --transition-line: ease-in-out;
-        transition: width .4s var(--transition-line),                           
-                    transform .4s var(--transition-line),    
+        transition: width .4s var(--transition-line) .2s,                           
+                    transform .4s var(--transition-line) .2s,    
                     opacity .4s var(--transition-line) .3s;
         position: fixed;
         display: flex;
@@ -29,9 +29,7 @@ const componentContentCSS = `
         right: 0;
         bottom: 0;
         left:0;
-        background: #000000;
-        background-size: 300%;
-        transition: background-size .3s var(--transition-line);      
+        background: #000000;  
     }
     :host .content__image {
         order: -1;
@@ -42,26 +40,16 @@ const componentContentCSS = `
         width: 100%;
         height: 21.5rem;
         object-fit: cover;
-        transform: scale(1.25) rotate(12deg);  
-        transition: transform .3s ease-in-out .3s;    
-    }
-    :host .is-open .content {
-        width: 125vw;
-        opacity: 1;
-        transform: translateX(0); 
-    }    
-    :host .is-open .content:after {
-        background-size: 100%;       
+        opacity: 0;
+        transform: scale(1.25) rotate(15deg);  
+        transition: transform .4s ease-in-out, opacity .3s ease-in-out;    
     }
     :host .content__text {
         position: relative;
         z-index: 5;
         color: var(--text-white);
         padding: 2.5rem 1rem 10rem 26%;
-    }
-    :host .is-open .content__image img {
-         transform: scale(1) rotate(0deg);   
-    }
+    } 
     :host .back-link--top {
         position: absolute;
         top: calc((21.5rem - 2.5rem) * -1);
@@ -87,6 +75,7 @@ const componentContentCSS = `
         transform: rotate(180deg);
         margin-right: .5rem;
     }
+    
     @media (min-width: 1024px) {
         :host .content  {
              display: grid;
@@ -106,9 +95,7 @@ const componentContentCSS = `
         :host .content__image img {
             height: 100%;
         }
-        :host .content:after {
-             background: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
-        }
+        
         :host .back-link--top {
              top: 2.65rem;
              left: 45%;
@@ -117,6 +104,37 @@ const componentContentCSS = `
              left: 45%;
              bottom: 2.65rem;
         }
+        :host .content {
+            background-color: transparent;
+        }
+        :host .content:after {
+             background-position: 310% 200%;
+             background-size: 50%; 
+             background-repeat: no-repeat;
+             background-color: transparent;
+             background-image: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
+             transition: background-size .4s var(--transition-line), background-position .4s var(--transition-line);     
+        }
+    }
+    :host .is-open .content {
+        background-color: transparent;
+        width: 125vw;
+        opacity: 1;
+        transform: translateX(0); 
+        transition: width .4s var(--transition-line),                           
+                    transform .4s var(--transition-line),    
+                    opacity .4s var(--transition-line) .3s;         
+    }
+    :host .is-open .content:after {
+        background-position:  0% 0%;
+        background-size: 100%; 
+        background-repeat: no-repeat; 
+        transition: background-size .4s var(--transition-line) .2s, background-position .4s var(--transition-line) .2s;    
+    }
+    :host .is-open .content__image img {
+         transition: transform .4s ease-in-out .4s, opacity .4s ease-in-out .4s;  
+         transform: scale(1) rotate(0deg);  
+         opacity: 1; 
     }
 </style>
 `;
