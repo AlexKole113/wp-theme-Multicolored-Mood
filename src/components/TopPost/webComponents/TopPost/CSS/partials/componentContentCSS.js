@@ -8,7 +8,7 @@ const componentContentCSS = `
         --transition-line: ease-in-out;
         transition: width .4s var(--transition-line) .2s,                           
                     transform .4s var(--transition-line) .2s,    
-                    opacity .4s var(--transition-line) .3s;
+                    opacity .4s var(--transition-line);
         position: fixed;
         display: flex;
         flex-flow: column;
@@ -42,7 +42,7 @@ const componentContentCSS = `
         object-fit: cover;
         opacity: 0;
         transform: scale(1.25) rotate(15deg);  
-        transition: transform .4s ease-in-out, opacity .3s ease-in-out;    
+        transition: transform .3s ease-in-out, opacity .3s ease-in-out;    
     }
     :host .content__text {
         position: relative;
@@ -75,6 +75,15 @@ const componentContentCSS = `
         transform: rotate(180deg);
         margin-right: .5rem;
     }
+    
+    :host .is-open .content {
+            width: 125vw;
+            opacity: 1;
+            transform: translateX(0); 
+            transition: width .4s var(--transition-line),                           
+                        transform .4s var(--transition-line),    
+                        opacity .4s var(--transition-line);         
+        }
     
     @media (min-width: 1024px) {
         :host .content  {
@@ -115,16 +124,17 @@ const componentContentCSS = `
              background-image: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
              transition: background-size .4s var(--transition-line), background-position .4s var(--transition-line);     
         }
+        :host .is-open .content {
+            background-color: transparent;
+            width: 125vw;
+            opacity: 1;
+            transform: translateX(0); 
+            transition: width .4s var(--transition-line),                           
+                        transform .4s var(--transition-line),    
+                        opacity .4s var(--transition-line) .3s;         
+        }
     }
-    :host .is-open .content {
-        background-color: transparent;
-        width: 125vw;
-        opacity: 1;
-        transform: translateX(0); 
-        transition: width .4s var(--transition-line),                           
-                    transform .4s var(--transition-line),    
-                    opacity .4s var(--transition-line) .3s;         
-    }
+    
     :host .is-open .content:after {
         background-position:  0% 0%;
         background-size: 100%; 
