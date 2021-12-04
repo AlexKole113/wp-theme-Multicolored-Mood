@@ -7,7 +7,7 @@ const componentContentCSS = `
         --transition-timing: .4s;
         --transition-line: ease-in-out;
         transition: width .4s var(--transition-line) .2s,                           
-                    transform .4s var(--transition-line) .2s,    
+                    transform .4s var(--transition-line) .1s,    
                     opacity .4s var(--transition-line);
         position: fixed;
         display: flex;
@@ -41,8 +41,8 @@ const componentContentCSS = `
         height: 21.5rem;
         object-fit: cover;
         opacity: 0;
-        transform: scale(1.25) rotate(15deg);  
-        transition: transform .3s ease-in-out, opacity .3s ease-in-out;    
+        transform: scale(1.10) rotate(12deg);  
+        transition: transform .4s ease-in-out, opacity .3s ease-in-out;    
     }
     :host .content__text {
         position: relative;
@@ -118,11 +118,11 @@ const componentContentCSS = `
         }
         :host .content:after {
              background-position: 310% 200%;
-             background-size: 50%; 
+             background-size: 50% 100%; 
              background-repeat: no-repeat;
              background-color: transparent;
              background-image: linear-gradient(90deg, transparent 0%, #000000 20%, #000000fa 55%, transparent 100%);
-             transition: background-size .4s var(--transition-line), background-position .4s var(--transition-line);     
+             transition: background-size .4s var(--transition-line), background-position .4s var(--transition-line) .2s;     
         }
         :host .is-open .content {
             background-color: transparent;
@@ -134,15 +134,15 @@ const componentContentCSS = `
                         opacity .4s var(--transition-line) .3s;         
         }
     }
-    
+ 
     :host .is-open .content:after {
         background-position:  0% 0%;
-        background-size: 100%; 
+        background-size: 100% 100%; 
         background-repeat: no-repeat; 
         transition: background-size .4s var(--transition-line) .2s, background-position .4s var(--transition-line) .2s;    
     }
     :host .is-open .content__image img {
-         transition: transform .4s ease-in-out .4s, opacity .4s ease-in-out .4s;  
+         transition: transform .4s ease-in-out .3s, opacity .4s ease-in-out .3s;  
          transform: scale(1) rotate(0deg);  
          opacity: 1; 
     }
