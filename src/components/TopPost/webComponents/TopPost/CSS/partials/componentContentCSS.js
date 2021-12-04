@@ -75,7 +75,6 @@ const componentContentCSS = `
         transform: rotate(180deg);
         margin-right: .5rem;
     }
-    
     :host .is-open .content {
             width: 125vw;
             opacity: 1;
@@ -89,6 +88,7 @@ const componentContentCSS = `
         :host .content  {
              display: grid;
              grid-template-columns: 50% 50%;
+             overflow: hidden;
         }
         :host .content:after {
             z-index: 4;
@@ -97,6 +97,7 @@ const componentContentCSS = `
             padding: 8rem 4rem;
             padding-left: 46%;
             max-height: 100vh;
+            overflow: scroll;
         }
         :host .content__image {
             order: unset;
@@ -110,8 +111,7 @@ const componentContentCSS = `
              left: 45%;
         }
         :host .back-link--bottom { 
-             left: 45%;
-             bottom: 2.65rem;
+            display: none;
         }
         :host .content {
             background-color: transparent;

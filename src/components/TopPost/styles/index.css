@@ -29,7 +29,22 @@
         font-size: 1.2rem;
         color: var(--text-white);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        width: max-content;
+        margin-top: 5rem;
+        svg {
+            margin-left: .75rem;
+            transition: margin-left .6s;
+        }
+
+        &:hover {
+            svg {
+                margin-left: 1.5rem;
+            }
+        }
     }
 }
 .top-post-widget-open {
