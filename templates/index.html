@@ -24,7 +24,7 @@
                                     <a class="main-menu__link" href="#">Home</a>
                                 </li>
                                 <li class="main-menu__item">
-                                    <a class="main-menu__link" href="#">
+                                    <a class="main-menu__link" href="page-post.html">
                                         About
                                     </a>
                                 </li>
@@ -86,10 +86,11 @@
                                         {"title":"IPSUM", "text": "Stockholm, Sweden", "imageUrl": "../src/components/slider/assets/event7.jpeg", "linkTo": "https://facebook.com"}
                                     ]
                                  }'
+                        dots="true"
                         text="center"
                         displacement="../src/components/slider/assets/disp/disp4.png"
                         effect="1-bottom"
-                        delay="1000"
+                        delay="2000"
                 ></slider-component>
             </div>
         </section>
@@ -179,26 +180,22 @@
 
 <!--
  TODO:
-  1. Create new menu open effect. Replace old PIXI open effect on JS native PNG Sprites open Spot effect;
-     1.1 Add Cypress tests cases for Menu;
-  2. Apply new design from Figma;
-  3. Complete Webcomponents;
-    3.1 Slider;
-       3.1.1 Create Dots;
-       3.1.2 Add Cypress tests cases for Slider;
-    3.2 Open Widget Effects (Show information);
-       3.2.1 Add Cypress tests cases for open Widgets;
-    3.3 Add Other WebComponents (home-posts etc.);
-       3.3.1 Add Cypress tests cases for all WebComponents;
-  4. Try to replace Three.js instead PIXI;
-  5. Speed optimization, clear code and folders;
-  6. Review and Refactoring;
-  7. Add Cypress tests cases for Home Page;
-  8. Create pages;
-    8.1 Archive;
-    8.2 Post, Page;
-    8.3 Other - 404, Search etc;
-    8.4 Add Cypress tests cases for pages;
+  (V) 1. Create new menu open effect. Replace old PIXI open effect on JS native PNG Sprites open Spot effect;
+  (V) 2. Apply new design from Figma;
+  (V) 3. Complete Webcomponents;
+     (V)   3.1 Slider;
+     (V)  3.1.1 Create Dots;
+     (V)  3.2 Open Widget Effects (Show information);
+     (V)  3.3 Add Other WebComponents (home-posts etc.);
+  (V) 4. Try to replace Three.js instead PIXI;
+  5. Create pages;
+    5.1 Archive;
+    5.2 Post, Page;
+    5.3 Other - 404, Search etc;
+    5.4 Add Cypress tests cases for pages;
+  6. Speed optimization, clear code and folders;
+  7. Review and Refactoring;
+  8.  Cypress testing;
   9. Fixing after testing (if need);
 -->
 

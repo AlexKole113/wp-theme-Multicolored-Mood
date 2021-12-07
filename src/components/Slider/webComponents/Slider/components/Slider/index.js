@@ -21,16 +21,18 @@ class Slider extends EventBus {
     _clearInterval = null;
     _interval = 3000;
 
-    constructor({items, container, transition = 1 , navigationContainer, displacement, effect, delay}) {
+    constructor({items, container, transition = 1 , navigationContainer, displacement, effect, delay, dots}) {
         super()
         this.container = container;
         this.images = items.map(({imageUrl}) => imageUrl);
         this.text =  items.map(({title,text}) => [title,text]);
+        this.dots = (dots === 'true');
         this._validateData();
         this._interval = delay ?? 3000;
         this._transition = transition;
         this.slidesAmount = this.images.length;
         this.currentSlide = 0;
+
 
         this.imageEffect = new ThreeImageChange({
             displacement,
@@ -82,7 +84,6 @@ class Slider extends EventBus {
         this._process = true;
         this.container.dispatchEvent( new CustomEvent( 'slider-next', { cancelable:true } ) );
         const currentSlide = (this.currentSlide + 1) % this.slidesAmount;
-
         this._work(currentSlide);
     }
 
@@ -139,7 +140,7 @@ class Slider extends EventBus {
     }
 
     _setupNavigation = (container) => {
-        if(!container) return;
+        if(!container || !this.dots) return;
         for(let i = 0; i < this.images.length; i++){
             const dot = document.createElement('span');
             dot.classList.add('dots-item')
@@ -156,14 +157,13 @@ class Slider extends EventBus {
     }
 
     _work = ( slideNum ) => {
-        Promise.all([this.imageEffect.next( slideNum ), this.textEffect.next( slideNum ), this._activeDotsUpdate( slideNum ) ])
+        Promise.all( [this.imageEffect.next( slideNum ), this.textEffect.next( slideNum ), this._activeDotsUpdate( slideNum ) ])
             .then(()=>{
-                this.currentSlide = slideNum;
-                this._process = false;
-
+               this.currentSlide = slideNum;
+               this._process = false;
                this._clearInterval = setTimeout(()=>{
                    this._do('NEXT')
-                },this._interval)
+                }, this._interval)
             })
     }
 

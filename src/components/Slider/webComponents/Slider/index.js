@@ -22,6 +22,7 @@ export default class SliderWidget extends HTMLElement {
             displacement: this.getAttribute('displacement'),
             effect: this.getAttribute('effect'),
             delay: parseFloat(this.getAttribute('delay')),
+            dots: this.getAttribute('dots'),
         }
 
         SliderWidget.template.innerHTML = SliderWidget.getTemplate( this.props );
@@ -48,7 +49,8 @@ export default class SliderWidget extends HTMLElement {
             transition: 2,
             displacement: this.props.displacement,
             effect: this.props.effect,
-            navigationContainer: this?.shadowRoot.querySelector('.dots-container')
+            navigationContainer: this?.shadowRoot.querySelector('.dots-container'),
+            dots: this.props.dots,
         });
         slider.init();
 

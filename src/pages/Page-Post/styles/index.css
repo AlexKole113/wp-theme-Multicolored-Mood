@@ -1,0 +1,17 @@
+.post-page {
+
+}
+[class^='home-widget-area-'] {
+    height: 100%;
+    overflow: hidden;
+}
+
+@mixin lg {
+    .post-page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
