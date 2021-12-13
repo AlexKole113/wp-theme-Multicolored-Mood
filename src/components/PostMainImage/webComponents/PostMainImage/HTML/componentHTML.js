@@ -1,2 +1,2 @@
-const HTML = () => `<div class="home-widget"><div class="home-widget-container"></div></div>`;
+const HTML = () => `<div class="widget"><div class="widget-container"></div></div>`;
 export default HTML;

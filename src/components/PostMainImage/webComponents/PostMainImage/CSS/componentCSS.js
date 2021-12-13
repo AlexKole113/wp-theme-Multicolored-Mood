@@ -5,7 +5,7 @@ const CSS = `
                 max-height: 100%!important;
                 max-width: 100%!important;
             }              
-            :host .home-widget {
+            :host .widget {
                 --font-color: #fff;
                 --title-size:2rem;
                 --link-size:1rem;
@@ -14,16 +14,19 @@ const CSS = `
                 height: 21.75rem;
                 overflow: hidden;
             }     
-            :host .home-widget-container {
+            :host .widget-container {
                 position: relative;
                 height: 100%;
             }       
             @media (min-width: 1024px) {              
-                :host .home-widget-container {
+                :host .widget-container {
                     padding-right: 0;
                     height: 100%;
                     width: 100%;
-                }                                                           
+                }  
+                :host .widget {
+                      height: 100%;
+                }                                                        
             }
         </style>
 `;

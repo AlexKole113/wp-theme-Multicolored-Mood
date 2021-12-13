@@ -30,7 +30,7 @@ export default class PostMainImage extends HTMLElement {
             displacement: '../src/components/PostMainImage/assets/disp/disp1.jpg',
             effect: this.props.effect,
             images: ['../src/components/PostMainImage/assets/white.jpeg' , this.props.src],
-            container: this?.shadowRoot.querySelector('.home-widget-container')
+            container: this?.shadowRoot.querySelector('.widget-container')
         });
 
         image.wasInitiated.then(()=>{
