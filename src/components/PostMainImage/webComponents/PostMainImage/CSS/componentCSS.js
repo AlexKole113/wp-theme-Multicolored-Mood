@@ -11,7 +11,7 @@ const CSS = `
                 --link-size:1rem;
                 --excerpt-size:.75rem;
                 position: relative;
-                height: 100%;
+                height: 21.75rem;
                 overflow: hidden;
             }     
             :host .home-widget-container {

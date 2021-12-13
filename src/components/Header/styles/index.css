@@ -1,9 +1,11 @@
 .main-header {
     height: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     &__group {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        height: 100%;
     }
 }
 .additional-menu {
