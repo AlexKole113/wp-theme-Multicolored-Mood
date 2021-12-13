@@ -19,7 +19,6 @@ export default class TopPost extends HTMLElement {
         this.props = {
             title: this.getAttribute('title'),
             excerpt: this.getAttribute('excerpt'),
-            link: this.getAttribute('link'),
             linkText: this.getAttribute('linkText') ?? 'More',
             imageURL: this.getAttribute('imageURL'),
             titleSize: this.getAttribute('titleSize') ?? 'medium',

@@ -121,18 +121,15 @@ class Slider extends EventBus {
                 this.navigationContainer.querySelectorAll('.dots-item').forEach(item => {
                     if( item.getAttribute('data-slide') === `${newActiveSlide}` ) {
                         item.innerHTML = Slider.getDotTemplate();
-
                         const percent = Slider.dotDashArrayValue / 18;
                         let start = 0;
-
                         const interval = setInterval(() => {
                             item.querySelector( 'circle' ).style.strokeDasharray = `${ (start+=percent).toFixed(0) } ${Slider.dotDashArrayValue}`;
                             if ( start > Slider.dotDashArrayValue ) {
                                 clearInterval(interval);
                                 resolve(true)
                             }
-
-                        }, this._transition * 1000 / 18 )
+                        }, this._transition * 1000 / 16.8 )
                     }
                 })
             })
