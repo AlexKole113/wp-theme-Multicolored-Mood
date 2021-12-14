@@ -1,10 +1,9 @@
 .main-header {
     height: 2rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
     &__group {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         height: 100%;
     }
 }

@@ -4,6 +4,9 @@
         user-select: none;
         cursor: pointer;
         position: relative;
+        display: flex;
+        align-items: center;
+        height: 100%;
         svg {
             transition: opacity.9s .2s;
             width: 15px;
@@ -14,6 +17,7 @@
             position: absolute;
             top:0;
             right: 0;
+            height: 100%;
         }
         .open-menu-icon {
             opacity: 1;
