@@ -5,20 +5,21 @@ const CSS = `
                 display: grid;
                 grid-template-columns: 3rem 1fr;
                 margin-bottom: 2.7rem;
+                height: 3rem;
             }
             :host .last-posts__item-img {
                 height: 3rem;
+                width: 3rem;
             }
             :host .last-posts__loading {
                 border-radius: 100%;
-                width: 100%;
-                height: 3rem;
+                width:  100%;
             }
             :host .last-posts__item-img img,
             :host .last-posts__loading-img {
                 border-radius: 100%;
-                width: 100%;
-                height: 100%;
+                width:  3rem;
+                height: 3rem;
                 object-fit: cover;
             }
             :host .last-posts__item-text,
@@ -35,8 +36,9 @@ const CSS = `
             :host .last-posts__loading-line-1,
             :host .last-posts__loading-line-2 {
                 width: 100%;
-                height: 1rem;
+                height: 0.75rem;
                 border-radius: 5px;
+                margin-top: 0.5rem;
             }
             :host .last-posts__loading-line-1 {
                  animation: loading 2s .5s infinite;  

@@ -4,34 +4,47 @@ import loadingHTML from "./HTML/componentLoadingHTML";
 export default class LastPostItem extends HTMLElement {
 
     static observedAttributes = [ 'id', 'loading', 'data' ];
-    static template = document.createElement('template');
-    getHTML = () => (`
+
+    getHTML = ({loading,data}) => (`
        ${ componentCSS }
-       ${ this.loading === 'true' ? loadingHTML() : componentHTML( {...this.data} ) }
+       ${ loading === 'true' ? loadingHTML() : componentHTML( {...data} ) }
     `);
+    getProps = () => ({
+        id: this.getAttribute('id') * 1,
+        loading: this.getAttribute('loading') ?? 'true',
+        data: this.getAttribute('data'),
+    })
+    getPosts = () => {
+        return new Promise((res)=>{
+            setTimeout(() => {
+                res(null)
+            }, Math.random() * (1500 - 400) + 400 )
+        })
+    }
 
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.id = this.getAttribute('id');
-        this.loading = this.getAttribute('loading') ?? 'true';
-        this.render();
     }
 
-    connectedCallback = () => {
-        setTimeout(() => {
-            this.setAttribute('loading', 'false')
-        },2000)
+    connectedCallback(){
+        this.getPosts()
+            .then(()=>{
+                console.log( 'update attrs' )
+                this.setAttribute('loading', 'false')
+            })
     }
 
-    attributeChangedCallback = () => {
-        console.log(this.loading)
+    attributeChangedCallback(attrName, oldVal, newVal){
+        console.log('rerender after attrs change')
         this.render();
     }
 
     render = () => {
-        LastPostItem.template.innerHTML = this.getHTML();
-        this?.shadowRoot?.append( LastPostItem.template.content.cloneNode(true) );
+        this.shadowRoot.innerHTML = ``;
+        const template = document.createElement('template');
+        template.innerHTML = this.getHTML(this.getProps());
+        this.shadowRoot.append( template.content.cloneNode(true) );
     }
 
 }
