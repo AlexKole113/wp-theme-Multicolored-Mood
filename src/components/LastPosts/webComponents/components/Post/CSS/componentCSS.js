@@ -26,7 +26,8 @@ const CSS = `
             :host .last-posts__loading-text {
                 padding-left: 1.75rem;
                 display: flex;
-                flex-flow: column;    
+                flex-flow: column; 
+                justify-content: center;   
             }
             :host .last-posts__item-title {
                 font-size: .81rem;
