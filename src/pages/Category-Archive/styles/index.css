@@ -1,0 +1,34 @@
+.archive-page {
+    display: flex;
+    flex-flow: column;
+    &__block-top {
+        padding-top: 1rem;
+        padding-bottom:0;
+    }
+    &__block-center {
+        padding-top: 2.5rem;
+    }
+    &__title {
+        font-size: 1.9rem;
+        padding: 0 1.5rem;
+        margin-bottom: 2.75rem;
+    }
+}
+@mixin lg {
+    .archive-page {
+        &__title {
+            font-size: 3.5rem;
+            margin-bottom: 2.75rem;
+            padding: 0 2.85rem;
+        }
+        &__block-center {
+            padding-top: 2.3rem;
+        }
+        &__block-top {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+            height: 100%;
+            padding-top: 2.35rem;
+        }
+    }
+}

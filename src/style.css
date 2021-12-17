@@ -14,8 +14,11 @@
 @import './components/Copyrights/styles/index.css';
 @import './components/TopPost/styles/index.css';
 @import './components/ArticleFooter/styles/index.css';
+@import './components/LinksToCat/styles/index.css';
+@import './components/PostContent/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';
 @import './pages/Page-Post/styles/index.css';
+@import './pages/Category-Archive/styles/index.css';
 
