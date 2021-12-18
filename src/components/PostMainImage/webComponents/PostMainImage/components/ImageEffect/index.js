@@ -5,6 +5,8 @@ import anime from 'animejs/lib/anime.es.js';
 class ThreeImageChange {
 
     constructor(opts) {
+
+        this.container = opts.container;
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0xff0000 );
         this.vertex = `varying vec2 vUv;void main() {vUv = uv;gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );}`;
@@ -19,7 +21,7 @@ class ThreeImageChange {
         this.duration = opts.duration || 1;
         this.displacement = opts.displacement
         this.easing = opts.easing || 'easeOut'
-        this.container = opts.container;
+
         this.images = opts.images;
         this.width = this.container.offsetWidth;
         this.height = this.container.offsetHeight;

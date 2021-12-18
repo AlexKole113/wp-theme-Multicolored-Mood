@@ -12,7 +12,7 @@ export default class LastPostItem extends HTMLElement {
     getProps = () => ({
         id: this.getAttribute('id') * 1,
         loading: this.getAttribute('loading') ?? 'true',
-        data: this.getAttribute('data'),
+        data: this.getAttribute('data') ?? JSON.stringify( {title:{rendered: ''}}),
     })
     getPosts = () => fetch(`https://laughable-quest.flywheelsites.com/wp-json/wp/v2/posts/${this.getProps().id}`).then( r => r.json())
 
@@ -24,14 +24,12 @@ export default class LastPostItem extends HTMLElement {
     connectedCallback(){
         this.getPosts()
             .then((data)=>{
-                console.log( data )
                 this.setAttribute('loading', 'false')
                 this.setAttribute('data', JSON.stringify(data) )
             })
     }
 
     attributeChangedCallback(attrName, oldVal, newVal){
-        console.log('rerender after attrs change')
         this.render();
     }
 

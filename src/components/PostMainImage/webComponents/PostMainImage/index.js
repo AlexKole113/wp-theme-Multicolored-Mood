@@ -19,6 +19,7 @@ export default class PostMainImage extends HTMLElement {
             effect: this.getAttribute('effect'),
             delay: parseFloat(this.getAttribute('delay')),
             src: this.getAttribute('src'),
+            displacement: this.getAttribute('displacement') ?? '../src/components/PostMainImage/assets/disp/disp4.png',
         }
 
         PostMainImage.template.innerHTML = PostMainImage.getTemplate();
@@ -27,7 +28,7 @@ export default class PostMainImage extends HTMLElement {
 
     connectedCallback() {
         const image = new ThreeImageChange({
-            displacement: '../src/components/PostMainImage/assets/disp/disp1.jpg',
+            displacement: this.props.displacement,
             effect: this.props.effect,
             images: ['../src/components/PostMainImage/assets/white.jpeg' , this.props.src],
             container: this?.shadowRoot.querySelector('.widget-container')
