@@ -21,7 +21,7 @@
                         <div class="main-menu__container">
                             <ul class="main-menu__list">
                                 <li class="main-menu__item">
-                                    <a class="main-menu__link" href="#">Home</a>
+                                    <a class="main-menu__link" href="index.html">Home</a>
                                 </li>
                                 <li class="main-menu__item">
                                     <a class="main-menu__link" href="page-post.html">
@@ -81,9 +81,9 @@
                 <!-- WIDGET-AREA: home-widget-area-1 = WIDGET: text-center  -->
                 <slider-component
                         data='{"items":[
-                                        {"title":"SLIDE 1", "text": "Ruslan Bardash", "imageUrl": "../src/components/slider/assets/food-1.jpeg", "linkTo": "https://google.com"},
-                                        {"title":"LOREM", "text": "Some Guy", "imageUrl": "../src/components/slider/assets/food-5.jpeg", "linkTo": "https://youtube.com"},
-                                        {"title":"IPSUM", "text": "Stockholm, Sweden", "imageUrl": "../src/components/slider/assets/food-4.jpeg", "linkTo": "https://facebook.com"}
+                                        {"title":"SLIDE 1", "text": "Ruslan Bardash", "imageUrl": "../src/components/slider/assets/food-1.jpeg", "linkTo": "page-post.html"},
+                                        {"title":"LOREM", "text": "Some Guy", "imageUrl": "../src/components/slider/assets/food-5.jpeg", "linkTo": "page-post.html"},
+                                        {"title":"IPSUM", "text": "Stockholm, Sweden", "imageUrl": "../src/components/slider/assets/food-4.jpeg", "linkTo": "page-post.html"}
                                     ]
                                  }'
                         dots="true"
@@ -103,7 +103,7 @@
                                 title="LOREM"
                                 excerpt="Ruslan Bardash"
                                 linkText="More"
-                                imageURL="../src/components/slider/assets/food-2.jpeg"
+                                imageURL="../src/components/TopPost/assets/food-2.jpeg"
                         >
                             <div slot="content" class="widget-content">
                                 <h2 class="widget-content__title">LOREM</h2>
@@ -127,7 +127,7 @@
                                 titleSize="big"
                                 excerpt="Ruslan Bardash"
                                 linkText="More"
-                                imageURL="../src/components/slider/assets/food-3.jpeg"
+                                imageURL="../src/components/TopPost/assets/food-3.png"
                         >
                             <div slot="content" class="widget-content">
                                 <h2 class="widget-content__title">LOREM</h2>
@@ -186,11 +186,12 @@
      (V)  3.2 Open Widget Effects (Show information);
      (V)  3.3 Add Other WebComponents (home-posts etc.);
   (V) 4. Try to replace Three.js instead PIXI;
+  4. Add Footer Component for Post andArchive Template
   5. Create pages;
   (V)  5.1 Archive;
   (V)  5.2 Post, Page;
-    5.3 Other - 404, Search etc;
-    5.4 Add Cypress tests cases for pages;
+       5.3 Other - 404, Search etc;
+       5.4 Add Cypress tests cases for pages;
   6. Speed optimization, clear code and folders;
   7. Review and Refactoring;
   8.  Cypress testing;

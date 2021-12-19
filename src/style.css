@@ -16,6 +16,7 @@
 @import './components/ArticleFooter/styles/index.css';
 @import './components/LinksToCat/styles/index.css';
 @import './components/PostContent/styles/index.css';
+@import './components/Pagination/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';

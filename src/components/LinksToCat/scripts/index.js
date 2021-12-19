@@ -1,6 +1,6 @@
 import anime from "animejs/lib/anime.es.js";
 const animateLinkToCat = () => {
-    const targets = '.links-to-cat__item';
+    const targets = '.show-effect';
 
     anime.timeline({loop: false})
         .add({
