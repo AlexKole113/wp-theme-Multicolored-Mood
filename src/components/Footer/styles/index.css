@@ -1,8 +1,14 @@
 .footer {
     background-color: var(--back-pure-black);
+    &--lg {
+        display: none;
+    }
+
 }
 @mixin lg {
     .footer {
-        display: none;
+        &--sm {
+            display: none;
+        }
     }
 }

@@ -32,5 +32,14 @@
     &__item-name {
         text-decoration: none;
         color: var(--text-dark-gray);
+        &.tag-name {
+            display:inline-block;
+            margin-right: .5rem;
+        }
+    }
+}
+@mixin lg {
+    .article-footer {
+        padding-bottom: 4rem;
     }
 }
