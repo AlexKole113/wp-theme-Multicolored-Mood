@@ -127,6 +127,11 @@
 @mixin lg {
     .main-menu {
         order: -1;
+        &__container {
+            &:before {
+                width: calc(100vw * 26);
+            }
+        }
         &__list {
             height: 80%;
         }
