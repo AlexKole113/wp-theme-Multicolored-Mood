@@ -1,0 +1,26 @@
+.error-message {
+    text-align: center;
+    color: var(--text-dark-gray);
+    &__code {
+        font-size: 6rem;
+    }
+
+    &__text {
+        font-size: 1rem;
+    }
+
+    &__link {
+        color: var(--text-dark-gray);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 2rem;
+        svg {
+            height: 1rem;
+            width: 1rem;
+            margin-left: 1rem;
+        }
+    }
+}

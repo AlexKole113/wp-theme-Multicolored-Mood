@@ -17,9 +17,11 @@
 @import './components/LinksToCat/styles/index.css';
 @import './components/PostContent/styles/index.css';
 @import './components/Pagination/styles/index.css';
+@import './components/ErrorMessage/styles/index.css';
 
 /* pages */
 @import './pages/Home/styles/index.css';
 @import './pages/Page-Post/styles/index.css';
 @import './pages/Category-Archive/styles/index.css';
+@import './pages/404/styles/index.css';
 

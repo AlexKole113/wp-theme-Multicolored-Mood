@@ -4,12 +4,13 @@ const CSS = `
             :host .last-posts__loading {
                 display: grid;
                 grid-template-columns: 3rem 1fr;
-                margin-bottom: 2.7rem;
+                margin-bottom: 2.5rem;
                 height: 3rem;
+                box-sizing: border-box;
             }
             :host .last-posts__item-img {
-                height: 3rem;
-                width: 3rem;
+                height: 2.5rem;
+                width: 2.5rem;
             }
             :host .last-posts__loading {
                 border-radius: 100%;
@@ -18,8 +19,8 @@ const CSS = `
             :host .last-posts__item-img img,
             :host .last-posts__loading-img {
                 border-radius: 100%;
-                width:  3rem;
-                height: 3rem;
+                width:  2.5rem;
+                height: 2.5rem;
                 object-fit: cover;
             }
             :host .last-posts__item-text,
@@ -73,10 +74,17 @@ const CSS = `
                 :host .last-posts__loading {
                     display: grid;
                     grid-template-columns: 2.85rem 1fr;
-                    margin-bottom: 1.25rem;
+                    margin-bottom: 1.5rem;
+                    height: 2.25rem;
                 }
                 :host .last-posts__item-img {
-                    height: 2.85rem;     
+                    height: 2.25rem; 
+                    width: 2.25rem;    
+                }
+                :host .last-posts__item-img img,
+                :host .last-posts__loading-img {
+                    height: 2.25rem; 
+                    width: 2.25rem;   
                 }
                 :host .last-posts__item-text {
                     align-items: flex-start;

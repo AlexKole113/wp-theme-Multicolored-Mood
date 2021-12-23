@@ -12,6 +12,7 @@ const CSS = `
                 display: flex;
                 flex-flow: column;
                 background-position: 50% 50%;
+                box-sizing: border-box;
             }       
             :host .home-widget-collection-text {
                  position: absolute;

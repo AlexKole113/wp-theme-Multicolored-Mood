@@ -81,5 +81,10 @@
     }
 }
 
+@mixin xl {
+    .home-widget-area-4 {
+        grid: 45% 55% / 100%
+    }
+}
 
 
